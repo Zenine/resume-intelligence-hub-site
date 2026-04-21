@@ -1,6 +1,6 @@
 ---
 layout: home
-title: あなた専用のキャリア OS
+title: AI IDE 向けのキャリア skill
 
 hero:
   name: "Resume Intelligence Hub"

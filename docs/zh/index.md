@@ -1,6 +1,6 @@
 ---
 layout: home
-title: 给自己搭一个职业中枢
+title: 给 AI IDE 用的 career skill
 
 hero:
   name: "Resume Intelligence Hub"

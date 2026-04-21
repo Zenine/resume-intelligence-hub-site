@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Your private career OS
+title: A career skill for your AI IDE
 
 hero:
   name: "Resume Intelligence Hub"

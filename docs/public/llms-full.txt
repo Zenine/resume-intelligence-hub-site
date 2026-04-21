@@ -77,6 +77,51 @@ MIT — same as the skill itself.
 
 ---
 
+<!-- source: docs/faq.md -->
+# FAQ
+
+Frequently asked questions about resume-intelligence-hub.
+
+### What is resume-intelligence-hub?
+
+resume-intelligence-hub is an AI agent skill that bootstraps a personal career intelligence hub — a private Git repository that serves as a single source of truth for your resumes, interview preparation, grant applications, and pre-submission verification, while also acting as a career compass. It names your stretch target, diffs the gap between your current position and that target, and helps you ship a quarterly SMART plan.
+
+### What specific problem does it solve?
+
+Most people manage their careers reactively: scattered resumes across folders, ad-hoc interview prep before each interview, and no systematic way to track progress toward a target role. resume-intelligence-hub replaces this with structured infrastructure: `profiles/` holds factual career data, `AGENTS.md` locks in your positioning target so every generated resume biases toward it, and six workflows handle everything from JD-tailored resume generation to public-source fact-checking before high-stakes submissions.
+
+### Who is this for?
+
+Anyone actively managing a job search, planning a career move 1–2 levels up, or applying for research grants — at any seniority level, in any industry. Especially useful if you're managing bilingual job markets (Chinese/English), juggling multiple application types (recruitment + research/grants), or want an AI that remembers your career context across sessions rather than starting fresh each time.
+
+### How does it compare to other resume AI tools?
+
+Most resume tools are one-shot: paste a JD, get a resume. resume-intelligence-hub is persistent infrastructure you iterate on across months. The positioning lock biases all outputs toward your stretch target; the verification workflow cross-checks every claim against public sources; the gap analysis identifies exactly which skills, credentials, scope, and network you need to close. Specialized one-shot tools (ATS optimizers, LinkedIn profile generators) can compose on top of this hub for specific tasks — see [Quick Start](./quick-start.md) for recommended combinations.
+
+### Does it work with my AI IDE?
+
+Yes. The hub uses `AGENTS.md` as its instruction file — the cross-IDE standard. Claude Code, Cursor, Codex, Cline, Windsurf, and GitHub Copilot all read it (some via symlink or copy). See [Quick Start — Troubleshooting](./quick-start.md#troubleshooting) for IDE-specific wiring instructions.
+
+### Is the research/grant track required?
+
+No. It's optional and off by default. When you bootstrap, the agent asks if you apply for academic grants or research funding. If you say no, the research-track files (`profiles/research.md`, `科研/`, grant workflow) are omitted entirely. Most users don't need it.
+
+### How do I get started?
+
+Install with one command, then use one trigger phrase in your AI IDE:
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+Then open your AI IDE (Claude Code, Cursor, Windsurf, or any tool that reads `AGENTS.md`), navigate to where you want the hub to live, and say:
+
+> **build my career repo**
+
+The agent walks you through a 7-question interview and scaffolds your private hub in under 10 minutes. Full walkthrough in [Quick Start](./quick-start.md).
+
+---
+
 <!-- source: docs/frameworks.md -->
 # Frameworks Referenced
 
@@ -207,56 +252,57 @@ Compose on top of this hub for specific one-shot needs:
 <!-- source: docs/philosophy.md -->
 # Design Philosophy
 
-Ten non-obvious choices that make the hub work. Preserve them when extending.
+Ten non-obvious choices, each one earned by a mistake. You don't need to understand all of them to use the hub — but read this before changing anything.
 
-## 1. Single source of truth
+## 1. Your experience lives in one place
 
-`profiles/` is the only place factual data lives. `master.md` for recruitment, `research.md` for grants (optional). Historical resumes in `resumes-archive/` or `简历/` are **read-only** — never edited, never used as a data source except to recover info not yet migrated.
+Facts scattered across five resume versions will eventually contradict each other. `profiles/master.md` is the single source of truth — every achievement, title, and timeline goes here. When you need a tailored resume, the AI pulls from this, not from last week's draft.
 
-## 2. Positioning lock in AGENTS.md
+Historical resumes in `resumes-archive/` or `简历/` are read-only backups, not data sources.
 
-The top of `AGENTS.md` declares the target role level and industry. Every generated resume biases toward this positioning. Change target = edit one file. No reprompting each session.
+## 2. Set your direction once
 
-## 3. Dual-track separation (when enabled)
+Repeating "I'm looking for X type of role" every session is tedious and unreliable. Write your target level and industry at the top of `AGENTS.md` — the AI reads it every session. When you change direction, change that one file.
 
-Job application and grant proposal resumes are entirely different documents — different format, language, emphasis, and truth-weighting. Their data sources are split: `master.md` vs `research.md`. Never merge.
+## 3. Job applications and grant proposals are different things
 
-## 4. Path-references for sensitive originals
+Applying for a corporate role and applying for a research grant don't use the same materials — different format, tone, and which achievements "deserve mention." `master.md` for job search, `research.md` for grants (opt-in). Merging them makes both worse.
 
-Sensitive documents (IDs, contracts, appointment letters, diplomas, tax records) are **NOT** committed. `verification/references.md` holds a path-reference index pointing at local paths, cloud-sync paths, and public URLs. The repo stays shareable; originals stay out of version control.
+## 4. Sensitive originals stay out of the repo
 
-## 5. Public-source cross-check before high-stakes submissions
+IDs, contracts, appointment letters, diplomas, tax records — don't commit them. `verification/references.md` records where each file lives; the originals stay on your own drive or cloud sync. The repo can be shared or demoed at any time without worrying about leaks.
 
-Before senior-role interviews or grant submissions, run `workflows/verification.md`: cross-check every load-bearing claim against public sources. Triangulation (≥2 independent sources) is the standard. Log results in `verification/{date}-web-check.md`. Flag high-risk items — rewrite or find evidence, don't ignore.
+## 5. Before a high-stakes submission, verify what you've written
 
-## 6. todo.md vs changelog.md
+Senior-role interviews, grant reviews — worth a pass before you submit. Run `workflows/verification.md` and cross-check every degree, employer, title, project number, and quantified claim against public sources. Two independent sources is the bar.
 
-- `todo.md` holds **only pending work**. No `[x]` completed items.
-- `changelog.md` receives completed items, dated, reverse-chronological.
+If something doesn't hold up, fix it now — better than having the interviewer or reviewer find it.
 
-When something's done, tell the agent to archive — don't leave `[x]` marks accumulating. This keeps `todo.md` a true punch list.
+## 6. When it's done, archive it
 
-## 7. Per-application folders, dated
+`todo.md` holds only pending work. When something is done, tell the AI to archive it — the item moves to `changelog.md`, dated. A to-do full of `[x]` marks may feel productive, but it obscures what actually needs doing.
 
-Each attempt lives at `jobs/applications/{company}-{role}-{YYYY-MM-DD}/` with `jd.md`, `resume.md`, `cover.md`, `prep.md`. Same company, second attempt = second folder. Date is non-negotiable — it surfaces velocity and lets you revisit a specific run.
+## 7. Each application gets its own folder
 
-## 8. STAR stories separate from facts
+`jobs/applications/{company}-{role}-{YYYY-MM-DD}/` — JD, resume, cover letter, interview prep, all together. Same company, second attempt = new folder, don't overwrite. The date is mandatory — it shows your pace and lets you return to any specific run.
 
-`profiles/stories.md` holds interview-ready STAR narratives. `master.md` holds raw facts. A story is a **crafted retelling**; facts are **raw data**. Don't conflate.
+## 8. Interview stories and factual records are separate
 
-## 9. Monolingual per hub
+`profiles/stories.md` holds STAR narratives polished for speaking aloud. `master.md` holds raw factual records. A story is crafted to land; facts are recorded to be accurate. Different purposes — keep them separate.
 
-The hub is either all Chinese or all English. Pick one at bootstrap. Don't mix — the template, agent instructions, and workflow prose all assume a single language. Resumes themselves can still output in either language per application.
+## 9. Pick one language for the hub
 
-## 10. AI-IDE agnostic via AGENTS.md
+Choose Chinese or English at bootstrap, then don't mix. The templates, AI instructions, and workflow prose all assume a single language. Mixing leads to inconsistent output. The resumes themselves can target either language per application — that's a separate choice.
 
-The canonical context file is `AGENTS.md` — the cross-IDE standard. Symlink or copy for your specific IDE's convention (`.cursor/rules/`, `.windsurfrules`, etc.). Don't bind to a specific vendor.
+## 10. Don't lock yourself into one AI IDE
+
+`AGENTS.md` is the cross-IDE standard for context files. If your IDE wants a different location (Cursor's `.cursor/rules/`, Windsurf's `.windsurfrules`), symlink or copy. Don't write the content in a vendor-specific format — switching tools shouldn't require rewriting your context.
 
 ---
 
 ## Frameworks referenced
 
-The hub cites established career frameworks by name so you have vocabulary to research further. See [Frameworks](/frameworks) for the full list.
+Each design choice here traces back to an established source. See [Frameworks](/frameworks) for the full list.
 
 ---
 
@@ -325,6 +371,43 @@ Yes. Point the agent at your existing scattered resumes (`简历/` or similar) a
 **"I need another language"**
 
 Currently: Chinese and English templates. Contributions welcome — see the [GitHub repo](https://github.com/Zenine/resume-intelligence-hub).
+
+---
+
+<!-- source: docs/ja/faq.md -->
+# よくある質問
+
+### resume-intelligence-hub とは何ですか？
+
+resume-intelligence-hub は、個人のキャリアインテリジェンスハブを構築する AI エージェントスキルです。履歴書・面接準備・研究費申請・提出前検証を一元管理するプライベート Git リポジトリを作成し、ストレッチターゲットの設定、ギャップ分析、四半期 SMART 計画の策定まで担います。
+
+### 具体的にどんな問題を解決しますか？
+
+多くの人がキャリア管理を場当たり的に行っています：複数フォルダに散らばった履歴書、面接前の急ごしらえ準備、目標ポジションに向けた進捗管理の欠如。resume-intelligence-hub はこれを構造化されたインフラに置き換えます。`profiles/` に事実データを集約し、`AGENTS.md` でターゲットポジションをロックすることで生成する履歴書すべてをそこに向け、6 つのワークフローが JD カスタム履歴書生成から提出前の公開情報クロスチェックまで処理します。
+
+### 誰に向いていますか？
+
+求職中、1〜2 レベル上へのキャリアアップを計画中、または研究費申請を行っている方なら業種・職位を問いません。特に、日中英バイリンガル市場で活動中の方、採用応募と研究申請の両方を管理している方、AI にキャリアの文脈を記憶させてセッションをまたいで使いたい方に向いています。
+
+### 他の履歴書 AI ツールと何が違いますか？
+
+多くの履歴書ツールは一度きりです：JD を貼り付けて履歴書を生成する。resume-intelligence-hub は数ヶ月にわたる就職活動を通じて反復改善できる持続可能なインフラです。ポジショニングロックで全出力を目標に向け、検証ワークフローで提出前に主要な主張を公開情報源でクロスチェックし、ギャップ分析で必要なスキル・資格・マネジメント経験・人脈を特定します。
+
+### 科学研究費申請トラックは必須ですか？
+
+いいえ、デフォルトでは無効です。初期設定時に AI が学術研究費や研究助成金の申請をするか確認します。「いいえ」と答えると研究トラック関連ファイルはすべて省略されます。
+
+### どうやって始めますか？
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+AI IDE（Claude Code、Cursor、Windsurf など）を開き、ハブを置きたいディレクトリに移動して言うだけ：
+
+> **キャリアリポジトリを作って**
+
+AI が 7 つの質問に答えてもらい、10 分以内でプライベートハブを構築します。詳細は[クイックスタート](./quick-start.md)をご覧ください。
 
 ---
 
@@ -431,11 +514,11 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 その後、お使いの AI IDE で次のいずれかを言えばよい：
 
 ```
-> build my career repo                               # 新規ハブの初期化
-> tailor my resume to this JD                         # JD にカスタム履歴書
-> what's out there for me                             # アクティブ JD ソーシング
-> prep me for this interview                          # 面接コーチング
-> run a pre-submission verification                   # 応募前検証
+> キャリアリポジトリを作って                         # 新規ハブの初期化
+> この JD に合わせて履歴書を作って                   # JD カスタム履歴書
+> 私に合いそうな求人を探して                         # アクティブ JD ソーシング
+> この面接の準備をして                               # 面接コーチング
+> 応募前に検証して                                   # 応募前検証
 ```
 
 ## 他の履歴書 skill との違い
@@ -458,56 +541,57 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 <!-- source: docs/ja/philosophy.md -->
 # デザイン哲学
 
-ハブを機能させる 10 個の非自明な選択。拡張時もこれらは保持すること。
+反直感的な選択が 10 個。それぞれ失敗から学んだもの。全部理解しなくても使えるが、何かを変えるつもりなら先に読んでほしい。
 
-## 1. 単一の信頼できる情報源
+## 1. 経歴は一か所にまとめる
 
-`profiles/` は事実データが存在する唯一の場所。`master.md` は求職用、`research.md` は助成金用（オプション）。`resumes-archive/` や `简历/` の履歴書は**読み取り専用**——編集せず、データソースとして使わない。例外は `profiles/` に未移行の情報を復元する場合のみ。
+5 つのバージョンに散らばった事実は、いつか矛盾する。`profiles/master.md` が唯一の事実ソース——実績、肩書き、タイムラインはすべてここに入れる。履歴書を作るとき、AI はここからデータを取る。先週のドラフトからではない。
 
-## 2. AGENTS.md のポジショニングロック
+`resumes-archive/` や `简历/` の過去の履歴書は読み取り専用のバックアップであり、データソースではない。
 
-`AGENTS.md` の先頭でターゲットロール層と業界を宣言する。生成されるすべての履歴書はこのポジショニングに偏る。ターゲット変更 = このファイルを編集。セッションごとに再プロンプトする必要はない。
+## 2. 方向を一度決めたら、毎回言わなくていい
 
-## 3. デュアルトラック分離（有効時）
+「こういう仕事を探している」と毎回 AI に伝えるのは面倒だし、ぶれやすい。ターゲットのレベルと業界を `AGENTS.md` の先頭に書いておけば、AI は毎セッション自分で読む。方向を変えたいときはそのファイルを一か所直すだけ。
 
-求人応募と助成金提案の履歴書は完全に異なるドキュメント——フォーマット、言語、重点、真実の重み付けが違う。データソースも分離：`master.md` vs `research.md`。統合するな。
+## 3. 求職活動と研究課題申請は別のもの
 
-## 4. 機密原本はパス参照
+企業への応募と科研費申請は、同じ書類では対応できない——フォーマットも、トーンも、「どの実績を押すか」も違う。`master.md` が求職用、`research.md` が課題申請用（必要なときだけ有効化）。まとめると両方おかしくなる。
 
-機密ドキュメント（ID、契約書、任命書、学位記、税務記録）は**コミットしない**。`verification/references.md` がローカルパス、クラウド同期パス、公開 URL を指すパス参照インデックスを保持する。リポジトリは共有可能なまま、原本はバージョン管理の外に置く。
+## 4. 機密書類はリポジトリに入れない
 
-## 5. 高ステークス応募前の公開情報源クロスチェック
+身分証明書、契約書、任命書、学位証明書、税務書類——コミットしない。`verification/references.md` に「どこにあるか」だけ記録し、原本は自分のドライブかクラウドに置く。これでリポジトリをいつでも誰かに見せても、何も漏れない。
 
-シニアロール面接や助成金提出前に、`workflows/verification.md` を実行：すべての重要な主張を公開情報源と照合。Triangulation（≥2 の独立情報源）が基準。結果を `verification/{date}-web-check.md` に記録。高リスク項目にフラグ立て——書き換えかエビデンス探索、無視しない。
+## 5. 重要な提出前に、書いたことを確認する
 
-## 6. todo.md vs changelog.md
+シニアポジションの面接や助成金の審査——提出前に一度確認する価値がある。`workflows/verification.md` を実行して、学歴・雇用者・肩書き・プロジェクト番号・数値をすべて公開情報で裏を取る。独立した 2 つ以上の情報源が基準。
 
-- `todo.md` は**未完了作業のみ**。`[x]` 完了項目は残さない
-- `changelog.md` は完了項目を受け取り、日付付きで逆時系列
+一致しないものが見つかったら今すぐ直す。面接官や審査委員に見つかるよりずっといい。
 
-完了したらエージェントにアーカイブを頼む——`[x]` マークを蓄積させない。これにより `todo.md` が真のパンチリストとなる。
+## 6. 終わったらすぐアーカイブ
 
-## 7. 応募ごとに日付付きフォルダ
+`todo.md` には未着手の作業だけ入れる。完了したら AI にアーカイブを頼む——`changelog.md` に日付付きで移動する。`[x]` が積み上がった todo は達成感があるかもしれないが、「今何をすべきか」が見えなくなる。
 
-各試行は `jobs/applications/{company}-{role}-{YYYY-MM-DD}/` に `jd.md`、`resume.md`、`cover.md`、`prep.md` を含む形で存在。同じ会社、2 回目 = 2 つ目のフォルダ。日付は必須——速度を可視化し、特定の試行を再訪できるようにする。
+## 7. 応募ごとに専用フォルダを作る
 
-## 8. STAR ストーリーは事実と分離
+`jobs/applications/{会社名}-{ポジション}-{YYYY-MM-DD}/` に JD、履歴書、カバーレター、面接準備をひとまとめにする。同じ会社に 2 回目の応募 = 新しいフォルダ、上書きしない。日付は必須——ペースを可視化し、特定の応募に戻れるようにする。
 
-`profiles/stories.md` は面接向け STAR ナラティブを保持。`master.md` は生の事実を保持。ストーリーは**磨いた語り**、事実は**生データ**。混同するな。
+## 8. 面接用のストーリーと事実の記録は分ける
 
-## 9. ハブごとに単一言語
+`profiles/stories.md` には話すために磨いた STAR ナラティブを入れる。`master.md` には生の事実の記録を入れる。ストーリーは伝わるように作られ、事実は正確に記録される。目的が違うので、混ぜない。
 
-ハブはすべて中国語またはすべて英語。初期化時に選択。混在不可——テンプレート、エージェント指示、ワークフロー散文すべてが単一言語を前提としている。履歴書自体は応募ごとに中国語 / 英語で出力可能。
+## 9. 使う言語は一つだけ
 
-## 10. AGENTS.md 経由で AI IDE 非依存
+初期化時に中国語か英語を選んで、以後は混ぜない。テンプレート、AI 指示、ワークフローはすべて単一言語環境を前提に書かれている。混在すると出力がぶれる。履歴書の出力言語は応募先によって選べる——それは別の話。
 
-正規のコンテキストファイルは `AGENTS.md`——クロス IDE 標準。特定の IDE 規約（`.cursor/rules/`、`.windsurfrules` 等）にはシンボリックリンクまたはコピー。特定ベンダーに縛られるな。
+## 10. 特定の AI IDE に縛られない
+
+`AGENTS.md` はクロス IDE 標準のコンテキストファイル。使用している IDE が別の場所を必要とする場合（Cursor の `.cursor/rules/`、Windsurf の `.windsurfrules`）は、シンボリックリンクかコピーで対応する。内容を特定のベンダー形式で書かない——ツールを変えるときにコンテキストを書き直す必要はないはず。
 
 ---
 
-## 参照フレームワーク
+## 参照しているフレームワーク
 
-ハブは定着したキャリアフレームワークを名前で引用し、深掘り用の語彙を提供する。完全リストは [フレームワーク](/ja/frameworks)。
+ここで挙げた設計の選択はどれも確立された出典がある。完全なリストは [フレームワーク](/ja/frameworks)。
 
 ---
 
@@ -552,12 +636,12 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 | 言い方 | ワークフロー |
 |--------|-------------|
-| Diff my gap against the target seat | [キャリアプランニング & ギャップ分析](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初期化直後に最初に実行し、その後は四半期ごとに再実行 |
-| Tailor my resume to this JD | [JD カスタム履歴書](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
-| What's out there for me | [アクティブ JD ソーシング](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
-| Prep me for this interview | [面接準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
-| Run pre-submission verification | [検証](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
-| 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [研究課題申請](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（リサーチトラック） |
+| 目標ポジションとのギャップを分析して | [キャリアプランニング & ギャップ分析](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初期化直後に最初に実行し、その後は四半期ごとに再実行 |
+| この JD に合わせて履歴書を作って | [JD カスタム履歴書](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| 私に合いそうな求人を探して | [アクティブ JD ソーシング](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| この面接の準備をして | [面接準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| 応募前に検証して | [検証](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| XX 助成金の申請書類を作って | [研究課題申請](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（リサーチトラック） |
 
 ## トラブルシューティング
 
@@ -576,6 +660,47 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 **「別の言語が必要」**
 
 現在：中国語と英語のテンプレート。コントリビューション歓迎——[GitHub リポジトリ](https://github.com/Zenine/resume-intelligence-hub) を参照。
+
+---
+
+<!-- source: docs/zh-TW/faq.md -->
+# 常見問題
+
+### resume-intelligence-hub 是什麼？
+
+resume-intelligence-hub 是一個 AI agent skill，幫你搭建一個個人職涯發展中樞——一個私有 Git 儲存庫，既是履歷、面試準備、課題申報、投遞前查核的單一事實來源，也是你的職涯指南針：命名挑戰目標、盤差距、寫季度 SMART 計畫。
+
+### 它具體解決什麼問題？
+
+大多數人的職涯管理是被動的：履歷散落在各個資料夾，面試前臨時抱佛腳，沒有系統化地追蹤向目標職位邁進的進度。resume-intelligence-hub 把這些換成結構化基礎設施：`profiles/` 存放事實性職業資料，`AGENTS.md` 頂部鎖定定位目標，六個工作流程處理從 JD 客製履歷到投遞前公開資料查核的一切。
+
+### 適合誰使用？
+
+任何正在求職、計畫往高 1-2 級跳槽、或申請研究計畫的人——不限行業，不限職級。尤其適合：需要兼顧中英文雙語市場、同時有求職投遞和研究申報兩條線、或者希望 AI 記住職涯背景而不是每次從頭開始的使用者。
+
+### 和其他履歷 AI 工具有什麼不同？
+
+大多數履歷工具是一次性的：貼 JD 出履歷。resume-intelligence-hub 是可持續迭代的基礎設施，橫跨數個月的求職過程。定位鎖讓所有輸出偏向你的目標；查核工作流程在投遞前用公開資料核實每一條承重聲明；差距分析精確識別你需要補的技能、資歷、管理範圍和人脈。
+
+### 支援我使用的 AI IDE 嗎？
+
+支援。hub 用 `AGENTS.md` 作為指令檔——這是跨 IDE 通用標準。Claude Code、Cursor、Codex、Cline、Windsurf 和 GitHub Copilot 都能讀它。
+
+### 科研課題那條線是必須的嗎？
+
+不是，預設關閉。初始化時 AI 會問你是否申請學術課題或研究計畫。回答否，課題相關檔案就完全不生成。大多數使用者不需要。
+
+### 怎麼開始？
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+然後打開 AI IDE，進入你想放 hub 的資料夾，說：
+
+> **幫我建職涯庫**
+
+AI 問你 7 個問題，10 分鐘內搭好你的私有 hub。完整流程見[快速開始](./quick-start.md)。
 
 ---
 
@@ -720,60 +845,57 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 <!-- source: docs/zh-TW/philosophy.md -->
 # 設計哲學
 
-十條不太直覺的選擇——不是隨便定的，每條都踩過坑才想明白。自己擴展 skill 時，別輕易動這些。
+十條反直覺的選擇，每條背後都是踩過的坑。用這個 skill 不一定要理解每一條，但打算改它的話，先讀完這裡。
 
-## 1. 事實只寫一份
+## 1. 你的經歷只有一份
 
-所有履歷事實只在 `profiles/` 裡寫，`master.md` 管求職，`research.md` 管研究計畫（可選）。歷史履歷存在 `简历/` 或 `resumes-archive/` 裡是**唯讀**的——不編輯、不引用，除非需要把老版本裡的某條資訊搬進 `profiles/`。
+分散在五個履歷版本裡的事實，遲早會互相矛盾。`profiles/master.md` 是唯一的事實庫，所有量化成果、職稱、時間線都在這裡。客製履歷時 AI 從這裡取資料，而不是從上次生成的版本裡複製貼上。
 
-這樣每次生成的履歷都是新鮮客製的，不會出現「到底哪一版是最新」的問題。
+歷史履歷備份在 `简历/` 或 `resumes-archive/`，唯讀，不當資料來源用。
 
-## 2. 定位寫在 AGENTS.md 最上面
+## 2. 方向定好，不用每次重說
 
-目標職級和產業一次性寫死在 `AGENTS.md` 頂部。想改方向 = 改這一個檔案，下次對話所有產出都跟著變。不用每次會話重新交代一遍。
+每次對話都重新告訴 AI「我在找什麼樣的工作」很煩，也不可靠。把目標職級和產業寫在 `AGENTS.md` 頂部，之後每次會話 AI 都自己去讀。想換方向，改這一個地方就行。
 
-## 3. 求職和研究計畫分開做
+## 3. 求職履歷和研究計畫申報不是一回事
 
-求職履歷和研究計畫申報書是兩種東西——格式、語氣、甚至「哪些成果值得拿出來說」都不一樣。資料來源拆開：`master.md` 一套、`research.md` 一套。不要圖省事合併。
+申請企業職位和申請科研補助，需要的不是同一份材料——格式不同，語氣不同，甚至哪些成果「值得說」也不同。`master.md` 管求職，`research.md` 管研究計畫（按需啟用）。合併在一起只會讓兩邊都不對。
 
-## 4. 敏感原件不入儲存庫
+## 4. 原件不放儲存庫
 
-身份證、合約、任命函、畢業證、稅單這些不放進 Git。`verification/references.md` 只記一條路徑參照——原件在你本機硬碟或雲端同步碟。儲存庫保持乾淨，想給朋友 clone 或做示範都沒顧慮。
+身份證、合約、任命函、畢業證書、稅單——不放進版本控制。`verification/references.md` 只記錄「這份文件在哪裡」，原件留在你自己的硬碟或雲端同步碟。這樣儲存庫可以隨時分享或示範，不用擔心洩漏什麼。
 
-## 5. 投遞前一定要公開資料自查
+## 5. 提交前先把關鍵資訊查一遍
 
-高階職面試、研究計畫申報之前，跑一次 `workflows/verification.md`：把履歷裡每一條「承重聲明」（學歷、雇主、職稱、計畫編號、量化數字）在公開來源過一遍。
+高階職位的面試、研究計畫評審——提交之前值得做一次自查。執行 `workflows/verification.md`，把學歷、雇主、職稱、計畫編號、量化數字在公開來源裡核一遍，至少兩個獨立來源能印證才算過。
 
-標準是**三角驗證**——至少兩個獨立公開來源確認。查到不一致的提前改措辭，不要等面試官或評審 Google 到。
+查到對不上的，現在改，比等面試官或評審自己搜到要好得多。
 
-## 6. todo.md 只放未做的
+## 6. 做完就封存，別堆在待辦裡
 
-- `todo.md` 只放**還沒做**的事，不留 `[x]` 已完成項
-- 做完了就告訴 AI 封存，條目自動挪去 `changelog.md`
+`todo.md` 只放還沒做的事。做完了告訴 AI 封存——條目會移到 `changelog.md`，帶上日期。堆滿 `[x]` 的待辦看著有成就感，但找不到「現在該幹什麼」，那就沒用了。
 
-別讓 `[x]` 堆積——`todo.md` 存在的意義就是讓你一眼看見「現在該幹啥」。
+## 7. 每次投遞單獨建檔
 
-## 7. 每次投遞一個資料夾，帶日期
+`jobs/applications/{公司}-{職位}-{YYYY-MM-DD}/`——JD、履歷、求職信、面試準備各放一份，全在這個資料夾裡。同一家公司投第二次，就再建一個新的，不要在原來那份上面改。日期必須有，以後回看能一眼看出節奏和每次投遞的背景。
 
-每次投職缺都有自己的資料夾：`jobs/applications/{公司}-{職位}-{YYYY-MM-DD}/`，裡面 `jd.md`、`resume.md`、`cover.md`、`prep.md` 各放一份。同一家公司投兩次？那就是兩個資料夾。日期必須有，以後自己看也能看出節奏。
+## 8. 講故事和記事實，要分開
 
-## 8. 面試故事和事實分開存
+`profiles/stories.md` 放為面試口頭表達專門打磨過的 STAR 敘述，`master.md` 放原始事實記錄。故事要讓人聽進去，事實要準確無歧義——目的不同，放在一起會互相污染。
 
-`profiles/stories.md` 放**講好的故事**——為面試口頭表達最佳化過的 STAR 版本。`master.md` 放**原始事實**。兩邊別混。講故事要加工，記事實要準確，目的不一樣。
+## 9. 語言只選一種，別混用
 
-## 9. 一個 hub 一種語言
+初始化時選中文或英文，之後不混用。範本、AI 指令、工作流程都假設單一語言環境，夾雜兩種語言容易讓 AI 的產出變亂。履歷本身想輸出中文版還是英文版，那是另一回事，投哪家選哪種就好。
 
-hub 要麼全中文，要麼全英文，初始化時選一個。範本、AI 指令、工作流程敘述都基於單一語言寫的，混著來會把 AI 搞糊塗。履歷**輸出**本身照樣可以按目標公司選中英，這是兩回事。
+## 10. 別把工具鏈綁死在某一家 IDE
 
-## 10. AI IDE 別綁死在一家
-
-正式的上下文檔案叫 `AGENTS.md`——這是現在跨 IDE 的約定標準。具體 IDE 需要什麼（`.cursor/rules/`、`.windsurfrules` 等），建軟連結或複製一份過去就行。不要把內容寫死成某一家的專屬格式。
+`AGENTS.md` 是跨 IDE 通用的上下文檔案格式。如果你用的 IDE 要求別的位置（比如 Cursor 的 `.cursor/rules/`、Windsurf 的 `.windsurfrules`），建軟連結或複製過去就行。內容本身不要寫成某一家 IDE 的專屬格式，換工具不該需要重寫上下文。
 
 ---
 
-## 引用的方法論
+## 背後參考的方法論
 
-Skill 裡每次提到某個方法論都會點出處，方便你想深究時自己順著找。完整列表見 [方法論](/zh-TW/frameworks)。
+這些設計選擇不是憑空想的，每一條都有可追溯的來源。完整列表見 [方法論](/zh-TW/frameworks)。
 
 ---
 
