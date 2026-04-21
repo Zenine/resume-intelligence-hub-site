@@ -1,0 +1,846 @@
+<!-- source: README.md -->
+> **Language**: **English** · [简体中文](README.zh.md) · [日本語](README.ja.md) · [繁體中文](README.zh-TW.md)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Zenine/resume-intelligence-hub-site?style=flat-square&color=gold)](https://github.com/Zenine/resume-intelligence-hub-site/stargazers)
+[![Last Commit](https://img.shields.io/github/last-commit/Zenine/resume-intelligence-hub-site?style=flat-square)](https://github.com/Zenine/resume-intelligence-hub-site/commits/main)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/Zenine/resume-intelligence-hub-site/pulls)
+[![Docs](https://img.shields.io/badge/Docs-online-4a9eff?style=flat-square&logo=vitepress&logoColor=white)](https://zenine.github.io/resume-intelligence-hub-site/)
+[![Powered by Meridian](https://img.shields.io/badge/Powered%20by-Meridian-8b5cf6?style=flat-square)](https://github.com/lordmos/meridian)
+
+<div align="center">
+  <img src=".github/assets/hero.svg" alt="Resume Intelligence Hub" width="120" />
+</div>
+
+# resume-intelligence-hub-site
+
+Landing page, VitePress documentation site, and CI automation for the [**resume-intelligence-hub**](https://github.com/Zenine/resume-intelligence-hub) skill — an AI agent that bootstraps a personal career intelligence hub.
+
+## Quick Start
+
+> Complete docs → [zenine.github.io/resume-intelligence-hub-site](https://zenine.github.io/resume-intelligence-hub-site/)
+
+**Install the skill:**
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+**Then in your AI IDE, say:**
+
+> **build my career repo**
+
+The agent walks you through a 7-question interview and scaffolds your private career hub. You only need to: ① answer the interview → ② review the generated hub → ③ start using it.
+
+**Resume after interruption** → tell the agent: `continue filling my hub`
+
+## Features
+
+- **Single source of truth** — `profiles/` is the authoritative data layer; generated resumes are derivatives, never hand-edited
+- **Career compass** — name your stretch target 1–2 levels up, lock it in `AGENTS.md`, diff the four-gap frame each quarter
+- **Dual-track support** — job applications and research/grant proposals separated by design; toggle the research track at bootstrap
+- **Pre-submission verification** — public-source cross-check on every load-bearing claim before high-stakes submissions
+- **Cross-IDE via AGENTS.md** — works with Claude Code, Cursor, Codex, Cline, Windsurf, GitHub Copilot
+- **Backed by proven frameworks** — Google XYZ, STAR, BEI, Heilmeier Catechism, stretch-target heuristic, triangulation
+
+## How it differs from other resume skills
+
+Most resume skills are one-shot generators — paste a JD, get a resume. This one bootstraps a **persistent private repo** you iterate on across months of job search, interviews, and grant applications. The agent reads the repo each session and is biased by your positioning lock.
+
+## Structure
+
+```
+docs/       VitePress site sources (4 locales: en / zh / ja / zh-TW)
+scripts/    CI automation — sitemap notify + llms-full.txt generator
+i18n/       glossary.md — translation drift reference
+.github/    Deploy workflow + GSC sitemap notify + setup guide
+```
+
+See [`.github/SETUP_GSC_AUTOMATION.md`](.github/SETUP_GSC_AUTOMATION.md) for one-time Google Search Console automation setup.
+
+## Complementary Skills
+
+Compose on top of this hub for specific one-shot needs:
+
+- [`paramchoudhary/resumeskills@resume-ats-optimizer`](https://skills.sh/paramchoudhary/resumeskills/resume-ats-optimizer) — ATS deep optimization
+- [`paramchoudhary/resumeskills@linkedin-profile-optimizer`](https://skills.sh/paramchoudhary/resumeskills/linkedin-profile-optimizer) — LinkedIn profile
+- [`anthropics/knowledge-work-plugins@interview-prep`](https://skills.sh/anthropics/knowledge-work-plugins/interview-prep) — Anthropic official interview prep
+- [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny's career transitions
+
+## License
+
+MIT — same as the skill itself.
+
+---
+
+<sub>Built with [Meridian](https://github.com/lordmos/meridian) · open-source ops toolkit for Agent projects</sub>
+
+---
+
+<!-- source: docs/frameworks.md -->
+# Frameworks Referenced
+
+The hub's workflows are built on established frameworks. Using the framework **name** explicitly gives you vocabulary to research further and signals craft.
+
+## Resume writing
+
+**Google's XYZ formula** (Laszlo Bock, former Google SVP People Ops)
+> "Accomplished [X] as measured by [Y], by doing [Z]."
+
+Every bullet answers three questions: what did you do, how was impact measured, and what actions produced it. This is the single biggest lever on resume quality.
+
+**The one-number rule**: every resume bullet must contain at least one quantified element (headcount, percentage, dollars, timeframe, scale). Bullets without numbers get cut in review.
+
+**CAR / PAR / STAR** (Challenge-Action-Result / Problem-Action-Result / Situation-Task-Action-Result): alternative framings when XYZ feels over-structured for a short bullet. STAR is the dominant one, used explicitly in `profiles/stories.md`.
+
+## Interviews
+
+**BEI — Behavioral Event Interviewing** (David McClelland, Harvard psychologist who pioneered the methodology)
+
+The foundation of most behavioral interviews. Premise: past behavior predicts future behavior. Interviewers probe specific past events ("tell me about a time when…"), not hypotheticals. Prepare with specific events, not generalities.
+
+**STAR** (Situation / Task / Action / Result): the dominant answer format for BEI questions. Used throughout `profiles/stories.md`.
+
+## Grant proposals
+
+**Heilmeier Catechism** (George Heilmeier, former DARPA director)
+
+Nine questions every research proposal should answer — even when the grant template doesn't ask them explicitly:
+
+1. What are you trying to do? (Articulate objectives with no jargon.)
+2. How is it done today, and what are the limits?
+3. What's new in your approach, and why will it succeed?
+4. Who cares? If you succeed, what difference does it make?
+5. What are the risks and payoffs?
+6. How much will it cost?
+7. How long will it take?
+8. What are the midterm and final "exams" to check for success?
+9. What's your exit strategy?
+
+Used as the narrative backbone of `workflows/grant-application.md`.
+
+## Career positioning
+
+**T-shaped / π-shaped / M-shaped skills** (McKinsey / IDEO popularized)
+
+Deep expertise in one vertical + broad fluency across adjacent areas. For senior roles, often π-shaped (two depths) or M-shaped (multiple depths). Use when articulating unique value.
+
+**Career capital** (Cal Newport, *So Good They Can't Ignore You*)
+
+Rare-and-valuable skills build leverage. When doing gap analysis, the question isn't "what skills am I missing?" — it's "what capital do I have, and what's worth investing in?"
+
+## Job search strategy
+
+**Stretch target heuristic** ("1-2 levels up, 1.2-3x comp, 70% match")
+
+A widely-used recruiter heuristic for external moves:
+
+- **Seniority**: target roles 1-2 levels above current title. Not same-level (no growth, rarely worth switching). Not 3+ levels (usually delusional unless founder path).
+- **Compensation**: floor 1.2-1.5x current total comp (external moves command a premium); stretch ceiling 2-3x when also leveling up AND shifting company type.
+- **Match threshold**: apply at ~70% match. Senior hires are expected to grow into the role.
+- **Channel weight**: warm intro >>> cold apply (~10x conversion). Invest in network activation before mass-applying.
+
+**Exceptions**: career pivots (pay cut normal), downshift by choice, at market ceiling, early-career (smaller multipliers). Foundation of `workflows/jd-sourcing.md`.
+
+## Due diligence
+
+**Triangulation**
+
+Every load-bearing claim needs ≥2 independent public sources before submission. Standard practice in qualitative research, applied here to pre-submission resume / proposal verification. Foundation of `workflows/verification.md`.
+
+## Goal framing
+
+**SMART** (Specific / Measurable / Achievable / Relevant / Time-bound)
+
+Used in `todo.md` to keep priorities concrete — vague items get rewritten into SMART form.
+
+---
+
+## Reading list
+
+Want to go deeper on these?
+
+- **Laszlo Bock**, *Work Rules!* — origin of the XYZ formula and Google's hiring philosophy.
+- **David McClelland**, *"Testing for Competence Rather Than for Intelligence"* (American Psychologist, 1973) — the seminal BEI paper.
+- **Cal Newport**, *So Good They Can't Ignore You* — career capital, deep work.
+- **George Heilmeier**, ["The Heilmeier Catechism"](https://www.darpa.mil/about-us/heilmeier-catechism) — DARPA's official page.
+- **Keith Ferrazzi**, *Never Eat Alone* — networking / warm-intro playbook.
+
+---
+
+<!-- source: docs/index.md -->
+<div class="vp-doc" style="max-width: 960px; margin: 48px auto 96px; padding: 0 24px;">
+
+## Install
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+Then, in your AI IDE, say any of:
+
+```
+> build my career repo                              # bootstrap a new hub
+> tailor my resume to this JD                        # JD-tailored resume
+> what's out there for me                            # active JD sourcing
+> prep me for this interview                         # interview coaching
+> run a pre-submission verification                  # pre-submission fact-check
+```
+
+## How it differs from other resume skills
+
+Most resume skills are one-shot generators — you paste a JD, they emit a resume. This one bootstraps a **persistent private repo** that you iterate on across months of job search, interviews, and (optionally) grant applications. The agent reads the repo each session and is biased by your positioning lock. The [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) is the full methodology.
+
+## Complementary skills
+
+Compose on top of this hub for specific one-shot needs:
+
+- [`paramchoudhary/resumeskills@resume-ats-optimizer`](https://skills.sh/paramchoudhary/resumeskills/resume-ats-optimizer) — ATS deep optimization
+- [`paramchoudhary/resumeskills@linkedin-profile-optimizer`](https://skills.sh/paramchoudhary/resumeskills/linkedin-profile-optimizer) — LinkedIn profile
+- [`anthropics/knowledge-work-plugins@interview-prep`](https://skills.sh/anthropics/knowledge-work-plugins/interview-prep) — Anthropic official interview prep
+- [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny's career transitions
+
+</div>
+
+---
+
+<!-- source: docs/philosophy.md -->
+# Design Philosophy
+
+Ten non-obvious choices that make the hub work. Preserve them when extending.
+
+## 1. Single source of truth
+
+`profiles/` is the only place factual data lives. `master.md` for recruitment, `research.md` for grants (optional). Historical resumes in `resumes-archive/` or `简历/` are **read-only** — never edited, never used as a data source except to recover info not yet migrated.
+
+## 2. Positioning lock in AGENTS.md
+
+The top of `AGENTS.md` declares the target role level and industry. Every generated resume biases toward this positioning. Change target = edit one file. No reprompting each session.
+
+## 3. Dual-track separation (when enabled)
+
+Job application and grant proposal resumes are entirely different documents — different format, language, emphasis, and truth-weighting. Their data sources are split: `master.md` vs `research.md`. Never merge.
+
+## 4. Path-references for sensitive originals
+
+Sensitive documents (IDs, contracts, appointment letters, diplomas, tax records) are **NOT** committed. `verification/references.md` holds a path-reference index pointing at local paths, cloud-sync paths, and public URLs. The repo stays shareable; originals stay out of version control.
+
+## 5. Public-source cross-check before high-stakes submissions
+
+Before senior-role interviews or grant submissions, run `workflows/verification.md`: cross-check every load-bearing claim against public sources. Triangulation (≥2 independent sources) is the standard. Log results in `verification/{date}-web-check.md`. Flag high-risk items — rewrite or find evidence, don't ignore.
+
+## 6. todo.md vs changelog.md
+
+- `todo.md` holds **only pending work**. No `[x]` completed items.
+- `changelog.md` receives completed items, dated, reverse-chronological.
+
+When something's done, tell the agent to archive — don't leave `[x]` marks accumulating. This keeps `todo.md` a true punch list.
+
+## 7. Per-application folders, dated
+
+Each attempt lives at `jobs/applications/{company}-{role}-{YYYY-MM-DD}/` with `jd.md`, `resume.md`, `cover.md`, `prep.md`. Same company, second attempt = second folder. Date is non-negotiable — it surfaces velocity and lets you revisit a specific run.
+
+## 8. STAR stories separate from facts
+
+`profiles/stories.md` holds interview-ready STAR narratives. `master.md` holds raw facts. A story is a **crafted retelling**; facts are **raw data**. Don't conflate.
+
+## 9. Monolingual per hub
+
+The hub is either all Chinese or all English. Pick one at bootstrap. Don't mix — the template, agent instructions, and workflow prose all assume a single language. Resumes themselves can still output in either language per application.
+
+## 10. AI-IDE agnostic via AGENTS.md
+
+The canonical context file is `AGENTS.md` — the cross-IDE standard. Symlink or copy for your specific IDE's convention (`.cursor/rules/`, `.windsurfrules`, etc.). Don't bind to a specific vendor.
+
+---
+
+## Frameworks referenced
+
+The hub cites established career frameworks by name so you have vocabulary to research further. See [Frameworks](/frameworks) for the full list.
+
+---
+
+<!-- source: docs/quick-start.md -->
+# Quick Start
+
+Three steps to a working career intelligence hub.
+
+## 1. Install the skill
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+Alternatively, clone directly:
+
+```bash
+git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/resume-intelligence-hub
+```
+
+## 2. Bootstrap your hub
+
+Open your AI IDE (Claude Code, Cursor, Codex, Cline, Windsurf, or anything that reads `AGENTS.md`). Navigate to where you want the hub to live (a private location — never a public repo). Then say:
+
+> **build my career repo**
+
+The agent will walk you through a 7-question interview:
+
+1. **Language** — Chinese or English (pick one, don't mix)
+2. **Existing materials** — upload any resumes/CVs you already have (makes every subsequent step easier)
+3. **Industry / field** — software, healthcare, design, law, academia, etc.
+4. **Target seniority** — entry to VP / founder / PI
+5. **Research track?** — enable only if you apply for grants / research funding
+6. **Resume output language** — Chinese, English, or both
+7. **Repo location** — where on disk
+
+Then the agent scaffolds the directory, seeds `AGENTS.md` with your positioning, imports your old resumes into the archive, and writes a "next steps" punch list into `todo.md`.
+
+## 3. Use the hub
+
+Once bootstrapped, the agent handles six workflows. Invoke with natural language:
+
+| Say this | Workflow |
+|----------|----------|
+| Diff my gap against the target seat | [Career planning & gap analysis](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — run this first, then re-run each quarter |
+| Tailor my resume to this JD | [JD-tailored resume](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| What's out there for me | [Active JD sourcing](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| Prep me for this interview | [Interview prep](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| Run pre-submission verification | [Verification](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [Grant application](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md) (research track) |
+
+## Troubleshooting
+
+**"The AI isn't reading my AGENTS.md"**
+
+- Claude Code: if on an older version that only loads `CLAUDE.md`, symlink: `ln -s AGENTS.md CLAUDE.md`
+- Cursor: copy `AGENTS.md` content into `.cursor/rules/agents.mdc` or symlink
+- Windsurf: use `.windsurfrules`
+- GitHub Copilot: use `.github/copilot-instructions.md`
+- Other IDEs: consult their context-file convention
+
+**"My hub already exists — can I migrate?"**
+
+Yes. Point the agent at your existing scattered resumes (`简历/` or similar) and say "migrate this into a resume-intelligence-hub structure." The bootstrap flow handles consolidation.
+
+**"I need another language"**
+
+Currently: Chinese and English templates. Contributions welcome — see the [GitHub repo](https://github.com/Zenine/resume-intelligence-hub).
+
+---
+
+<!-- source: docs/ja/frameworks.md -->
+# 参照フレームワーク
+
+ハブのワークフローは定着したフレームワークの上に構築されている。フレームワーク**名**を明示的に使うことで、深掘り用の語彙が得られ、技巧のシグナルにもなる。
+
+## 履歴書の書き方
+
+**Google's XYZ formula**（Laszlo Bock、元 Google SVP People Ops）
+> "Accomplished [X] as measured by [Y], by doing [Z]."
+
+すべての要点が 3 つの質問に答える：何をしたか、影響はどう測定されたか、どの行動がそれを生んだか。履歴書品質に対する最大のレバー。
+
+**One-number rule**：すべての履歴書要点に少なくとも 1 つの定量要素（人数、パーセント、金額、期間、規模）を含める。数字のない要点はレビュー時にカット。
+
+**CAR / PAR / STAR**（Challenge-Action-Result / Problem-Action-Result / Situation-Task-Action-Result）：XYZ が短い要点には構造化しすぎる場合の代替。STAR が主流で、`profiles/stories.md` で明示的に使用。
+
+## 面接
+
+**BEI — Behavioral Event Interviewing**（David McClelland、方法論を創始したハーバード心理学者）
+
+ほとんどの行動面接の基礎。前提：過去の行動が未来の行動を予測する。面接官は特定の過去イベント（"〜した時のことを教えてください"）を探り、仮定を聞かない。一般論ではなく具体的なイベントで準備する。
+
+**STAR**（Situation / Task / Action / Result）：BEI 質問への主流の回答フォーマット。`profiles/stories.md` で全編使用。
+
+## 研究課題申請
+
+**Heilmeier Catechism**（George Heilmeier、元 DARPA ディレクター）
+
+すべての研究提案が答えるべき 9 問——助成金テンプレートが明示的に聞かない場合でも：
+
+1. 何をしようとしているか？（専門用語なしで目的を明確に。）
+2. 今はどうされているか、限界は何か？
+3. あなたのアプローチの新規性は、なぜ成功するのか？
+4. 誰が気にするか？成功したら何が変わる？
+5. リスクとリターンは？
+6. いくらかかる？
+7. どれくらい時間がかかる？
+8. 中間・最終の"試験"で成功をどう測る？
+9. 退出戦略は？
+
+`workflows/grant-application.md` のナラティブバックボーンとして使用。
+
+## キャリアポジショニング
+
+**T-shaped / π-shaped / M-shaped skills**（McKinsey / IDEO が普及）
+
+1 つの垂直での深い専門性 + 隣接領域での広い流暢さ。シニアロールでは、しばしば π 型（2 つの深度）または M 型（複数の深度）。独自の価値を表現する際に使用。
+
+**Career capital**（Cal Newport、*So Good They Can't Ignore You*）
+
+稀少かつ価値ある技能がレバレッジを作る。ギャップ分析の問いは "何のスキルが欠けているか？" ではなく "何の資本があり、何に投資する価値があるか？"。
+
+## 求職戦略
+
+**Stretch target heuristic**（"1-2 レベル上、1.2-3 倍報酬、70% マッチ"）
+
+外部転職の広く使われるリクルーター的ヒューリスティック：
+
+- **シニアリティ**：現タイトルより 1-2 レベル上を狙う。同レベル（成長なし、転職の価値低い）でも 3+ レベル（創業者パス以外たいてい妄想）でもない。
+- **報酬**：現総報酬の 1.2-1.5 倍が下限（外部転職にはプレミアム）；レベルアップ+会社タイプシフトも伴うなら 2-3 倍まで。
+- **マッチ閾値**：70% マッチで応募。シニア採用は役割に成長して入ることを期待される。
+- **チャネル重み**：warm intro >>> cold apply（約 10 倍のコンバージョン）。大量応募前にネットワーク活性化に投資。
+
+**例外**：キャリアピボット（減給が通常）、意図的なダウンシフト、市場天井、アーリーキャリア（乗数が小さい）。`workflows/jd-sourcing.md` の基盤。
+
+## デューデリジェンス
+
+**Triangulation**
+
+すべての重要な主張は提出前に ≥2 の独立公開情報源が必要。定性研究の標準実践、ここでは応募前履歴書 / 提案書検証に適用。`workflows/verification.md` の基盤。
+
+## 目標設定
+
+**SMART**（Specific / Measurable / Achievable / Relevant / Time-bound）
+
+`todo.md` で優先順位を具体化するために使用——曖昧な項目は SMART 形式に書き換えられる。
+
+---
+
+## 参考文献
+
+深く学びたい？
+
+- **Laszlo Bock**, *Work Rules!* — XYZ formula と Google の採用哲学の起源
+- **David McClelland**, *"Testing for Competence Rather Than for Intelligence"*（American Psychologist, 1973）— 画期的な BEI 論文
+- **Cal Newport**, *So Good They Can't Ignore You* — career capital、深い仕事
+- **George Heilmeier**, ["The Heilmeier Catechism"](https://www.darpa.mil/about-us/heilmeier-catechism) — DARPA 公式ページ
+- **Keith Ferrazzi**, *Never Eat Alone* — ネットワーキング / warm-intro プレイブック
+
+---
+
+<!-- source: docs/ja/index.md -->
+<div class="vp-doc" style="max-width: 960px; margin: 48px auto 96px; padding: 0 24px;">
+
+## インストール
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+その後、お使いの AI IDE で次のいずれかを言えばよい：
+
+```
+> build my career repo                               # 新規ハブの初期化
+> tailor my resume to this JD                         # JD にカスタム履歴書
+> what's out there for me                             # アクティブ JD ソーシング
+> prep me for this interview                          # 面接コーチング
+> run a pre-submission verification                   # 応募前検証
+```
+
+## 他の履歴書 skill との違い
+
+市場にある多くの履歴書系 skill は単発ジェネレータ——JD を貼ると履歴書を出力、それで終わり。本 skill は違う。数か月にわたる求職活動、面接、（必要なら）研究課題申請を同一の**永続的なプライベートリポジトリ**に蓄積させる。エージェントは毎セッションでリポジトリを読み、あなたのポジショニングロックに従って産出する。完全な方法論は [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) 参照。
+
+## 補完スキル
+
+本ハブの上に、特定の単発ニーズ向けに次を重ねて使う：
+
+- [`paramchoudhary/resumeskills@resume-ats-optimizer`](https://skills.sh/paramchoudhary/resumeskills/resume-ats-optimizer) — ATS 深層最適化
+- [`paramchoudhary/resumeskills@linkedin-profile-optimizer`](https://skills.sh/paramchoudhary/resumeskills/linkedin-profile-optimizer) — LinkedIn プロファイル
+- [`anthropics/knowledge-work-plugins@interview-prep`](https://skills.sh/anthropics/knowledge-work-plugins/interview-prep) — Anthropic 公式面接準備
+- [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny のキャリア転換
+
+</div>
+
+---
+
+<!-- source: docs/ja/philosophy.md -->
+# デザイン哲学
+
+ハブを機能させる 10 個の非自明な選択。拡張時もこれらは保持すること。
+
+## 1. 単一の信頼できる情報源
+
+`profiles/` は事実データが存在する唯一の場所。`master.md` は求職用、`research.md` は助成金用（オプション）。`resumes-archive/` や `简历/` の履歴書は**読み取り専用**——編集せず、データソースとして使わない。例外は `profiles/` に未移行の情報を復元する場合のみ。
+
+## 2. AGENTS.md のポジショニングロック
+
+`AGENTS.md` の先頭でターゲットロール層と業界を宣言する。生成されるすべての履歴書はこのポジショニングに偏る。ターゲット変更 = このファイルを編集。セッションごとに再プロンプトする必要はない。
+
+## 3. デュアルトラック分離（有効時）
+
+求人応募と助成金提案の履歴書は完全に異なるドキュメント——フォーマット、言語、重点、真実の重み付けが違う。データソースも分離：`master.md` vs `research.md`。統合するな。
+
+## 4. 機密原本はパス参照
+
+機密ドキュメント（ID、契約書、任命書、学位記、税務記録）は**コミットしない**。`verification/references.md` がローカルパス、クラウド同期パス、公開 URL を指すパス参照インデックスを保持する。リポジトリは共有可能なまま、原本はバージョン管理の外に置く。
+
+## 5. 高ステークス応募前の公開情報源クロスチェック
+
+シニアロール面接や助成金提出前に、`workflows/verification.md` を実行：すべての重要な主張を公開情報源と照合。Triangulation（≥2 の独立情報源）が基準。結果を `verification/{date}-web-check.md` に記録。高リスク項目にフラグ立て——書き換えかエビデンス探索、無視しない。
+
+## 6. todo.md vs changelog.md
+
+- `todo.md` は**未完了作業のみ**。`[x]` 完了項目は残さない
+- `changelog.md` は完了項目を受け取り、日付付きで逆時系列
+
+完了したらエージェントにアーカイブを頼む——`[x]` マークを蓄積させない。これにより `todo.md` が真のパンチリストとなる。
+
+## 7. 応募ごとに日付付きフォルダ
+
+各試行は `jobs/applications/{company}-{role}-{YYYY-MM-DD}/` に `jd.md`、`resume.md`、`cover.md`、`prep.md` を含む形で存在。同じ会社、2 回目 = 2 つ目のフォルダ。日付は必須——速度を可視化し、特定の試行を再訪できるようにする。
+
+## 8. STAR ストーリーは事実と分離
+
+`profiles/stories.md` は面接向け STAR ナラティブを保持。`master.md` は生の事実を保持。ストーリーは**磨いた語り**、事実は**生データ**。混同するな。
+
+## 9. ハブごとに単一言語
+
+ハブはすべて中国語またはすべて英語。初期化時に選択。混在不可——テンプレート、エージェント指示、ワークフロー散文すべてが単一言語を前提としている。履歴書自体は応募ごとに中国語 / 英語で出力可能。
+
+## 10. AGENTS.md 経由で AI IDE 非依存
+
+正規のコンテキストファイルは `AGENTS.md`——クロス IDE 標準。特定の IDE 規約（`.cursor/rules/`、`.windsurfrules` 等）にはシンボリックリンクまたはコピー。特定ベンダーに縛られるな。
+
+---
+
+## 参照フレームワーク
+
+ハブは定着したキャリアフレームワークを名前で引用し、深掘り用の語彙を提供する。完全リストは [フレームワーク](/ja/frameworks)。
+
+---
+
+<!-- source: docs/ja/quick-start.md -->
+# クイックスタート
+
+3 ステップでキャリアインテリジェンスハブを起動する。
+
+## 1. Skill のインストール
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+または直接 clone：
+
+```bash
+git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/resume-intelligence-hub
+```
+
+## 2. ハブの初期化
+
+お使いの AI IDE（Claude Code、Cursor、Codex、Cline、Windsurf、または `AGENTS.md` を読める任意の IDE）を開く。ハブを置きたい場所に `cd`——**必ずプライベートな場所**、公開される予定のリポジトリは避ける。そして次のように言う：
+
+> **build my career repo**
+
+エージェントが 7 問インタビューで進める：
+
+1. **言語** — 中国語か英語、どちらか 1 つ（混在不可）
+2. **既存資料** — 手元に履歴書 / CV があれば先に渡す（以降の質問すべてが正確になる）
+3. **業界 / 分野** — ソフトウェア、医療、デザイン、法律、学術など
+4. **ターゲットシニアリティ** — エントリーから VP / 創業者 / PI まで
+5. **リサーチトラック？** — 助成金・研究費応募を行う場合のみ有効化
+6. **履歴書出力言語** — 中国語、英語、または両方
+7. **リポジトリ場所** — ディスク上のパス
+
+続いてエージェントがディレクトリをスキャフォールドし、`AGENTS.md` にポジショニングを書き込み、既存の履歴書をアーカイブに取り込み、`todo.md` に「次のステップ」パンチリストを書き出す。
+
+## 3. ハブの使用
+
+初期化後、エージェントが 6 つのワークフローを処理する。自然言語で呼び出す：
+
+| 言い方 | ワークフロー |
+|--------|-------------|
+| Diff my gap against the target seat | [キャリアプランニング & ギャップ分析](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初期化直後に最初に実行し、その後は四半期ごとに再実行 |
+| Tailor my resume to this JD | [JD カスタム履歴書](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| What's out there for me | [アクティブ JD ソーシング](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| Prep me for this interview | [面接準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| Run pre-submission verification | [検証](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [研究課題申請](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（リサーチトラック） |
+
+## トラブルシューティング
+
+**「AI が私の AGENTS.md を読まない」**
+
+- Claude Code：`CLAUDE.md` しか読まない古いバージョンなら、シンボリックリンク：`ln -s AGENTS.md CLAUDE.md`
+- Cursor：`AGENTS.md` の内容を `.cursor/rules/agents.mdc` にコピーまたはシンボリックリンク
+- Windsurf：`.windsurfrules` を使用
+- GitHub Copilot：`.github/copilot-instructions.md` を使用
+- その他の IDE：各 IDE のコンテキストファイル規約を参照
+
+**「既存のハブがある — 移行できる？」**
+
+はい。既存の散らばった履歴書（`简历/` など）の場所をエージェントに指し、「これを resume-intelligence-hub の構造に移行して」と言う。初期化フローが統合を処理する。
+
+**「別の言語が必要」**
+
+現在：中国語と英語のテンプレート。コントリビューション歓迎——[GitHub リポジトリ](https://github.com/Zenine/resume-intelligence-hub) を参照。
+
+---
+
+<!-- source: docs/zh-TW/frameworks.md -->
+# 引用的方法論
+
+Skill 裡的工作流程都建在成熟方法論之上。AI 指導你時會**點出名字**——既給你一個搜尋關鍵字往下深挖，也讓這些方法看起來不是 AI 亂編的。
+
+## 履歷撰寫
+
+### Google XYZ 公式
+
+來自 Laszlo Bock，前 Google 人資副總裁。寫履歷要點時按這個結構：
+
+> "Accomplished [X] as measured by [Y], by doing [Z]"
+>
+> 做到了 X，用 Y 來量化，靠 Z 實現的
+
+每條要點都回答三件事：做到了什麼、用什麼指標能證明、具體做了什麼動作。這是履歷品質最大的一個槓桿——換成這個寫法，資訊密度直接翻倍。
+
+### 一要點一數字
+
+每條履歷要點必須帶至少一個數字（人數、百分比、金額、時間、規模都行）。沒數字的要點在復盤時直接刪——不是你沒做，是沒量化就沒說服力。
+
+### CAR / PAR / STAR
+
+XYZ 在短要點裡太囉嗦時，用這幾個簡化版：CAR（挑戰-行動-結果）、PAR（問題-行動-結果）、STAR（情境-任務-行動-結果）。最常用的是 STAR，在 `profiles/stories.md` 裡全程使用。
+
+## 面試
+
+### BEI（行為事件訪談）
+
+David McClelland，哈佛心理學家發明的。「講一次你……的時候」這種問法的理論基礎。核心假設：**過去的行為比嘴上說的更能預測未來行為**。所以面試官不問「你會怎麼辦」，而是要你講具體過往案例。
+
+準備時一定用具體事件，不要泛泛說「我一般會……」——那種答法在 BEI 裡根本過不了關。
+
+### STAR
+
+行為面試回答的主流結構：情境（Situation）→ 任務（Task）→ 行動（Action）→ 結果（Result）。`profiles/stories.md` 裡每個故事都按這個寫。
+
+## 研究計畫申報
+
+### Heilmeier 九問
+
+George Heilmeier，前 DARPA 局長總結的——任何研究申報都該回答的九個問題。就算申報範本沒直接問，答完也更有說服力：
+
+1. 你到底要做什麼？（別用行話）
+2. 現在的做法是什麼？瓶頸在哪？
+3. 你的新方法是什麼？為什麼能成？
+4. 誰會從中受益？做成了意味著什麼？
+5. 風險和回報各是什麼？
+6. 要花多少錢？
+7. 要花多長時間？
+8. 中期和終期怎麼衡量成功？
+9. 最壞情況下怎麼退出？
+
+`workflows/grant-application.md` 裡「研究基礎」那段就按這九問組織的。
+
+## 職涯定位
+
+### T 型 / π 型 / M 型人才
+
+McKinsey 和 IDEO 推廣的說法：一個領域有深度 + 相鄰領域有廣度 = T 型。資深職位常常需要 π 型（兩個深度柱）甚至 M 型（多個深度柱）。自己講「我的獨特價值在哪」時用這個框架解釋。
+
+### 職涯資本
+
+Cal Newport 在《優秀到不能被忽視》裡提出的概念——**稀有且有價值的技能**才是你的真正槓桿。做能力差距分析時，別問「我缺什麼」，換個問法：**「我手上有什麼籌碼？往下該投資哪些能放大它？」**
+
+## 求職策略
+
+### 延伸目標啟發式（1-2 級，1.2-3 倍薪，70% 匹配）
+
+換工作時用的標準啟發式：
+
+- **職級**：瞄準比目前**高 1-2 級**的職位。同級平跳換工作成本太高，3 級以上除非創業否則不現實
+- **薪酬**：外跳總包至少 **1.2-1.5 倍**起（外部招聘自帶溢價，低於這個數換工作沒意義）；如果同時還發生「公司類型跨越」（大廠 → 高速成長 startup），**2-3 倍**也合理
+- **匹配門檻**：**70% 符合就投**，不等 100%。資深職位雇主就是準備讓你邊做邊成長的
+- **管道**：**內推的轉化率是冷投的 10 倍以上**——先把人脈啟用了再考慮海投
+
+**例外**：純粹職涯轉型（減薪正常）、主動降速求生活、已經到產業天花板、早期職涯（倍數天然更小）。這是 `workflows/jd-sourcing.md` 的底層邏輯。
+
+## 投遞前盡調
+
+### 三角驗證
+
+每條承重聲明都要在至少 **2 個獨立公開來源**得到確認才算過關。這是定性研究的標準做法，挪過來用於投遞前自查——面試官和評審會 Google，你先 Google 過自己一遍。`workflows/verification.md` 的基礎。
+
+## 目標設定
+
+### SMART
+
+Specific（具體）、Measurable（可衡量）、Achievable（可達成）、Relevant（相關）、Time-bound（有期限）。`todo.md` 裡含糊條目會被 AI 改寫成這五個維度齊全的版本。
+
+---
+
+## 延伸閱讀
+
+- **Laszlo Bock**，*Work Rules!* — Google 招聘哲學和 XYZ 公式的原始出處
+- **David McClelland**，*"Testing for Competence Rather Than for Intelligence"*（American Psychologist, 1973）— BEI 的奠基論文
+- **Cal Newport**，*So Good They Can't Ignore You*（中譯《優秀到不能被忽視》）— 職涯資本和深度工作
+- **George Heilmeier**，[DARPA 官網 Heilmeier Catechism 頁面](https://www.darpa.mil/about-us/heilmeier-catechism)
+- **Keith Ferrazzi**，*Never Eat Alone* — 人脈啟用 / warm intro 的操作手冊
+
+---
+
+<!-- source: docs/zh-TW/index.md -->
+<div class="vp-doc" style="max-width: 960px; margin: 48px auto 96px; padding: 0 24px;">
+
+## 安裝
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+然後在你常用的 AI IDE 裡說任意一句：
+
+```
+> 幫我搭個履歷庫                           # 從零開一個 hub
+> 幫我針對這個 JD 生成履歷                 # 客製履歷
+> 看看有什麼合適的機會                     # 讓 AI 主動搜職缺
+> 針對這個職位幫我準備面試                 # 模擬面試 + 準備故事
+> 投遞前幫我核查一下公開資料               # 公開資料交叉驗證
+```
+
+## 它和其他履歷 skill 不一樣在哪
+
+市面上多數履歷類 skill 是一次性工具——貼 JD、出履歷，用完就散。這個不是。它會讓你把幾個月的求職、面試、（如果要的話）研究計畫申報都沉澱在同一個私人 Git 儲存庫裡，Agent 每次對話先讀這個儲存庫，產出會被你之前寫下的定位一直約束著。完整邏輯寫在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
+
+## 搭配使用的專精 skill
+
+具體某一次的細活可以疊加生態圈裡的小工具：
+
+- [`paramchoudhary/resumeskills@resume-ats-optimizer`](https://skills.sh/paramchoudhary/resumeskills/resume-ats-optimizer) — ATS 關鍵字深度最佳化
+- [`paramchoudhary/resumeskills@linkedin-profile-optimizer`](https://skills.sh/paramchoudhary/resumeskills/linkedin-profile-optimizer) — LinkedIn 檔案打磨
+- [`anthropics/knowledge-work-plugins@interview-prep`](https://skills.sh/anthropics/knowledge-work-plugins/interview-prep) — Anthropic 官方面試準備
+- [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny 的職涯轉型框架
+
+</div>
+
+---
+
+<!-- source: docs/zh-TW/philosophy.md -->
+# 設計哲學
+
+十條不太直覺的選擇——不是隨便定的，每條都踩過坑才想明白。自己擴展 skill 時，別輕易動這些。
+
+## 1. 事實只寫一份
+
+所有履歷事實只在 `profiles/` 裡寫，`master.md` 管求職，`research.md` 管研究計畫（可選）。歷史履歷存在 `简历/` 或 `resumes-archive/` 裡是**唯讀**的——不編輯、不引用，除非需要把老版本裡的某條資訊搬進 `profiles/`。
+
+這樣每次生成的履歷都是新鮮客製的，不會出現「到底哪一版是最新」的問題。
+
+## 2. 定位寫在 AGENTS.md 最上面
+
+目標職級和產業一次性寫死在 `AGENTS.md` 頂部。想改方向 = 改這一個檔案，下次對話所有產出都跟著變。不用每次會話重新交代一遍。
+
+## 3. 求職和研究計畫分開做
+
+求職履歷和研究計畫申報書是兩種東西——格式、語氣、甚至「哪些成果值得拿出來說」都不一樣。資料來源拆開：`master.md` 一套、`research.md` 一套。不要圖省事合併。
+
+## 4. 敏感原件不入儲存庫
+
+身份證、合約、任命函、畢業證、稅單這些不放進 Git。`verification/references.md` 只記一條路徑參照——原件在你本機硬碟或雲端同步碟。儲存庫保持乾淨，想給朋友 clone 或做示範都沒顧慮。
+
+## 5. 投遞前一定要公開資料自查
+
+高階職面試、研究計畫申報之前，跑一次 `workflows/verification.md`：把履歷裡每一條「承重聲明」（學歷、雇主、職稱、計畫編號、量化數字）在公開來源過一遍。
+
+標準是**三角驗證**——至少兩個獨立公開來源確認。查到不一致的提前改措辭，不要等面試官或評審 Google 到。
+
+## 6. todo.md 只放未做的
+
+- `todo.md` 只放**還沒做**的事，不留 `[x]` 已完成項
+- 做完了就告訴 AI 封存，條目自動挪去 `changelog.md`
+
+別讓 `[x]` 堆積——`todo.md` 存在的意義就是讓你一眼看見「現在該幹啥」。
+
+## 7. 每次投遞一個資料夾，帶日期
+
+每次投職缺都有自己的資料夾：`jobs/applications/{公司}-{職位}-{YYYY-MM-DD}/`，裡面 `jd.md`、`resume.md`、`cover.md`、`prep.md` 各放一份。同一家公司投兩次？那就是兩個資料夾。日期必須有，以後自己看也能看出節奏。
+
+## 8. 面試故事和事實分開存
+
+`profiles/stories.md` 放**講好的故事**——為面試口頭表達最佳化過的 STAR 版本。`master.md` 放**原始事實**。兩邊別混。講故事要加工，記事實要準確，目的不一樣。
+
+## 9. 一個 hub 一種語言
+
+hub 要麼全中文，要麼全英文，初始化時選一個。範本、AI 指令、工作流程敘述都基於單一語言寫的，混著來會把 AI 搞糊塗。履歷**輸出**本身照樣可以按目標公司選中英，這是兩回事。
+
+## 10. AI IDE 別綁死在一家
+
+正式的上下文檔案叫 `AGENTS.md`——這是現在跨 IDE 的約定標準。具體 IDE 需要什麼（`.cursor/rules/`、`.windsurfrules` 等），建軟連結或複製一份過去就行。不要把內容寫死成某一家的專屬格式。
+
+---
+
+## 引用的方法論
+
+Skill 裡每次提到某個方法論都會點出處，方便你想深究時自己順著找。完整列表見 [方法論](/zh-TW/frameworks)。
+
+---
+
+<!-- source: docs/zh-TW/quick-start.md -->
+# 快速開始
+
+三步把你的職涯 hub 跑起來。
+
+## 1. 裝 skill
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+或者直接 clone 下來：
+
+```bash
+git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/resume-intelligence-hub
+```
+
+## 2. 初始化你自己的 hub
+
+打開你用的 AI IDE（Claude Code、Cursor、Codex、Cline、Windsurf，只要能讀 `AGENTS.md` 都行），`cd` 到你打算放 hub 的資料夾——**一定選私人位置**，別放在將來會公開的 repo 裡。然後說：
+
+> **幫我搭個履歷庫**
+
+AI 會問你 7 個問題：
+
+1. **語言** — 中文或英文，選一個，別混著來
+2. **現有資料** — 手頭有舊履歷 / CV 就先發給它，下面幾個問題都會因此更準
+3. **產業** — 軟體、醫療、設計、法律、學術……什麼都行
+4. **目標職級** — 初級、資深 IC、一線經理、總監、VP、創辦人、PI，按自己情況說
+5. **要不要研究那條線** — 只在申報研究計畫 / 研究補助時需要開
+6. **履歷輸出語言** — 中文、英文或雙語都行
+7. **儲存庫放哪** — 硬碟上的絕對路徑
+
+答完 AI 會：把目錄結構搭好 → 把定位寫進 `AGENTS.md` → 把你給的舊履歷封存 → 在 `todo.md` 裡寫一份「接下來要做什麼」的清單。
+
+## 3. 平時怎麼用
+
+Hub 搭好之後，直接用中文和 AI 說想做什麼就行：
+
+| 你說 | 觸發的工作流程 |
+|------|--------------|
+| 盤一下我跟目標位子的落差 | [職涯規劃 & 差距盤點](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初始化後第一個跑，之後每季再跑一次 |
+| 幫我針對這個 JD 生成履歷 | [JD 客製履歷](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| 看看有什麼合適的機會 | [主動搜職缺](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| 針對這個職位幫我準備面試 | [面試準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| 投遞前幫我核查公開資料 | [投遞前自查](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 幫我生成國科會（NSTC）研究計畫的申報履歷 | [研究計畫申報](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（只在研究線開啟時） |
+
+## 常見問題
+
+**AI 沒讀到我的 AGENTS.md**
+
+- Claude Code 舊版本只認 `CLAUDE.md`：`ln -s AGENTS.md CLAUDE.md` 建個軟連結就行
+- Cursor：把 `AGENTS.md` 內容複製到 `.cursor/rules/agents.mdc`，或者軟連結
+- Windsurf：用 `.windsurfrules`
+- GitHub Copilot：用 `.github/copilot-instructions.md`
+- 別的 IDE：查一下它自己的上下文檔案約定
+
+**我已經有一堆散的履歷了，能直接用這個整起來嗎？**
+
+可以。把 AI 指到那些履歷所在的目錄，讓它「把這些整合進 resume-intelligence-hub 的結構」就行。初始化流程會幫你合併。
+
+**我想用別的語言（日文、韓文……）**
+
+目前只有中英文範本，其它語言歡迎去 [GitHub](https://github.com/Zenine/resume-intelligence-hub) 提 PR。
+
+---

@@ -15,11 +15,14 @@ export default defineConfig({
     // Open Graph / Twitter — site-wide static
     ['meta', { property: 'og:site_name', content: 'Resume Intelligence Hub' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    // TODO: swap to a 1200×630 PNG — Facebook / LinkedIn / Twitter card
-    // renderers don't reliably rasterize SVG. Tracked for a future commit.
-    ['meta', { property: 'og:image', content: 'https://zenine.github.io/resume-intelligence-hub-site/hero.svg' }],
+    ['meta', { property: 'og:image', content: 'https://zenine.github.io/resume-intelligence-hub-site/og.png' }],
+    ['meta', { property: 'og:image:width', content: '1200' }],
+    ['meta', { property: 'og:image:height', content: '630' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:image', content: 'https://zenine.github.io/resume-intelligence-hub-site/hero.svg' }],
+    ['meta', { name: 'twitter:image', content: 'https://zenine.github.io/resume-intelligence-hub-site/og.png' }],
+    // GEO hints: llms.txt discovery
+    ['link', { rel: 'alternate', type: 'text/plain', title: 'llms.txt', href: 'https://zenine.github.io/resume-intelligence-hub-site/llms.txt' }],
+    ['link', { rel: 'alternate', type: 'text/plain', title: 'llms-full.txt', href: 'https://zenine.github.io/resume-intelligence-hub-site/llms-full.txt' }],
     // JSON-LD structured data (GEO) — helps AI search engines (Perplexity,
     // SearchGPT, Google AI Overview) identify this as a software / skill.
     [
@@ -34,7 +37,7 @@ export default defineConfig({
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Cross-platform',
         url: 'https://zenine.github.io/resume-intelligence-hub-site/',
-        image: 'https://zenine.github.io/resume-intelligence-hub-site/hero.svg',
+        image: 'https://zenine.github.io/resume-intelligence-hub-site/og.png',
         author: {
           '@type': 'Person',
           name: 'Zenine Xu',
@@ -79,6 +82,7 @@ export default defineConfig({
       ['meta', { property: 'og:url', content: url }],
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: description }],
+      ['link', { rel: 'canonical', href: url }],
     ]
   },
 
@@ -118,6 +122,7 @@ export default defineConfig({
           { text: 'Quick Start', link: '/quick-start' },
           { text: 'Frameworks', link: '/frameworks' },
           { text: 'Philosophy', link: '/philosophy' },
+          { text: 'FAQ', link: '/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
         ],
         sidebar: [
@@ -132,6 +137,7 @@ export default defineConfig({
             text: 'Reference',
             items: [
               { text: 'Frameworks', link: '/frameworks' },
+              { text: 'FAQ', link: '/faq' },
             ],
           },
         ],
@@ -147,6 +153,7 @@ export default defineConfig({
           { text: '快速开始', link: '/zh/quick-start' },
           { text: '方法论', link: '/zh/frameworks' },
           { text: '设计哲学', link: '/zh/philosophy' },
+          { text: '常见问题', link: '/zh/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
         ],
         sidebar: {
@@ -162,6 +169,7 @@ export default defineConfig({
               text: '参考',
               items: [
                 { text: '方法论', link: '/zh/frameworks' },
+                { text: '常见问题', link: '/zh/faq' },
               ],
             },
           ],
@@ -187,6 +195,7 @@ export default defineConfig({
           { text: 'クイックスタート', link: '/ja/quick-start' },
           { text: 'フレームワーク', link: '/ja/frameworks' },
           { text: 'デザイン哲学', link: '/ja/philosophy' },
+          { text: 'よくある質問', link: '/ja/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
         ],
         sidebar: {
@@ -202,6 +211,7 @@ export default defineConfig({
               text: 'リファレンス',
               items: [
                 { text: 'フレームワーク', link: '/ja/frameworks' },
+                { text: 'よくある質問', link: '/ja/faq' },
               ],
             },
           ],
@@ -227,6 +237,7 @@ export default defineConfig({
           { text: '快速開始', link: '/zh-TW/quick-start' },
           { text: '方法論', link: '/zh-TW/frameworks' },
           { text: '設計哲學', link: '/zh-TW/philosophy' },
+          { text: '常見問題', link: '/zh-TW/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
         ],
         sidebar: {
@@ -242,6 +253,7 @@ export default defineConfig({
               text: '參考',
               items: [
                 { text: '方法論', link: '/zh-TW/frameworks' },
+                { text: '常見問題', link: '/zh-TW/faq' },
               ],
             },
           ],
@@ -320,7 +332,7 @@ export default defineConfig({
       },
     },
     footer: {
-      message: 'Released under the <a href="https://github.com/Zenine/resume-intelligence-hub-site/blob/main/LICENSE">MIT License</a>.',
+      message: 'Released under the <a href="https://github.com/Zenine/resume-intelligence-hub-site/blob/main/LICENSE">MIT License</a>. Built with <a href="https://github.com/lordmos/meridian">Meridian</a>.',
       copyright: 'Copyright © 2026 Zenine Xu',
     },
   },

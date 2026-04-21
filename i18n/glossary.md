@@ -1,7 +1,7 @@
 <!--
   Glossary status:
   Project     : resume-intelligence-hub
-  Maintained  : 2026-04-21
+  Maintained  : 2026-04-21 (Meridian regeneration)
   Scope       : README.{md,zh.md,ja.md,zh-TW.md} and docs/{en,zh,ja,zh-TW}/
 -->
 
@@ -23,6 +23,7 @@ Source: English · Targets: 简体中文 (zh) · 日本語 (ja) · 繁體中文 
 | AGENTS.md | AGENTS.md | AGENTS.md | AGENTS.md | Keep as file name |
 | Claude Code / Cursor / Codex / Cline / Windsurf / GitHub Copilot | 同 | 同 | 同 | IDE names, keep English |
 | skills.sh | skills.sh | skills.sh | skills.sh | Platform name |
+| Meridian | Meridian | Meridian | Meridian | Open-source ops toolkit brand, keep English |
 
 ---
 

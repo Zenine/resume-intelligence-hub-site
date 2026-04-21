@@ -1,0 +1,38 @@
+# resume-intelligence-hub
+
+> An AI-agent skill that bootstraps a personal career intelligence hub — a private Git repo that is both a single source of truth (resumes, interview prep, grant applications, pre-submission verification) and a career compass (stretch target, capability gap, quarterly plan).
+
+resume-intelligence-hub is an opinionated methodology and scaffolding for a personal, AI-driven career management repository. Unlike one-shot resume generators, it creates a persistent private repo you iterate on across months of job search, interviews, and grant applications. The agent reads the repo each session and is biased by your positioning lock. Works for any industry and seniority. Industry-agnostic, available in Chinese and English.
+
+## Docs
+
+- [Home](https://zenine.github.io/resume-intelligence-hub-site/): Landing page with install instructions and feature overview
+- [Quick Start](https://zenine.github.io/resume-intelligence-hub-site/quick-start): Three-step setup guide
+- [Philosophy](https://zenine.github.io/resume-intelligence-hub-site/philosophy): The 9 non-obvious design decisions behind the hub
+- [Frameworks](https://zenine.github.io/resume-intelligence-hub-site/frameworks): Career frameworks used (Google XYZ, STAR, BEI, Heilmeier, etc.)
+- [FAQ](https://zenine.github.io/resume-intelligence-hub-site/faq): Frequently asked questions
+- [README](https://github.com/Zenine/resume-intelligence-hub-site#readme): Source-of-truth overview
+
+## Source
+
+- GitHub: https://github.com/Zenine/resume-intelligence-hub
+- Site repo: https://github.com/Zenine/resume-intelligence-hub-site
+- License: MIT
+- llms-full.txt: https://zenine.github.io/resume-intelligence-hub-site/llms-full.txt
+
+## FAQ
+
+### What is resume-intelligence-hub?
+resume-intelligence-hub is an AI agent skill that bootstraps a personal career intelligence hub — a private Git repository serving as a single source of truth for resumes, interview preparation, grant applications, and pre-submission verification, while also acting as a career compass that names your stretch target and tracks quarterly plans.
+
+### What specific problem does it solve?
+Most people manage their careers with scattered resumes across folders, ad-hoc interview prep, and no systematic way to track progress toward a target role. resume-intelligence-hub replaces this chaos with a structured private repo where profiles/ holds factual career data, AGENTS.md locks in your positioning target, and workflows handle everything from JD-tailored resume generation to pre-submission fact-checking.
+
+### Who is this for?
+Anyone managing a job search, planning a career move, or applying for research grants — at any seniority level, in any industry. Especially useful for people targeting a role 1-2 levels above current title, managing bilingual job markets (Chinese/English), or needing both recruitment and academic/research tracks.
+
+### How does it compare to other resume AI tools?
+Other resume tools (like ATS optimizers or one-shot resume generators) are one-off: paste a JD, get a resume. resume-intelligence-hub is persistent infrastructure: it creates a repo you maintain across months. The positioning lock in AGENTS.md biases every resume toward your stretch target; the verification workflow cross-checks claims before high-stakes submissions; the gap analysis identifies exactly what skills, credentials, scope, and network you need to close. Other tools can compose on top of it for specific tasks.
+
+### How do I get started?
+Install with `npx skills add Zenine/resume-intelligence-hub -g -y`, then open your AI IDE (Claude Code, Cursor, Windsurf, etc.), navigate to where you want the hub, and say "build my career repo" or "帮我搭个简历库". The agent walks you through a 7-question interview and scaffolds your private hub in under 10 minutes.
