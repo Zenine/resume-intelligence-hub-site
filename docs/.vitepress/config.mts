@@ -12,6 +12,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/resume-intelligence-hub-site/hero.svg', type: 'image/svg+xml' }],
     ['meta', { name: 'theme-color', content: '#6366f1' }],
+    ['meta', { name: 'google-site-verification', content: 'JDAD7_0Djk8ErI3P93dZ2nq5ZKrVGxEi6c7eM7xt-IM' }],
     // Open Graph / Twitter — site-wide static
     ['meta', { property: 'og:site_name', content: 'Resume Intelligence Hub' }],
     ['meta', { property: 'og:type', content: 'website' }],
