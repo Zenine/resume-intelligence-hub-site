@@ -80,11 +80,11 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 その後、お使いの AI IDE で次のいずれかを言えばよい：
 
 ```
-> build my career repo                               # 新規ハブの初期化
-> tailor my resume to this JD                         # JD にカスタム履歴書
-> what's out there for me                             # アクティブ JD ソーシング
-> prep me for this interview                          # 面接コーチング
-> run a pre-submission verification                   # 応募前検証
+> キャリアリポジトリを作って                         # 新規ハブの初期化
+> この JD に合わせて履歴書を作って                   # JD カスタム履歴書
+> 私に合いそうな求人を探して                         # アクティブ JD ソーシング
+> この面接の準備をして                               # 面接コーチング
+> 応募前に検証して                                   # 応募前検証
 ```
 
 ## 他の履歴書 skill との違い
