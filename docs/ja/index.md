@@ -4,8 +4,8 @@ title: あなた専用のキャリア OS
 
 hero:
   name: "Resume Intelligence Hub"
-  text: "あなた専用のキャリア OS"
-  tagline: "履歴書・面接準備・研究課題申請の単一の信頼できる情報源。次のストレッチ目標を名付け、ギャップを可視化し、今四半期のプランを回すキャリアの羅針盤。"
+  text: "AI IDE 向けのキャリア skill"
+  tagline: "一言で AI IDE にプライベートキャリアハブを構築——履歴書カスタマイズ、面接準備、研究課題申請をひとつの Git リポジトリで管理。Claude Code、Cursor、Windsurf など主要 IDE に対応。"
   image:
     src: /hero.svg
     alt: Resume Intelligence Hub

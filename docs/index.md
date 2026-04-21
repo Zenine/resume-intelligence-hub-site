@@ -4,8 +4,8 @@ title: Your private career OS
 
 hero:
   name: "Resume Intelligence Hub"
-  text: "Your private career OS"
-  tagline: "Source of truth for your resumes, interview prep, and grant applications. Career compass that names your next stretch target, diffs the gap, and ships this quarter's plan."
+  text: "A career skill for your AI IDE"
+  tagline: "One sentence bootstraps a private career hub — resume tailoring, interview prep, and grant applications in one Git repo. Works with Claude Code, Cursor, Windsurf, and more."
   image:
     src: /hero.svg
     alt: Resume Intelligence Hub

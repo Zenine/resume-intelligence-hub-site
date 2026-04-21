@@ -4,8 +4,8 @@ title: 给自己搭一个职业中枢
 
 hero:
   name: "Resume Intelligence Hub"
-  text: "给自己搭一个职业中枢"
-  tagline: "简历、面试准备、课题申报的单一事实来源。职业罗盘——帮你定位下一把椅子、摊开差距、跑出这个季度的计划。"
+  text: "给 AI IDE 用的 career skill"
+  tagline: "一句话在你的 AI IDE 里搭起私人职业中枢——简历定制、面试准备、课题申报，全在同一个 Git 仓库里。跨 Claude Code、Cursor、Windsurf 等主流 IDE 通用。"
   image:
     src: /hero.svg
     alt: Resume Intelligence Hub

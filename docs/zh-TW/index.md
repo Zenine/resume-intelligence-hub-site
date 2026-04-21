@@ -4,8 +4,8 @@ title: 給自己搭一個職涯中樞
 
 hero:
   name: "Resume Intelligence Hub"
-  text: "給自己搭一個職涯中樞"
-  tagline: "履歷、面試準備、研究計畫申報的單一事實來源。職涯羅盤——幫你鎖定下一個位子、攤開落差、跑出這一季的計畫。"
+  text: "給 AI IDE 用的 career skill"
+  tagline: "一句話在你的 AI IDE 裡搭起私人職涯中樞——履歷客製、面試準備、研究計畫申報，全在同一個 Git 儲存庫裡。跨 Claude Code、Cursor、Windsurf 等主流 IDE 通用。"
   image:
     src: /hero.svg
     alt: Resume Intelligence Hub

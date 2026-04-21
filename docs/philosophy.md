@@ -1,52 +1,53 @@
 # Design Philosophy
 
-Ten non-obvious choices that make the hub work. Preserve them when extending.
+Ten non-obvious choices, each one earned by a mistake. You don't need to understand all of them to use the hub — but read this before changing anything.
 
-## 1. Single source of truth
+## 1. Your experience lives in one place
 
-`profiles/` is the only place factual data lives. `master.md` for recruitment, `research.md` for grants (optional). Historical resumes in `resumes-archive/` or `简历/` are **read-only** — never edited, never used as a data source except to recover info not yet migrated.
+Facts scattered across five resume versions will eventually contradict each other. `profiles/master.md` is the single source of truth — every achievement, title, and timeline goes here. When you need a tailored resume, the AI pulls from this, not from last week's draft.
 
-## 2. Positioning lock in AGENTS.md
+Historical resumes in `resumes-archive/` or `简历/` are read-only backups, not data sources.
 
-The top of `AGENTS.md` declares the target role level and industry. Every generated resume biases toward this positioning. Change target = edit one file. No reprompting each session.
+## 2. Set your direction once
 
-## 3. Dual-track separation (when enabled)
+Repeating "I'm looking for X type of role" every session is tedious and unreliable. Write your target level and industry at the top of `AGENTS.md` — the AI reads it every session. When you change direction, change that one file.
 
-Job application and grant proposal resumes are entirely different documents — different format, language, emphasis, and truth-weighting. Their data sources are split: `master.md` vs `research.md`. Never merge.
+## 3. Job applications and grant proposals are different things
 
-## 4. Path-references for sensitive originals
+Applying for a corporate role and applying for a research grant don't use the same materials — different format, tone, and which achievements "deserve mention." `master.md` for job search, `research.md` for grants (opt-in). Merging them makes both worse.
 
-Sensitive documents (IDs, contracts, appointment letters, diplomas, tax records) are **NOT** committed. `verification/references.md` holds a path-reference index pointing at local paths, cloud-sync paths, and public URLs. The repo stays shareable; originals stay out of version control.
+## 4. Sensitive originals stay out of the repo
 
-## 5. Public-source cross-check before high-stakes submissions
+IDs, contracts, appointment letters, diplomas, tax records — don't commit them. `verification/references.md` records where each file lives; the originals stay on your own drive or cloud sync. The repo can be shared or demoed at any time without worrying about leaks.
 
-Before senior-role interviews or grant submissions, run `workflows/verification.md`: cross-check every load-bearing claim against public sources. Triangulation (≥2 independent sources) is the standard. Log results in `verification/{date}-web-check.md`. Flag high-risk items — rewrite or find evidence, don't ignore.
+## 5. Before a high-stakes submission, verify what you've written
 
-## 6. todo.md vs changelog.md
+Senior-role interviews, grant reviews — worth a pass before you submit. Run `workflows/verification.md` and cross-check every degree, employer, title, project number, and quantified claim against public sources. Two independent sources is the bar.
 
-- `todo.md` holds **only pending work**. No `[x]` completed items.
-- `changelog.md` receives completed items, dated, reverse-chronological.
+If something doesn't hold up, fix it now — better than having the interviewer or reviewer find it.
 
-When something's done, tell the agent to archive — don't leave `[x]` marks accumulating. This keeps `todo.md` a true punch list.
+## 6. When it's done, archive it
 
-## 7. Per-application folders, dated
+`todo.md` holds only pending work. When something is done, tell the AI to archive it — the item moves to `changelog.md`, dated. A to-do full of `[x]` marks may feel productive, but it obscures what actually needs doing.
 
-Each attempt lives at `jobs/applications/{company}-{role}-{YYYY-MM-DD}/` with `jd.md`, `resume.md`, `cover.md`, `prep.md`. Same company, second attempt = second folder. Date is non-negotiable — it surfaces velocity and lets you revisit a specific run.
+## 7. Each application gets its own folder
 
-## 8. STAR stories separate from facts
+`jobs/applications/{company}-{role}-{YYYY-MM-DD}/` — JD, resume, cover letter, interview prep, all together. Same company, second attempt = new folder, don't overwrite. The date is mandatory — it shows your pace and lets you return to any specific run.
 
-`profiles/stories.md` holds interview-ready STAR narratives. `master.md` holds raw facts. A story is a **crafted retelling**; facts are **raw data**. Don't conflate.
+## 8. Interview stories and factual records are separate
 
-## 9. Monolingual per hub
+`profiles/stories.md` holds STAR narratives polished for speaking aloud. `master.md` holds raw factual records. A story is crafted to land; facts are recorded to be accurate. Different purposes — keep them separate.
 
-The hub is either all Chinese or all English. Pick one at bootstrap. Don't mix — the template, agent instructions, and workflow prose all assume a single language. Resumes themselves can still output in either language per application.
+## 9. Pick one language for the hub
 
-## 10. AI-IDE agnostic via AGENTS.md
+Choose Chinese or English at bootstrap, then don't mix. The templates, AI instructions, and workflow prose all assume a single language. Mixing leads to inconsistent output. The resumes themselves can target either language per application — that's a separate choice.
 
-The canonical context file is `AGENTS.md` — the cross-IDE standard. Symlink or copy for your specific IDE's convention (`.cursor/rules/`, `.windsurfrules`, etc.). Don't bind to a specific vendor.
+## 10. Don't lock yourself into one AI IDE
+
+`AGENTS.md` is the cross-IDE standard for context files. If your IDE wants a different location (Cursor's `.cursor/rules/`, Windsurf's `.windsurfrules`), symlink or copy. Don't write the content in a vendor-specific format — switching tools shouldn't require rewriting your context.
 
 ---
 
 ## Frameworks referenced
 
-The hub cites established career frameworks by name so you have vocabulary to research further. See [Frameworks](/frameworks) for the full list.
+Each design choice here traces back to an established source. See [Frameworks](/frameworks) for the full list.
