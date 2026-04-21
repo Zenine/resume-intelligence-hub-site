@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zenine.github.io/resume-intelligence-hub-site/sitemap.xml
