@@ -89,7 +89,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 ## 他の履歴書 skill との違い
 
-市場にある多くの履歴書系 skill は単発ジェネレータ——JD を貼ると履歴書を出力、それで終わり。本 skill は違う。数か月にわたる求職活動、面接、（必要なら）研究課題申請を同一の**永続的なプライベートリポジトリ**に蓄積させる。エージェントは毎セッションでリポジトリを読み、あなたのポジショニングロックに従って産出する。完全な方法論は [SKILL.md](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/SKILL.md) 参照。
+市場にある多くの履歴書系 skill は単発ジェネレータ——JD を貼ると履歴書を出力、それで終わり。本 skill は違う。数か月にわたる求職活動、面接、（必要なら）研究課題申請を同一の**永続的なプライベートリポジトリ**に蓄積させる。エージェントは毎セッションでリポジトリを読み、あなたのポジショニングロックに従って産出する。完全な方法論は [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) 参照。
 
 ## 補完スキル
 

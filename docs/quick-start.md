@@ -38,12 +38,12 @@ Once bootstrapped, the agent handles six workflows. Invoke with natural language
 
 | Say this | Workflow |
 |----------|----------|
-| Diff my gap against the target seat | [Career planning & gap analysis](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/career-planning.md) — run this first, then re-run each quarter |
-| Tailor my resume to this JD | [JD-tailored resume](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-tailored-resume.md) |
-| What's out there for me | [Active JD sourcing](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-sourcing.md) |
-| Prep me for this interview | [Interview prep](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/interview-prep.md) |
-| Run pre-submission verification | [Verification](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/verification.md) |
-| 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [Grant application](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/grant-application.md) (research track) |
+| Diff my gap against the target seat | [Career planning & gap analysis](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — run this first, then re-run each quarter |
+| Tailor my resume to this JD | [JD-tailored resume](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| What's out there for me | [Active JD sourcing](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| Prep me for this interview | [Interview prep](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| Run pre-submission verification | [Verification](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [Grant application](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md) (research track) |
 
 ## Troubleshooting
 

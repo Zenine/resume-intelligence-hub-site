@@ -46,12 +46,12 @@ Hub 搭好之後，直接用中文和 AI 說想做什麼就行：
 
 | 你說 | 觸發的工作流程 |
 |------|--------------|
-| 盤一下我跟目標位子的落差 | [職涯規劃 & 差距盤點](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/career-planning.md) — 初始化後第一個跑，之後每季再跑一次 |
-| 幫我針對這個 JD 生成履歷 | [JD 客製履歷](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-tailored-resume.md) |
-| 看看有什麼合適的機會 | [主動搜職缺](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-sourcing.md) |
-| 針對這個職位幫我準備面試 | [面試準備](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/interview-prep.md) |
-| 投遞前幫我核查公開資料 | [投遞前自查](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/verification.md) |
-| 幫我生成國科會（NSTC）研究計畫的申報履歷 | [研究計畫申報](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/grant-application.md)（只在研究線開啟時） |
+| 盤一下我跟目標位子的落差 | [職涯規劃 & 差距盤點](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初始化後第一個跑，之後每季再跑一次 |
+| 幫我針對這個 JD 生成履歷 | [JD 客製履歷](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| 看看有什麼合適的機會 | [主動搜職缺](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| 針對這個職位幫我準備面試 | [面試準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| 投遞前幫我核查公開資料 | [投遞前自查](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 幫我生成國科會（NSTC）研究計畫的申報履歷 | [研究計畫申報](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（只在研究線開啟時） |
 
 ## 常見問題
 

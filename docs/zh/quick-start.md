@@ -46,12 +46,12 @@ Hub 搭好之后，直接用中文和 AI 说想做什么就行：
 
 | 你说 | 触发的工作流 |
 |------|--------------|
-| 盘一下我跟目标座位的差距 | [职业规划 & 差距盘点](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/career-planning.md) — 初始化后第一个跑，之后每季度再跑一次 |
-| 帮我针对这个 JD 生成简历 | [JD 定制简历](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-tailored-resume.md) |
-| 看看有什么合适的机会 | [主动搜岗位](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-sourcing.md) |
-| 针对这个职位帮我准备面试 | [面试准备](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/interview-prep.md) |
-| 投递前帮我核查公开资料 | [投递前自查](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/verification.md) |
-| 帮我生成国自然的申报简历 | [课题申报](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/grant-application.md)（只在科研线开启时） |
+| 盘一下我跟目标座位的差距 | [职业规划 & 差距盘点](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初始化后第一个跑，之后每季度再跑一次 |
+| 帮我针对这个 JD 生成简历 | [JD 定制简历](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| 看看有什么合适的机会 | [主动搜岗位](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| 针对这个职位帮我准备面试 | [面试准备](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| 投递前帮我核查公开资料 | [投递前自查](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 帮我生成国自然的申报简历 | [课题申报](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（只在科研线开启时） |
 
 ## 常见问题
 

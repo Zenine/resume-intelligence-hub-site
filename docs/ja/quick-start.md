@@ -46,12 +46,12 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 | 言い方 | ワークフロー |
 |--------|-------------|
-| Diff my gap against the target seat | [キャリアプランニング & ギャップ分析](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/career-planning.md) — 初期化直後に最初に実行し、その後は四半期ごとに再実行 |
-| Tailor my resume to this JD | [JD カスタム履歴書](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-tailored-resume.md) |
-| What's out there for me | [アクティブ JD ソーシング](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/jd-sourcing.md) |
-| Prep me for this interview | [面接準備](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/interview-prep.md) |
-| Run pre-submission verification | [検証](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/verification.md) |
-| 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [研究課題申請](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/workflows/grant-application.md)（リサーチトラック） |
+| Diff my gap against the target seat | [キャリアプランニング & ギャップ分析](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初期化直後に最初に実行し、その後は四半期ごとに再実行 |
+| Tailor my resume to this JD | [JD カスタム履歴書](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| What's out there for me | [アクティブ JD ソーシング](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| Prep me for this interview | [面接準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| Run pre-submission verification | [検証](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [研究課題申請](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（リサーチトラック） |
 
 ## トラブルシューティング
 

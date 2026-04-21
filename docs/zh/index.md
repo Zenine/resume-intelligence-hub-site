@@ -89,7 +89,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 ## 它和其他简历 skill 不一样在哪
 
-市面上大多数简历类 skill 是一次性工具——贴 JD、出简历，用完就散。这个不是。它会让你把几个月的求职、面试、（如果要的话）课题申报都沉淀在同一个私人 Git 仓库里，Agent 每次对话先读这个仓库，产出会被你之前写下的定位一直约束着。完整逻辑写在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/SKILL.md)。
+市面上大多数简历类 skill 是一次性工具——贴 JD、出简历，用完就散。这个不是。它会让你把几个月的求职、面试、（如果要的话）课题申报都沉淀在同一个私人 Git 仓库里，Agent 每次对话先读这个仓库，产出会被你之前写下的定位一直约束着。完整逻辑写在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
 
 ## 搭配使用的专精 skill
 

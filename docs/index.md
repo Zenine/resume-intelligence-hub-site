@@ -81,7 +81,7 @@ Then, in your AI IDE, say any of:
 
 ## How it differs from other resume skills
 
-Most resume skills are one-shot generators — you paste a JD, they emit a resume. This one bootstraps a **persistent private repo** that you iterate on across months of job search, interviews, and (optionally) grant applications. The agent reads the repo each session and is biased by your positioning lock. The [SKILL.md](https://github.com/Zenine/resume-intelligence-hub-site/blob/main/SKILL.md) is the full methodology.
+Most resume skills are one-shot generators — you paste a JD, they emit a resume. This one bootstraps a **persistent private repo** that you iterate on across months of job search, interviews, and (optionally) grant applications. The agent reads the repo each session and is biased by your positioning lock. The [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) is the full methodology.
 
 ## Complementary skills
 
