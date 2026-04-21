@@ -1,0 +1,32 @@
+name: GSC sitemap notify
+
+on:
+  workflow_run:
+    workflows: [Deploy VitePress docs to GitHub Pages]
+    types: [completed]
+  workflow_dispatch:
+  schedule:
+    # Weekly Monday 03:00 UTC — a second nudge in case the post-deploy run missed
+    - cron: '0 3 * * 1'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gsc-sitemap
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    # Only proceed when the upstream deploy succeeded, or when this is run manually / on schedule
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Submit sitemap to Google Search Console
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: node scripts/submit-sitemap.mjs
