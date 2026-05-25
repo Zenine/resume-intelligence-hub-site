@@ -8,7 +8,7 @@
 [![Powered by Meridian](https://img.shields.io/badge/Powered%20by-Meridian-8b5cf6?style=flat-square)](https://github.com/lordmos/meridian)
 
 <div align="center">
-  <img src=".github/assets/hero.svg" alt="Resume Intelligence Hub" width="120" />
+  <img src=".github/assets/hero-career-hub.png" alt="Resume Intelligence Hub" width="720" />
 </div>
 
 # resume-intelligence-hub-site
@@ -29,7 +29,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 > **build my career repo**
 
-The agent walks you through a 7-question interview and scaffolds your private career hub. You only need to: ① answer the interview → ② review the generated hub → ③ start using it.
+The agent walks you through an 8-question interview and scaffolds your private career hub. You only need to: ① answer the interview → ② review the generated hub → ③ start using it.
 
 **Resume after interruption** → tell the agent: `continue filling my hub`
 
@@ -37,14 +37,15 @@ The agent walks you through a 7-question interview and scaffolds your private ca
 
 - **Single source of truth** — `profiles/` is the authoritative data layer; generated resumes are derivatives, never hand-edited
 - **Career compass** — name your stretch target 1–2 levels up, lock it in `AGENTS.md`, diff the four-gap frame each quarter
-- **Dual-track support** — job applications and research/grant proposals separated by design; toggle the research track at bootstrap
+- **Multi-track support** — job applications, research/grant proposals, and credential or promotion dossiers stay separated by design
 - **Pre-submission verification** — public-source cross-check on every load-bearing claim before high-stakes submissions
+- **Attribution boundaries** — separates personal ownership, team outcomes, company metrics, quotes, pipeline, forecasts, and realized revenue
 - **Cross-IDE via AGENTS.md** — works with Claude Code, Cursor, Codex, Cline, Windsurf, GitHub Copilot
 - **Backed by proven frameworks** — Google XYZ, STAR, BEI, Heilmeier Catechism, stretch-target heuristic, triangulation
 
 ## How it differs from other resume skills
 
-Most resume skills are one-shot generators — paste a JD, get a resume. This one bootstraps a **persistent private repo** you iterate on across months of job search, interviews, and grant applications. The agent reads the repo each session and is biased by your positioning lock.
+Most resume skills are one-shot generators — paste a JD, get a resume. This one bootstraps a **persistent private repo** you iterate on across months of job search, interviews, grant applications, and credential or promotion dossiers. The agent reads the repo each session and is biased by your positioning lock.
 
 ## Structure
 

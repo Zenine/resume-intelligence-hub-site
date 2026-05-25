@@ -28,15 +28,16 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 > **幫我搭個履歷庫**
 
-AI 會問你 7 個問題：
+AI 會問你 8 個問題：
 
 1. **語言** — 中文或英文，選一個，別混著來
 2. **現有資料** — 手頭有舊履歷 / CV 就先發給它，下面幾個問題都會因此更準
 3. **產業** — 軟體、醫療、設計、法律、學術……什麼都行
 4. **目標職級** — 初級、資深 IC、一線經理、總監、VP、創辦人、PI，按自己情況說
 5. **要不要研究那條線** — 只在申報研究計畫 / 研究補助時需要開
-6. **履歷輸出語言** — 中文、英文或雙語都行
-7. **儲存庫放哪** — 硬碟上的絕對路徑
+6. **要不要職稱 / 資質 / 晉升申報線** — 只在準備職稱、執業資質、晉升材料時需要開
+7. **履歷輸出語言** — 中文、英文或雙語都行
+8. **儲存庫放哪** — 硬碟上的絕對路徑
 
 答完 AI 會：把目錄結構搭好 → 把定位寫進 `AGENTS.md` → 把你給的舊履歷封存 → 在 `todo.md` 裡寫一份「接下來要做什麼」的清單。
 
@@ -52,6 +53,7 @@ Hub 搭好之後，直接用中文和 AI 說想做什麼就行：
 | 針對這個職位幫我準備面試 | [面試準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
 | 投遞前幫我核查公開資料 | [投遞前自查](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
 | 幫我生成國科會（NSTC）研究計畫的申報履歷 | [研究計畫申報](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（只在研究線開啟時） |
+| 幫我準備職稱 / 資質 / 晉升申報材料 | [職稱 / 資質 / 晉升申報](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/credential-application.md) |
 
 ## 常見問題
 

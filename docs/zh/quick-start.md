@@ -28,15 +28,16 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 > **帮我搭个简历库**
 
-AI 会问你 7 个问题：
+AI 会问你 8 个问题：
 
 1. **语言** — 中文或英文，选一个，别混着来
 2. **现有材料** — 手头有旧简历/CV 就先发给它，下面几个问题都会因此更准
 3. **行业** — 软件、医疗、设计、法律、学术……什么都行
 4. **目标职级** — 初级、资深 IC、一线经理、总监、VP、创始人、PI，按自己情况说
 5. **要不要科研那条线** — 只在申课题 / 基金时需要开
-6. **简历输出语言** — 中文、英文或双语都行
-7. **仓库放哪** — 硬盘上的绝对路径
+6. **要不要职称 / 资质 / 晋升申报线** — 只在准备职称、执业资质、晋升材料时需要开
+7. **简历输出语言** — 中文、英文或双语都行
+8. **仓库放哪** — 硬盘上的绝对路径
 
 答完 AI 会：把目录结构搭好 → 把定位写进 `AGENTS.md` → 把你给的旧简历归档 → 在 `todo.md` 里写一份"接下来要做什么"的清单。
 
@@ -52,6 +53,7 @@ Hub 搭好之后，直接用中文和 AI 说想做什么就行：
 | 针对这个职位帮我准备面试 | [面试准备](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
 | 投递前帮我核查公开资料 | [投递前自查](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
 | 帮我生成国自然的申报简历 | [课题申报](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（只在科研线开启时） |
+| 帮我准备职称 / 资质 / 晋升申报材料 | [职称 / 资质 / 晋升申报](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/credential-application.md) |
 
 ## 常见问题
 

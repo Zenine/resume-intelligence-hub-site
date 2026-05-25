@@ -5,9 +5,9 @@ title: 给 AI IDE 用的 career skill
 hero:
   name: "Resume Intelligence Hub"
   text: "给 AI IDE 用的 career skill"
-  tagline: "一句话在你的 AI IDE 里搭起私人职业中枢——简历定制、面试准备、课题申报，全在同一个 Git 仓库里。跨 Claude Code、Cursor、Windsurf 等主流 IDE 通用。"
+  tagline: "一句话在你的 AI IDE 里搭起私人职业中枢——简历定制、面试准备、课题申报、职称/资质材料，全在同一个 Git 仓库里。"
   image:
-    src: /hero.svg
+    src: /images/hero-career-hub.png
     alt: Resume Intelligence Hub
   actions:
     - theme: brand
@@ -36,15 +36,15 @@ features:
       src: /icons/fork.svg
       width: 48
       height: 48
-    title: 双轨分离
-    details: 招聘简历和基金申报书格式、语气、侧重完全不一样。两边数据源分开，只在需要时开启科研那条线。
+    title: 多轨分离
+    details: 招聘简历、基金申报书、职称/资质/晋升材料的格式、语气、证据要求完全不一样。数据源和工作流分开，避免口径互相污染。
 
   - icon:
       src: /icons/shield.svg
       width: 48
       height: 48
     title: 投递前核查
-    details: 冲高阶岗或报课题前，把简历里每条声明（学历、头衔、项目号、数字）逐条在公开来源过一遍，把风险项提前改掉，而不是等对方查到。
+    details: 冲高阶岗、报课题或做职称/资质评审前，把材料里每条声明（学历、头衔、项目号、数字）逐条在公开来源过一遍，把风险项提前改掉。
 
   - icon:
       src: /icons/globe.svg
@@ -85,11 +85,16 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 > 看看有什么合适的机会                     # 让 AI 主动搜岗位
 > 针对这个职位帮我准备面试                 # 模拟面试 + 准备故事
 > 投递前帮我核查一下公开资料               # 公开资料交叉验证
+> 帮我准备职称 / 资质 / 晋升材料           # 证据矩阵 + 申报叙事
 ```
+
+## 架构图
+
+![Resume Intelligence Hub 架构与工作流](/images/architecture-workflow.png)
 
 ## 它和其他简历 skill 不一样在哪
 
-市面上大多数简历类 skill 是一次性工具——贴 JD、出简历，用完就散。这个不是。它会让你把几个月的求职、面试、（如果要的话）课题申报都沉淀在同一个私人 Git 仓库里，Agent 每次对话先读这个仓库，产出会被你之前写下的定位一直约束着。完整逻辑写在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
+市面上大多数简历类 skill 是一次性工具——贴 JD、出简历，用完就散。这个不是。它会让你把几个月的求职、面试、（如果要的话）课题申报和职称/资质/晋升材料都沉淀在同一个私人 Git 仓库里，Agent 每次对话先读这个仓库，产出会被你之前写下的定位一直约束着。完整逻辑写在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
 
 ## 搭配使用的专精 skill
 

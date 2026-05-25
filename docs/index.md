@@ -5,9 +5,9 @@ title: A career skill for your AI IDE
 hero:
   name: "Resume Intelligence Hub"
   text: "A career skill for your AI IDE"
-  tagline: "One sentence bootstraps a private career hub — resume tailoring, interview prep, and grant applications in one Git repo. Works with Claude Code, Cursor, Windsurf, and more."
+  tagline: "One sentence bootstraps a private career hub — resume tailoring, interview prep, grant applications, and credential dossiers in one Git repo. Works with Claude Code, Cursor, Windsurf, and more."
   image:
-    src: /hero.svg
+    src: /images/hero-career-hub.png
     alt: Resume Intelligence Hub
   actions:
     - theme: brand
@@ -36,15 +36,15 @@ features:
       src: /icons/fork.svg
       width: 48
       height: 48
-    title: Dual-track support
-    details: Job applications and research / grant proposals have different data sources and formats. Keep them separate — toggle the research track at bootstrap.
+    title: Multi-track support
+    details: Job applications, research / grant proposals, and credential or promotion dossiers have different data sources, formats, and risk levels. Keep them separate by design.
 
   - icon:
       src: /icons/shield.svg
       width: 48
       height: 48
     title: Pre-submission verification
-    details: Before senior-role interviews or grant submissions, run a public-source cross-check on every load-bearing claim. Evidence before assertions.
+    details: Before senior-role interviews, grant submissions, or credential reviews, run a public-source cross-check on every load-bearing claim. Evidence before assertions.
 
   - icon:
       src: /icons/globe.svg
@@ -77,11 +77,16 @@ Then, in your AI IDE, say any of:
 > what's out there for me                            # active JD sourcing
 > prep me for this interview                         # interview coaching
 > run a pre-submission verification                  # pre-submission fact-check
+> help me prepare a credential dossier               # credential / promotion packet
 ```
+
+## Architecture
+
+![Resume Intelligence Hub architecture and workflow](/images/architecture-workflow.png)
 
 ## How it differs from other resume skills
 
-Most resume skills are one-shot generators — you paste a JD, they emit a resume. This one bootstraps a **persistent private repo** that you iterate on across months of job search, interviews, and (optionally) grant applications. The agent reads the repo each session and is biased by your positioning lock. The [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) is the full methodology.
+Most resume skills are one-shot generators — you paste a JD, they emit a resume. This one bootstraps a **persistent private repo** that you iterate on across months of job search, interviews, and (optionally) grant applications or credential dossiers. The agent reads the repo each session and is biased by your positioning lock. The [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) is the full methodology.
 
 ## Complementary skills
 

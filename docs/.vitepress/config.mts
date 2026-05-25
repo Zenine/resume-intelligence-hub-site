@@ -34,7 +34,7 @@ export default defineConfig({
         '@type': 'SoftwareApplication',
         name: 'Resume Intelligence Hub',
         description:
-          'An AI-agent skill that bootstraps a personal career intelligence hub — a private Git repo that is both a single source of truth (resumes, interview prep, grant applications, pre-submission verification) and a career compass (stretch target, capability gap, quarterly plan).',
+          'An AI-agent skill that bootstraps a personal career intelligence hub — a private Git repo that is both a single source of truth (resumes, interview prep, grant applications, credential dossiers, pre-submission verification) and a career compass (stretch target, capability gap, quarterly plan).',
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Cross-platform',
         url: 'https://zenine.github.io/resume-intelligence-hub-site/',
@@ -58,6 +58,8 @@ export default defineConfig({
           'interview prep',
           'JD-tailored resume',
           'grant application',
+          'credential dossier',
+          'promotion dossier',
           'AI agent skill',
           'Claude Code',
           'Cursor',
@@ -117,7 +119,7 @@ export default defineConfig({
     root: {
       label: 'English',
       lang: 'en-US',
-      description: 'An AI-agent skill to bootstrap a personal career intelligence hub — resumes, interview prep, grant applications, and pre-submission verification. Cross-IDE via AGENTS.md.',
+      description: 'An AI-agent skill to bootstrap a personal career intelligence hub — resumes, interview prep, grant applications, credential dossiers, and pre-submission verification. Cross-IDE via AGENTS.md.',
       themeConfig: {
         nav: [
           { text: 'Quick Start', link: '/quick-start' },

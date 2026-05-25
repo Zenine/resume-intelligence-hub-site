@@ -39,8 +39,10 @@ Source: English · Targets: 简体中文 (zh) · 日本語 (ja) · 繁體中文 
 | AI IDE | AI IDE | AI IDE | AI IDE | |
 | single source of truth | 单一事实来源 | 単一の信頼できる情報源 | 單一事實來源 | |
 | positioning lock | 定位锁 | ポジショニングロック | 定位鎖 | |
-| dual-track | 双轨 | デュアルトラック | 雙軌 | |
+| multi-track | 多轨 | マルチトラック | 多軌 | |
 | research track | 科研线 / 研究线 | リサーチトラック | 研究軌 | |
+| credential / promotion dossier | 职称 / 资质 / 晋升材料 | 資格 / 昇進書類 | 職稱 / 資質 / 晉升材料 | |
+| attribution boundary | 归因边界 | 帰属境界 | 歸因邊界 | |
 | pre-submission verification | 投递前核查 | 応募前検証 | 投遞前查核 | |
 | bootstrap | 初始化 | 初期セットアップ | 初始化 | |
 | scaffold | 搭脚手架 | スキャフォールド | 搭建架構 | |
@@ -92,7 +94,7 @@ Source: English · Targets: 简体中文 (zh) · 日本語 (ja) · 繁體中文 
 | 3. Use the hub | 3. 平时怎么用 | 3. ハブの使用 | 3. 平時怎麼用 |
 | 1. Single source of truth | 1. 事实只写一份 | 1. 単一の信頼できる情報源 | 1. 事實只寫一份 |
 | 2. Positioning lock in AGENTS.md | 2. 定位写在 AGENTS.md 最上面 | 2. AGENTS.md のポジショニングロック | 2. 定位寫在 AGENTS.md 最上面 |
-| 3. Dual-track separation (when enabled) | 3. 求职和课题分开做 | 3. デュアルトラック分離（有効時） | 3. 求職和研究計畫分開做 |
+| 3. Multi-track separation (when enabled) | 3. 多类材料分开做 | 3. マルチトラック分離（有効時） | 3. 多類材料分開做 |
 | 4. Path-references for sensitive originals | 4. 敏感原件不入仓 | 4. 機密原本はパス参照 | 4. 敏感原件不入儲存庫 |
 | 5. Public-source cross-check before high-stakes submissions | 5. 投递前一定要公开资料自查 | 5. 高ステークス応募前の公開情報源クロスチェック | 5. 投遞前一定要公開資料自查 |
 | 6. todo.md vs changelog.md | 6. todo.md 只放未做的 | 6. todo.md vs changelog.md | 6. todo.md 只放未做的 |
@@ -100,6 +102,7 @@ Source: English · Targets: 简体中文 (zh) · 日本語 (ja) · 繁體中文 
 | 8. STAR stories separate from facts | 8. 面试故事和事实分开存 | 8. STAR ストーリーは事実と分離 | 8. 面試故事和事實分開存 |
 | 9. Monolingual per hub | 9. 一个 hub 一种语言 | 9. ハブごとに単一言語 | 9. 一個 hub 一種語言 |
 | 10. AI-IDE agnostic via AGENTS.md | 10. AI IDE 别绑死在一家 | 10. AGENTS.md 経由で AI IDE 非依存 | 10. AI IDE 別綁死在一家 |
+| 11. Attribution is part of the evidence | 11. 归因也是证据的一部分 | 11. 帰属もエビデンスの一部 | 11. 歸因也是證據的一部分 |
 | Frameworks referenced | 引用的方法论 | 参照フレームワーク | 引用的方法論 |
 
 ---

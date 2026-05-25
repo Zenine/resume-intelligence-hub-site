@@ -5,9 +5,9 @@ title: AI IDE 向けのキャリア skill
 hero:
   name: "Resume Intelligence Hub"
   text: "AI IDE 向けのキャリア skill"
-  tagline: "一言で AI IDE にプライベートキャリアハブを構築——履歴書カスタマイズ、面接準備、研究課題申請をひとつの Git リポジトリで管理。Claude Code、Cursor、Windsurf など主要 IDE に対応。"
+  tagline: "一言で AI IDE にプライベートキャリアハブを構築——履歴書カスタマイズ、面接準備、研究課題申請、資格/昇進書類をひとつの Git リポジトリで管理。"
   image:
-    src: /hero.svg
+    src: /images/hero-career-hub.png
     alt: Resume Intelligence Hub
   actions:
     - theme: brand
@@ -36,15 +36,15 @@ features:
       src: /icons/fork.svg
       width: 48
       height: 48
-    title: デュアルトラック対応
-    details: 求人応募と研究 / 助成金提案はデータソースもフォーマットも異なる。分けて管理——初期化時にリサーチトラックを切り替え。
+    title: マルチトラック対応
+    details: 求人応募、研究 / 助成金提案、資格/昇進書類はデータソース、形式、証拠要件が異なる。分けて管理し、文脈の混在を防ぐ。
 
   - icon:
       src: /icons/shield.svg
       width: 48
       height: 48
     title: 応募前検証
-    details: シニアロール面接や助成金提出前に、すべての重要な主張を公開情報源で裏取り。主張の前にエビデンスを。
+    details: シニアロール面接、助成金提出、資格審査の前に、すべての重要な主張を公開情報源で裏取り。主張の前にエビデンスを。
 
   - icon:
       src: /icons/globe.svg
@@ -85,11 +85,16 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 > 私に合いそうな求人を探して                         # アクティブ JD ソーシング
 > この面接の準備をして                               # 面接コーチング
 > 応募前に検証して                                   # 応募前検証
+> 資格 / 昇進書類を準備して                         # 証拠マトリクス + 申請ナラティブ
 ```
+
+## アーキテクチャ
+
+![Resume Intelligence Hub アーキテクチャとワークフロー](/images/architecture-workflow.png)
 
 ## 他の履歴書 skill との違い
 
-市場にある多くの履歴書系 skill は単発ジェネレータ——JD を貼ると履歴書を出力、それで終わり。本 skill は違う。数か月にわたる求職活動、面接、（必要なら）研究課題申請を同一の**永続的なプライベートリポジトリ**に蓄積させる。エージェントは毎セッションでリポジトリを読み、あなたのポジショニングロックに従って産出する。完全な方法論は [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) 参照。
+市場にある多くの履歴書系 skill は単発ジェネレータ——JD を貼ると履歴書を出力、それで終わり。本 skill は違う。数か月にわたる求職活動、面接、（必要なら）研究課題申請や資格/昇進書類を同一の**永続的なプライベートリポジトリ**に蓄積させる。エージェントは毎セッションでリポジトリを読み、あなたのポジショニングロックに従って産出する。完全な方法論は [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) 参照。
 
 ## 補完スキル
 

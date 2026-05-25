@@ -15,7 +15,7 @@
 [![Powered by Meridian](https://img.shields.io/badge/Powered%20by-Meridian-8b5cf6?style=flat-square)](https://github.com/lordmos/meridian)
 
 <div align="center">
-  <img src=".github/assets/hero.svg" alt="Resume Intelligence Hub" width="120" />
+  <img src=".github/assets/hero-career-hub.png" alt="Resume Intelligence Hub" width="720" />
 </div>
 
 # resume-intelligence-hub-site
@@ -36,7 +36,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 > **帮我搭个简历库**
 
-AI 会问你 7 个问题，然后搭好你的私有职业 hub。你只需要：① 回答问卷 → ② 审阅生成的 hub → ③ 开始使用。
+AI 会问你 8 个问题，然后搭好你的私有职业 hub。你只需要：① 回答问卷 → ② 审阅生成的 hub → ③ 开始使用。
 
 **中断后恢复** → 告诉 AI：`继续完善档案`
 
@@ -44,14 +44,15 @@ AI 会问你 7 个问题，然后搭好你的私有职业 hub。你只需要：�
 
 - **单一事实来源** — `profiles/` 是权威数据层；生成的简历都是衍生物，从不手动编辑
 - **职业指南针** — 把高 1-2 级的目标锁在 `AGENTS.md` 顶部，每季度盘一次四维度差距
-- **双轨分离** — 求职投递和课题申报数据源彻底分开；初始化时可选是否开启科研线
+- **多轨分离** — 求职投递、课题申报、职称/资质/晋升材料分开管理，避免材料口径互相污染
 - **投递前核查** — 高风险投递前对每一条承重声明做公开资料三角验证
+- **归因边界** — 区分个人直接负责、团队成果、公司指标、报价、储备商机、预测与已确认营收
 - **跨 IDE 通用** — 通过 AGENTS.md 支持 Claude Code、Cursor、Codex、Cline、Windsurf、GitHub Copilot
 - **有方法论支撑** — Google XYZ 公式、STAR、BEI、Heilmeier 九问、拉伸目标启发式、三角验证
 
 ## 和其他简历 skill 的不同
 
-大多数简历 skill 是一次性生成器——贴 JD 出简历。这个 skill 搭建的是一个**持久化的私有仓库**，让你在数月的求职、面试、课题申报过程中持续迭代。AI 每次对话都会读取仓库，并根据你的定位锁偏置输出。
+大多数简历 skill 是一次性生成器——贴 JD 出简历。这个 skill 搭建的是一个**持久化的私有仓库**，让你在数月的求职、面试、课题申报、职称/资质/晋升申报过程中持续迭代。AI 每次对话都会读取仓库，并根据你的定位锁偏置输出。
 
 ## 目录结构
 

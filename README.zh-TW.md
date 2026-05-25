@@ -15,7 +15,7 @@
 [![Powered by Meridian](https://img.shields.io/badge/Powered%20by-Meridian-8b5cf6?style=flat-square)](https://github.com/lordmos/meridian)
 
 <div align="center">
-  <img src=".github/assets/hero.svg" alt="Resume Intelligence Hub" width="120" />
+  <img src=".github/assets/hero-career-hub.png" alt="Resume Intelligence Hub" width="720" />
 </div>
 
 # resume-intelligence-hub-site
@@ -36,7 +36,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 > **幫我建職涯庫**
 
-AI 會問你 7 個問題，然後搭好你的私有職涯 hub。你只需要：① 回答問卷 → ② 審閱生成的 hub → ③ 開始使用。
+AI 會問你 8 個問題，然後搭好你的私有職涯 hub。你只需要：① 回答問卷 → ② 審閱生成的 hub → ③ 開始使用。
 
 **中斷後恢復** → 告訴 AI：`繼續完善我的檔案`
 
@@ -44,14 +44,15 @@ AI 會問你 7 個問題，然後搭好你的私有職涯 hub。你只需要：�
 
 - **單一事實來源** — `profiles/` 是權威資料層；生成的履歷都是衍生物，從不手動編輯
 - **職涯指南針** — 把高 1-2 級的挑戰目標鎖在 `AGENTS.md` 頂部，每季盤一次四維度差距
-- **雙軌分離** — 求職投遞和課題申報資料來源徹底分開；初始化時可選是否開啟科研軌
+- **多軌分離** — 求職投遞、課題申報、職稱/資質/晉升材料分開管理，避免材料口徑互相污染
 - **投遞前查核** — 高風險投遞前對每一條承重聲明做公開資料三角驗證
+- **歸因邊界** — 區分個人直接負責、團隊成果、公司指標、報價、儲備商機、預測與已確認營收
 - **跨 IDE 通用** — 透過 AGENTS.md 支援 Claude Code、Cursor、Codex、Cline、Windsurf、GitHub Copilot
 - **有方法論支撐** — Google XYZ 公式、STAR、BEI、Heilmeier 九問、挑戰目標啟發式、三角驗證
 
 ## 和其他履歷 skill 的不同
 
-大多數履歷 skill 是一次性生成器——貼 JD 出履歷。這個 skill 搭建的是一個**持久化的私有儲存庫**，讓你在數個月的求職、面試、課題申報過程中持續迭代。
+大多數履歷 skill 是一次性生成器——貼 JD 出履歷。這個 skill 搭建的是一個**持久化的私有儲存庫**，讓你在數個月的求職、面試、課題申報、職稱/資質/晉升申報過程中持續迭代。
 
 ## 目錄結構
 

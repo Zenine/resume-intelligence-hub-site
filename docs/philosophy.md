@@ -1,6 +1,6 @@
 # Design Philosophy
 
-Ten non-obvious choices, each one earned by a mistake. You don't need to understand all of them to use the hub — but read this before changing anything.
+Eleven non-obvious choices, each one earned by a mistake. You don't need to understand all of them to use the hub — but read this before changing anything.
 
 ## 1. Your experience lives in one place
 
@@ -45,6 +45,10 @@ Choose Chinese or English at bootstrap, then don't mix. The templates, AI instru
 ## 10. Don't lock yourself into one AI IDE
 
 `AGENTS.md` is the cross-IDE standard for context files. If your IDE wants a different location (Cursor's `.cursor/rules/`, Windsurf's `.windsurfrules`), symlink or copy. Don't write the content in a vendor-specific format — switching tools shouldn't require rewriting your context.
+
+## 11. Attribution is part of the evidence
+
+High-stakes materials need more than impressive numbers. Separate personal ownership, team outcomes, company-wide metrics, quotes, pipeline, forecasts, and realized revenue. The hub should preserve those boundaries so a strong claim stays both persuasive and defensible.
 
 ---
 

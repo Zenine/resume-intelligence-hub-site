@@ -28,21 +28,22 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 > **build my career repo**
 
-エージェントが 7 問インタビューで進める：
+エージェントが 8 問インタビューで進める：
 
 1. **言語** — 中国語か英語、どちらか 1 つ（混在不可）
 2. **既存資料** — 手元に履歴書 / CV があれば先に渡す（以降の質問すべてが正確になる）
 3. **業界 / 分野** — ソフトウェア、医療、デザイン、法律、学術など
 4. **ターゲットシニアリティ** — エントリーから VP / 創業者 / PI まで
 5. **リサーチトラック？** — 助成金・研究費応募を行う場合のみ有効化
-6. **履歴書出力言語** — 中国語、英語、または両方
-7. **リポジトリ場所** — ディスク上のパス
+6. **資格 / 昇進書類トラック？** — 専門資格、称号、昇進書類を準備する場合のみ有効化
+7. **履歴書出力言語** — 中国語、英語、または両方
+8. **リポジトリ場所** — ディスク上のパス
 
 続いてエージェントがディレクトリをスキャフォールドし、`AGENTS.md` にポジショニングを書き込み、既存の履歴書をアーカイブに取り込み、`todo.md` に「次のステップ」パンチリストを書き出す。
 
 ## 3. ハブの使用
 
-初期化後、エージェントが 6 つのワークフローを処理する。自然言語で呼び出す：
+初期化後、エージェントが 7 つのワークフローを処理する。自然言語で呼び出す：
 
 | 言い方 | ワークフロー |
 |--------|-------------|
@@ -52,6 +53,7 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 | この面接の準備をして | [面接準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
 | 応募前に検証して | [検証](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
 | XX 助成金の申請書類を作って | [研究課題申請](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（リサーチトラック） |
+| 資格 / 昇進書類を準備して | [資格 / 昇進書類](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/credential-application.md) |
 
 ## トラブルシューティング
 

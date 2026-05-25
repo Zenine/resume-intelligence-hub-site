@@ -5,9 +5,9 @@ title: 給 AI IDE 用的 career skill
 hero:
   name: "Resume Intelligence Hub"
   text: "給 AI IDE 用的 career skill"
-  tagline: "一句話在你的 AI IDE 裡搭起私人職涯中樞——履歷客製、面試準備、研究計畫申報，全在同一個 Git 儲存庫裡。跨 Claude Code、Cursor、Windsurf 等主流 IDE 通用。"
+  tagline: "一句話在你的 AI IDE 裡搭起私人職涯中樞——履歷客製、面試準備、研究計畫申報、職稱/資質材料，全在同一個 Git 儲存庫裡。"
   image:
-    src: /hero.svg
+    src: /images/hero-career-hub.png
     alt: Resume Intelligence Hub
   actions:
     - theme: brand
@@ -36,15 +36,15 @@ features:
       src: /icons/fork.svg
       width: 48
       height: 48
-    title: 雙軌分離
-    details: 求職履歷和研究計畫申報書格式、語氣、重點完全不同。兩邊資料來源分開，只在需要時開啟研究那條線。
+    title: 多軌分離
+    details: 求職履歷、研究計畫申報書、職稱/資質/晉升材料的格式、語氣、證據要求完全不同。資料來源和工作流程分開，避免口徑互相污染。
 
   - icon:
       src: /icons/shield.svg
       width: 48
       height: 48
     title: 投遞前查核
-    details: 衝高階職或申報研究計畫前，把履歷裡每條聲明（學歷、職稱、計畫編號、數字）逐條在公開來源過一遍，把風險項提前改掉，而不是等對方查到。
+    details: 衝高階職、申報研究計畫或做職稱/資質審查前，把材料裡每條聲明（學歷、職稱、計畫編號、數字）逐條在公開來源過一遍，把風險項提前改掉。
 
   - icon:
       src: /icons/globe.svg
@@ -85,11 +85,16 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 > 看看有什麼合適的機會                     # 讓 AI 主動搜職缺
 > 針對這個職位幫我準備面試                 # 模擬面試 + 準備故事
 > 投遞前幫我核查一下公開資料               # 公開資料交叉驗證
+> 幫我準備職稱 / 資質 / 晉升材料           # 證據矩陣 + 申報敘事
 ```
+
+## 架構圖
+
+![Resume Intelligence Hub 架構與工作流程](/images/architecture-workflow.png)
 
 ## 它和其他履歷 skill 不一樣在哪
 
-市面上多數履歷類 skill 是一次性工具——貼 JD、出履歷，用完就散。這個不是。它會讓你把幾個月的求職、面試、（如果要的話）研究計畫申報都沉澱在同一個私人 Git 儲存庫裡，Agent 每次對話先讀這個儲存庫，產出會被你之前寫下的定位一直約束著。完整邏輯寫在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
+市面上多數履歷類 skill 是一次性工具——貼 JD、出履歷，用完就散。這個不是。它會讓你把幾個月的求職、面試、（如果要的話）研究計畫申報和職稱/資質/晉升材料都沉澱在同一個私人 Git 儲存庫裡，Agent 每次對話先讀這個儲存庫，產出會被你之前寫下的定位一直約束著。完整邏輯寫在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
 
 ## 搭配使用的專精 skill
 

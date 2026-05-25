@@ -9,7 +9,7 @@
 [![Powered by Meridian](https://img.shields.io/badge/Powered%20by-Meridian-8b5cf6?style=flat-square)](https://github.com/lordmos/meridian)
 
 <div align="center">
-  <img src=".github/assets/hero.svg" alt="Resume Intelligence Hub" width="120" />
+  <img src=".github/assets/hero-career-hub.png" alt="Resume Intelligence Hub" width="720" />
 </div>
 
 # resume-intelligence-hub-site
@@ -30,7 +30,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 > **build my career repo**
 
-The agent walks you through a 7-question interview and scaffolds your private career hub. You only need to: ① answer the interview → ② review the generated hub → ③ start using it.
+The agent walks you through an 8-question interview and scaffolds your private career hub. You only need to: ① answer the interview → ② review the generated hub → ③ start using it.
 
 **Resume after interruption** → tell the agent: `continue filling my hub`
 
@@ -38,14 +38,15 @@ The agent walks you through a 7-question interview and scaffolds your private ca
 
 - **Single source of truth** — `profiles/` is the authoritative data layer; generated resumes are derivatives, never hand-edited
 - **Career compass** — name your stretch target 1–2 levels up, lock it in `AGENTS.md`, diff the four-gap frame each quarter
-- **Dual-track support** — job applications and research/grant proposals separated by design; toggle the research track at bootstrap
+- **Multi-track support** — job applications, research/grant proposals, and credential or promotion dossiers stay separated by design
 - **Pre-submission verification** — public-source cross-check on every load-bearing claim before high-stakes submissions
+- **Attribution boundaries** — separates personal ownership, team outcomes, company metrics, quotes, pipeline, forecasts, and realized revenue
 - **Cross-IDE via AGENTS.md** — works with Claude Code, Cursor, Codex, Cline, Windsurf, GitHub Copilot
 - **Backed by proven frameworks** — Google XYZ, STAR, BEI, Heilmeier Catechism, stretch-target heuristic, triangulation
 
 ## How it differs from other resume skills
 
-Most resume skills are one-shot generators — paste a JD, get a resume. This one bootstraps a **persistent private repo** you iterate on across months of job search, interviews, and grant applications. The agent reads the repo each session and is biased by your positioning lock.
+Most resume skills are one-shot generators — paste a JD, get a resume. This one bootstraps a **persistent private repo** you iterate on across months of job search, interviews, grant applications, and credential or promotion dossiers. The agent reads the repo each session and is biased by your positioning lock.
 
 ## Structure
 
@@ -84,15 +85,15 @@ Frequently asked questions about resume-intelligence-hub.
 
 ### What is resume-intelligence-hub?
 
-resume-intelligence-hub is an AI agent skill that bootstraps a personal career intelligence hub — a private Git repository that serves as a single source of truth for your resumes, interview preparation, grant applications, and pre-submission verification, while also acting as a career compass. It names your stretch target, diffs the gap between your current position and that target, and helps you ship a quarterly SMART plan.
+resume-intelligence-hub is an AI agent skill that bootstraps a personal career intelligence hub — a private Git repository that serves as a single source of truth for your resumes, interview preparation, grant applications, credential or promotion dossiers, and pre-submission verification, while also acting as a career compass. It names your stretch target, diffs the gap between your current position and that target, and helps you ship a quarterly SMART plan.
 
 ### What specific problem does it solve?
 
-Most people manage their careers reactively: scattered resumes across folders, ad-hoc interview prep before each interview, and no systematic way to track progress toward a target role. resume-intelligence-hub replaces this with structured infrastructure: `profiles/` holds factual career data, `AGENTS.md` locks in your positioning target so every generated resume biases toward it, and six workflows handle everything from JD-tailored resume generation to public-source fact-checking before high-stakes submissions.
+Most people manage their careers reactively: scattered resumes across folders, ad-hoc interview prep before each interview, and no systematic way to track progress toward a target role. resume-intelligence-hub replaces this with structured infrastructure: `profiles/` holds factual career data, `AGENTS.md` locks in your positioning target so every generated resume biases toward it, and seven workflows handle everything from JD-tailored resume generation to public-source fact-checking before high-stakes submissions.
 
 ### Who is this for?
 
-Anyone actively managing a job search, planning a career move 1–2 levels up, or applying for research grants — at any seniority level, in any industry. Especially useful if you're managing bilingual job markets (Chinese/English), juggling multiple application types (recruitment + research/grants), or want an AI that remembers your career context across sessions rather than starting fresh each time.
+Anyone actively managing a job search, planning a career move 1–2 levels up, applying for research grants, or preparing credential / promotion dossiers — at any seniority level, in any industry. Especially useful if you're managing bilingual job markets (Chinese/English), juggling multiple application types, or want an AI that remembers your career context across sessions rather than starting fresh each time.
 
 ### How does it compare to other resume AI tools?
 
@@ -118,7 +119,7 @@ Then open your AI IDE (Claude Code, Cursor, Windsurf, or any tool that reads `AG
 
 > **build my career repo**
 
-The agent walks you through a 7-question interview and scaffolds your private hub in under 10 minutes. Full walkthrough in [Quick Start](./quick-start.md).
+The agent walks you through an 8-question interview and scaffolds your private hub in under 10 minutes. Full walkthrough in [Quick Start](./quick-start.md).
 
 ---
 
@@ -230,11 +231,16 @@ Then, in your AI IDE, say any of:
 > what's out there for me                            # active JD sourcing
 > prep me for this interview                         # interview coaching
 > run a pre-submission verification                  # pre-submission fact-check
+> help me prepare a credential dossier               # credential / promotion packet
 ```
+
+## Architecture
+
+![Resume Intelligence Hub architecture and workflow](/images/architecture-workflow.png)
 
 ## How it differs from other resume skills
 
-Most resume skills are one-shot generators — you paste a JD, they emit a resume. This one bootstraps a **persistent private repo** that you iterate on across months of job search, interviews, and (optionally) grant applications. The agent reads the repo each session and is biased by your positioning lock. The [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) is the full methodology.
+Most resume skills are one-shot generators — you paste a JD, they emit a resume. This one bootstraps a **persistent private repo** that you iterate on across months of job search, interviews, and (optionally) grant applications or credential dossiers. The agent reads the repo each session and is biased by your positioning lock. The [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) is the full methodology.
 
 ## Complementary skills
 
@@ -252,7 +258,7 @@ Compose on top of this hub for specific one-shot needs:
 <!-- source: docs/philosophy.md -->
 # Design Philosophy
 
-Ten non-obvious choices, each one earned by a mistake. You don't need to understand all of them to use the hub — but read this before changing anything.
+Eleven non-obvious choices, each one earned by a mistake. You don't need to understand all of them to use the hub — but read this before changing anything.
 
 ## 1. Your experience lives in one place
 
@@ -298,6 +304,10 @@ Choose Chinese or English at bootstrap, then don't mix. The templates, AI instru
 
 `AGENTS.md` is the cross-IDE standard for context files. If your IDE wants a different location (Cursor's `.cursor/rules/`, Windsurf's `.windsurfrules`), symlink or copy. Don't write the content in a vendor-specific format — switching tools shouldn't require rewriting your context.
 
+## 11. Attribution is part of the evidence
+
+High-stakes materials need more than impressive numbers. Separate personal ownership, team outcomes, company-wide metrics, quotes, pipeline, forecasts, and realized revenue. The hub should preserve those boundaries so a strong claim stays both persuasive and defensible.
+
 ---
 
 ## Frameworks referenced
@@ -329,21 +339,22 @@ Open your AI IDE (Claude Code, Cursor, Codex, Cline, Windsurf, or anything that 
 
 > **build my career repo**
 
-The agent will walk you through a 7-question interview:
+The agent will walk you through an 8-question interview:
 
 1. **Language** — Chinese or English (pick one, don't mix)
 2. **Existing materials** — upload any resumes/CVs you already have (makes every subsequent step easier)
 3. **Industry / field** — software, healthcare, design, law, academia, etc.
 4. **Target seniority** — entry to VP / founder / PI
 5. **Research track?** — enable only if you apply for grants / research funding
-6. **Resume output language** — Chinese, English, or both
-7. **Repo location** — where on disk
+6. **Credential / promotion dossier track?** — enable only if you prepare professional-title, licensure, or promotion packets
+7. **Resume output language** — Chinese, English, or both
+8. **Repo location** — where on disk
 
 Then the agent scaffolds the directory, seeds `AGENTS.md` with your positioning, imports your old resumes into the archive, and writes a "next steps" punch list into `todo.md`.
 
 ## 3. Use the hub
 
-Once bootstrapped, the agent handles six workflows. Invoke with natural language:
+Once bootstrapped, the agent handles seven workflows. Invoke with natural language:
 
 | Say this | Workflow |
 |----------|----------|
@@ -353,6 +364,7 @@ Once bootstrapped, the agent handles six workflows. Invoke with natural language
 | Prep me for this interview | [Interview prep](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
 | Run pre-submission verification | [Verification](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
 | 帮我生成 XX 基金申报简历 / Generate XX grant application profile | [Grant application](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md) (research track) |
+| Help me prepare a credential / promotion dossier | [Credential / promotion dossier](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/credential-application.md) |
 
 ## Troubleshooting
 
@@ -379,15 +391,15 @@ Currently: Chinese and English templates. Contributions welcome — see the [Git
 
 ### resume-intelligence-hub とは何ですか？
 
-resume-intelligence-hub は、個人のキャリアインテリジェンスハブを構築する AI エージェントスキルです。履歴書・面接準備・研究費申請・提出前検証を一元管理するプライベート Git リポジトリを作成し、ストレッチターゲットの設定、ギャップ分析、四半期 SMART 計画の策定まで担います。
+resume-intelligence-hub は、個人のキャリアインテリジェンスハブを構築する AI エージェントスキルです。履歴書・面接準備・研究費申請・資格/昇進書類・提出前検証を一元管理するプライベート Git リポジトリを作成し、ストレッチターゲットの設定、ギャップ分析、四半期 SMART 計画の策定まで担います。
 
 ### 具体的にどんな問題を解決しますか？
 
-多くの人がキャリア管理を場当たり的に行っています：複数フォルダに散らばった履歴書、面接前の急ごしらえ準備、目標ポジションに向けた進捗管理の欠如。resume-intelligence-hub はこれを構造化されたインフラに置き換えます。`profiles/` に事実データを集約し、`AGENTS.md` でターゲットポジションをロックすることで生成する履歴書すべてをそこに向け、6 つのワークフローが JD カスタム履歴書生成から提出前の公開情報クロスチェックまで処理します。
+多くの人がキャリア管理を場当たり的に行っています：複数フォルダに散らばった履歴書、面接前の急ごしらえ準備、目標ポジションに向けた進捗管理の欠如。resume-intelligence-hub はこれを構造化されたインフラに置き換えます。`profiles/` に事実データを集約し、`AGENTS.md` でターゲットポジションをロックすることで生成する履歴書すべてをそこに向け、7 つのワークフローが JD カスタム履歴書生成から提出前の公開情報クロスチェックまで処理します。
 
 ### 誰に向いていますか？
 
-求職中、1〜2 レベル上へのキャリアアップを計画中、または研究費申請を行っている方なら業種・職位を問いません。特に、日中英バイリンガル市場で活動中の方、採用応募と研究申請の両方を管理している方、AI にキャリアの文脈を記憶させてセッションをまたいで使いたい方に向いています。
+求職中、1〜2 レベル上へのキャリアアップを計画中、研究費申請、または資格/昇進書類を準備している方なら業種・職位を問いません。特に、日中英バイリンガル市場で活動中の方、複数種類の申請書類を管理している方、AI にキャリアの文脈を記憶させてセッションをまたいで使いたい方に向いています。
 
 ### 他の履歴書 AI ツールと何が違いますか？
 
@@ -407,7 +419,7 @@ AI IDE（Claude Code、Cursor、Windsurf など）を開き、ハブを置きた
 
 > **キャリアリポジトリを作って**
 
-AI が 7 つの質問に答えてもらい、10 分以内でプライベートハブを構築します。詳細は[クイックスタート](./quick-start.md)をご覧ください。
+AI が 8 つの質問に答えてもらい、10 分以内でプライベートハブを構築します。詳細は[クイックスタート](./quick-start.md)をご覧ください。
 
 ---
 
@@ -519,11 +531,16 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 > 私に合いそうな求人を探して                         # アクティブ JD ソーシング
 > この面接の準備をして                               # 面接コーチング
 > 応募前に検証して                                   # 応募前検証
+> 資格 / 昇進書類を準備して                         # 証拠マトリクス + 申請ナラティブ
 ```
+
+## アーキテクチャ
+
+![Resume Intelligence Hub アーキテクチャとワークフロー](/images/architecture-workflow.png)
 
 ## 他の履歴書 skill との違い
 
-市場にある多くの履歴書系 skill は単発ジェネレータ——JD を貼ると履歴書を出力、それで終わり。本 skill は違う。数か月にわたる求職活動、面接、（必要なら）研究課題申請を同一の**永続的なプライベートリポジトリ**に蓄積させる。エージェントは毎セッションでリポジトリを読み、あなたのポジショニングロックに従って産出する。完全な方法論は [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) 参照。
+市場にある多くの履歴書系 skill は単発ジェネレータ——JD を貼ると履歴書を出力、それで終わり。本 skill は違う。数か月にわたる求職活動、面接、（必要なら）研究課題申請や資格/昇進書類を同一の**永続的なプライベートリポジトリ**に蓄積させる。エージェントは毎セッションでリポジトリを読み、あなたのポジショニングロックに従って産出する。完全な方法論は [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md) 参照。
 
 ## 補完スキル
 
@@ -541,7 +558,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 <!-- source: docs/ja/philosophy.md -->
 # デザイン哲学
 
-反直感的な選択が 10 個。それぞれ失敗から学んだもの。全部理解しなくても使えるが、何かを変えるつもりなら先に読んでほしい。
+反直感的な選択が 11 個。それぞれ失敗から学んだもの。全部理解しなくても使えるが、何かを変えるつもりなら先に読んでほしい。
 
 ## 1. 経歴は一か所にまとめる
 
@@ -587,6 +604,10 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 `AGENTS.md` はクロス IDE 標準のコンテキストファイル。使用している IDE が別の場所を必要とする場合（Cursor の `.cursor/rules/`、Windsurf の `.windsurfrules`）は、シンボリックリンクかコピーで対応する。内容を特定のベンダー形式で書かない——ツールを変えるときにコンテキストを書き直す必要はないはず。
 
+## 11. 帰属もエビデンスの一部
+
+重要な書類では、数字が大きいだけでは足りない。個人の責任、チーム成果、会社全体の指標、見積、パイプライン、予測、確定売上を分けて扱う。ハブはこの境界を保ち、強い主張を説得力があり検証可能なものにする。
+
 ---
 
 ## 参照しているフレームワーク
@@ -618,21 +639,22 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 > **build my career repo**
 
-エージェントが 7 問インタビューで進める：
+エージェントが 8 問インタビューで進める：
 
 1. **言語** — 中国語か英語、どちらか 1 つ（混在不可）
 2. **既存資料** — 手元に履歴書 / CV があれば先に渡す（以降の質問すべてが正確になる）
 3. **業界 / 分野** — ソフトウェア、医療、デザイン、法律、学術など
 4. **ターゲットシニアリティ** — エントリーから VP / 創業者 / PI まで
 5. **リサーチトラック？** — 助成金・研究費応募を行う場合のみ有効化
-6. **履歴書出力言語** — 中国語、英語、または両方
-7. **リポジトリ場所** — ディスク上のパス
+6. **資格 / 昇進書類トラック？** — 専門資格、称号、昇進書類を準備する場合のみ有効化
+7. **履歴書出力言語** — 中国語、英語、または両方
+8. **リポジトリ場所** — ディスク上のパス
 
 続いてエージェントがディレクトリをスキャフォールドし、`AGENTS.md` にポジショニングを書き込み、既存の履歴書をアーカイブに取り込み、`todo.md` に「次のステップ」パンチリストを書き出す。
 
 ## 3. ハブの使用
 
-初期化後、エージェントが 6 つのワークフローを処理する。自然言語で呼び出す：
+初期化後、エージェントが 7 つのワークフローを処理する。自然言語で呼び出す：
 
 | 言い方 | ワークフロー |
 |--------|-------------|
@@ -642,6 +664,7 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 | この面接の準備をして | [面接準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
 | 応募前に検証して | [検証](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
 | XX 助成金の申請書類を作って | [研究課題申請](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（リサーチトラック） |
+| 資格 / 昇進書類を準備して | [資格 / 昇進書類](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/credential-application.md) |
 
 ## トラブルシューティング
 
@@ -668,15 +691,15 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 ### resume-intelligence-hub 是什麼？
 
-resume-intelligence-hub 是一個 AI agent skill，幫你搭建一個個人職涯發展中樞——一個私有 Git 儲存庫，既是履歷、面試準備、課題申報、投遞前查核的單一事實來源，也是你的職涯指南針：命名挑戰目標、盤差距、寫季度 SMART 計畫。
+resume-intelligence-hub 是一個 AI agent skill，幫你搭建一個個人職涯發展中樞——一個私有 Git 儲存庫，既是履歷、面試準備、課題申報、職稱/資質/晉升材料、投遞前查核的單一事實來源，也是你的職涯指南針：命名挑戰目標、盤差距、寫季度 SMART 計畫。
 
 ### 它具體解決什麼問題？
 
-大多數人的職涯管理是被動的：履歷散落在各個資料夾，面試前臨時抱佛腳，沒有系統化地追蹤向目標職位邁進的進度。resume-intelligence-hub 把這些換成結構化基礎設施：`profiles/` 存放事實性職業資料，`AGENTS.md` 頂部鎖定定位目標，六個工作流程處理從 JD 客製履歷到投遞前公開資料查核的一切。
+大多數人的職涯管理是被動的：履歷散落在各個資料夾，面試前臨時抱佛腳，沒有系統化地追蹤向目標職位邁進的進度。resume-intelligence-hub 把這些換成結構化基礎設施：`profiles/` 存放事實性職業資料，`AGENTS.md` 頂部鎖定定位目標，七個工作流程處理從 JD 客製履歷到投遞前公開資料查核的一切。
 
 ### 適合誰使用？
 
-任何正在求職、計畫往高 1-2 級跳槽、或申請研究計畫的人——不限行業，不限職級。尤其適合：需要兼顧中英文雙語市場、同時有求職投遞和研究申報兩條線、或者希望 AI 記住職涯背景而不是每次從頭開始的使用者。
+任何正在求職、計畫往高 1-2 級跳槽、申請研究計畫、或準備職稱/資質/晉升申報的人——不限行業，不限職級。尤其適合：需要兼顧中英文雙語市場、同時有多類申報材料、或者希望 AI 記住職涯背景而不是每次從頭開始的使用者。
 
 ### 和其他履歷 AI 工具有什麼不同？
 
@@ -700,7 +723,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 > **幫我建職涯庫**
 
-AI 問你 7 個問題，10 分鐘內搭好你的私有 hub。完整流程見[快速開始](./quick-start.md)。
+AI 問你 8 個問題，10 分鐘內搭好你的私有 hub。完整流程見[快速開始](./quick-start.md)。
 
 ---
 
@@ -823,11 +846,16 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 > 看看有什麼合適的機會                     # 讓 AI 主動搜職缺
 > 針對這個職位幫我準備面試                 # 模擬面試 + 準備故事
 > 投遞前幫我核查一下公開資料               # 公開資料交叉驗證
+> 幫我準備職稱 / 資質 / 晉升材料           # 證據矩陣 + 申報敘事
 ```
+
+## 架構圖
+
+![Resume Intelligence Hub 架構與工作流程](/images/architecture-workflow.png)
 
 ## 它和其他履歷 skill 不一樣在哪
 
-市面上多數履歷類 skill 是一次性工具——貼 JD、出履歷，用完就散。這個不是。它會讓你把幾個月的求職、面試、（如果要的話）研究計畫申報都沉澱在同一個私人 Git 儲存庫裡，Agent 每次對話先讀這個儲存庫，產出會被你之前寫下的定位一直約束著。完整邏輯寫在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
+市面上多數履歷類 skill 是一次性工具——貼 JD、出履歷，用完就散。這個不是。它會讓你把幾個月的求職、面試、（如果要的話）研究計畫申報和職稱/資質/晉升材料都沉澱在同一個私人 Git 儲存庫裡，Agent 每次對話先讀這個儲存庫，產出會被你之前寫下的定位一直約束著。完整邏輯寫在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
 
 ## 搭配使用的專精 skill
 
@@ -845,7 +873,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 <!-- source: docs/zh-TW/philosophy.md -->
 # 設計哲學
 
-十條反直覺的選擇，每條背後都是踩過的坑。用這個 skill 不一定要理解每一條，但打算改它的話，先讀完這裡。
+十一條反直覺的選擇，每條背後都是踩過的坑。用這個 skill 不一定要理解每一條，但打算改它的話，先讀完這裡。
 
 ## 1. 你的經歷只有一份
 
@@ -891,6 +919,10 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 `AGENTS.md` 是跨 IDE 通用的上下文檔案格式。如果你用的 IDE 要求別的位置（比如 Cursor 的 `.cursor/rules/`、Windsurf 的 `.windsurfrules`），建軟連結或複製過去就行。內容本身不要寫成某一家 IDE 的專屬格式，換工具不該需要重寫上下文。
 
+## 11. 歸因也是證據的一部分
+
+高風險材料不能只追求數字好看。個人直接負責、團隊成果、公司整體指標、報價、儲備商機、預測、已確認營收要分清楚。Hub 要保留這些邊界，讓強主張既有說服力，也經得起查核。
+
 ---
 
 ## 背後參考的方法論
@@ -922,15 +954,16 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 > **幫我搭個履歷庫**
 
-AI 會問你 7 個問題：
+AI 會問你 8 個問題：
 
 1. **語言** — 中文或英文，選一個，別混著來
 2. **現有資料** — 手頭有舊履歷 / CV 就先發給它，下面幾個問題都會因此更準
 3. **產業** — 軟體、醫療、設計、法律、學術……什麼都行
 4. **目標職級** — 初級、資深 IC、一線經理、總監、VP、創辦人、PI，按自己情況說
 5. **要不要研究那條線** — 只在申報研究計畫 / 研究補助時需要開
-6. **履歷輸出語言** — 中文、英文或雙語都行
-7. **儲存庫放哪** — 硬碟上的絕對路徑
+6. **要不要職稱 / 資質 / 晉升申報線** — 只在準備職稱、執業資質、晉升材料時需要開
+7. **履歷輸出語言** — 中文、英文或雙語都行
+8. **儲存庫放哪** — 硬碟上的絕對路徑
 
 答完 AI 會：把目錄結構搭好 → 把定位寫進 `AGENTS.md` → 把你給的舊履歷封存 → 在 `todo.md` 裡寫一份「接下來要做什麼」的清單。
 
@@ -946,6 +979,7 @@ Hub 搭好之後，直接用中文和 AI 說想做什麼就行：
 | 針對這個職位幫我準備面試 | [面試準備](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
 | 投遞前幫我核查公開資料 | [投遞前自查](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
 | 幫我生成國科會（NSTC）研究計畫的申報履歷 | [研究計畫申報](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（只在研究線開啟時） |
+| 幫我準備職稱 / 資質 / 晉升申報材料 | [職稱 / 資質 / 晉升申報](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/credential-application.md) |
 
 ## 常見問題
 

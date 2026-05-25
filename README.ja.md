@@ -15,7 +15,7 @@
 [![Powered by Meridian](https://img.shields.io/badge/Powered%20by-Meridian-8b5cf6?style=flat-square)](https://github.com/lordmos/meridian)
 
 <div align="center">
-  <img src=".github/assets/hero.svg" alt="Resume Intelligence Hub" width="120" />
+  <img src=".github/assets/hero-career-hub.png" alt="Resume Intelligence Hub" width="720" />
 </div>
 
 # resume-intelligence-hub-site
@@ -36,7 +36,7 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 > **キャリアリポジトリを作って**
 
-AI が 7 つの質問に答えてもらい、プライベートなキャリアハブを構築します。あなたがやること：① 質問に答える → ② 生成されたハブを確認 → ③ 使い始める。
+AI が 8 つの質問に答えてもらい、プライベートなキャリアハブを構築します。あなたがやること：① 質問に答える → ② 生成されたハブを確認 → ③ 使い始める。
 
 **中断後の再開** → AI に伝える：`続きを教えて`
 
@@ -44,14 +44,15 @@ AI が 7 つの質問に答えてもらい、プライベートなキャリア�
 
 - **信頼できる唯一の情報源** — `profiles/` が権威ある情報源。生成された履歴書はすべて派生物
 - **キャリアコンパス** — 1〜2 レベル上のストレッチターゲットを `AGENTS.md` に固定し、四半期ごとにギャップ分析
-- **デュアルトラック対応** — 求人応募と研究費申請を完全分離。初期設定で研究トラックを有効化可能
+- **マルチトラック対応** — 求人応募、研究費申請、資格・昇進書類を分けて管理
 - **提出前検証** — 重要な主張を応募前に公開情報源でクロスチェック
+- **帰属境界** — 個人の責任、チーム成果、会社指標、見積、パイプライン、予測、確定売上を区別
 - **クロス IDE 対応** — AGENTS.md 経由で Claude Code・Cursor・Codex・Cline・Windsurf・GitHub Copilot に対応
 - **実績あるフレームワーク** — Google XYZ、STAR、BEI、Heilmeier Catechism、ストレッチターゲット、三角検証
 
 ## 他の履歴書スキルとの違い
 
-ほとんどの履歴書スキルは一度きりのジェネレーターです。このスキルは**持続的なプライベートリポジトリ**を構築し、数ヶ月にわたる就職活動・面接・研究費申請を通じて反復改善できます。
+ほとんどの履歴書スキルは一度きりのジェネレーターです。このスキルは**持続的なプライベートリポジトリ**を構築し、数ヶ月にわたる就職活動・面接・研究費申請・資格/昇進書類を通じて反復改善できます。
 
 ## ディレクトリ構造
 
