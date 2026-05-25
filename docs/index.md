@@ -7,7 +7,7 @@ hero:
   text: "A career skill for your AI IDE"
   tagline: "One sentence bootstraps a private career hub — resume tailoring, interview prep, grant applications, and credential dossiers in one Git repo. Works with Claude Code, Cursor, Windsurf, and more."
   image:
-    src: /images/hero-career-hub.png
+    src: /hero.svg
     alt: Resume Intelligence Hub
   actions:
     - theme: brand
@@ -79,10 +79,6 @@ Then, in your AI IDE, say any of:
 > run a pre-submission verification                  # pre-submission fact-check
 > help me prepare a credential dossier               # credential / promotion packet
 ```
-
-## Architecture
-
-![Resume Intelligence Hub architecture and workflow](/images/architecture-workflow.png)
 
 ## How it differs from other resume skills
 

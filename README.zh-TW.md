@@ -15,7 +15,7 @@
 [![Powered by Meridian](https://img.shields.io/badge/Powered%20by-Meridian-8b5cf6?style=flat-square)](https://github.com/lordmos/meridian)
 
 <div align="center">
-  <img src=".github/assets/hero-career-hub.png" alt="Resume Intelligence Hub" width="720" />
+  <img src=".github/assets/hero.svg" alt="Resume Intelligence Hub" width="120" />
 </div>
 
 # resume-intelligence-hub-site

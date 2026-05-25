@@ -7,7 +7,7 @@ hero:
   text: "AI IDE 向けのキャリア skill"
   tagline: "一言で AI IDE にプライベートキャリアハブを構築——履歴書カスタマイズ、面接準備、研究課題申請、資格/昇進書類をひとつの Git リポジトリで管理。"
   image:
-    src: /images/hero-career-hub.png
+    src: /hero.svg
     alt: Resume Intelligence Hub
   actions:
     - theme: brand
@@ -87,10 +87,6 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 > 応募前に検証して                                   # 応募前検証
 > 資格 / 昇進書類を準備して                         # 証拠マトリクス + 申請ナラティブ
 ```
-
-## アーキテクチャ
-
-![Resume Intelligence Hub アーキテクチャとワークフロー](/images/architecture-workflow.png)
 
 ## 他の履歴書 skill との違い
 

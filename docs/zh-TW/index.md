@@ -7,7 +7,7 @@ hero:
   text: "給 AI IDE 用的 career skill"
   tagline: "一句話在你的 AI IDE 裡搭起私人職涯中樞——履歷客製、面試準備、研究計畫申報、職稱/資質材料，全在同一個 Git 儲存庫裡。"
   image:
-    src: /images/hero-career-hub.png
+    src: /hero.svg
     alt: Resume Intelligence Hub
   actions:
     - theme: brand
@@ -87,10 +87,6 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 > 投遞前幫我核查一下公開資料               # 公開資料交叉驗證
 > 幫我準備職稱 / 資質 / 晉升材料           # 證據矩陣 + 申報敘事
 ```
-
-## 架構圖
-
-![Resume Intelligence Hub 架構與工作流程](/images/architecture-workflow.png)
 
 ## 它和其他履歷 skill 不一樣在哪
 
