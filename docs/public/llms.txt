@@ -7,10 +7,13 @@ resume-intelligence-hub is an opinionated methodology and scaffolding for a pers
 ## Docs
 
 - [Home](https://zenine.github.io/resume-intelligence-hub-site/): Landing page with install instructions and feature overview
-- [Quick Start](https://zenine.github.io/resume-intelligence-hub-site/quick-start): Three-step setup guide
-- [Philosophy](https://zenine.github.io/resume-intelligence-hub-site/philosophy): The 9 non-obvious design decisions behind the hub
-- [Frameworks](https://zenine.github.io/resume-intelligence-hub-site/frameworks): Career frameworks used (Google XYZ, STAR, BEI, Heilmeier, etc.)
-- [FAQ](https://zenine.github.io/resume-intelligence-hub-site/faq): Frequently asked questions
+- [Quick Start](https://zenine.github.io/resume-intelligence-hub-site/quick-start.html): Three-step setup guide
+- [Skill Contract](https://zenine.github.io/resume-intelligence-hub-site/skill-contract.html): Operating contract for generated hub structure, workflow inputs/outputs, sensitive-file boundaries, recovery, migration, and quarterly review
+- [Examples](https://zenine.github.io/resume-intelligence-hub-site/examples.html): Synthetic examples of initialized hub files, resume snippets, STAR stories, verification logs, and quarterly SMART plans
+- [Philosophy](https://zenine.github.io/resume-intelligence-hub-site/philosophy.html): The 11 non-obvious design choices behind the hub
+- [Frameworks](https://zenine.github.io/resume-intelligence-hub-site/frameworks.html): Career frameworks used (Google XYZ, STAR, BEI, Heilmeier, etc.)
+- [FAQ](https://zenine.github.io/resume-intelligence-hub-site/faq.html): Frequently asked questions
+- [Release Mapping](https://zenine.github.io/resume-intelligence-hub-site/release.html): Site-to-skill version mapping and regeneration policy
 - [README](https://github.com/Zenine/resume-intelligence-hub-site#readme): Source-of-truth overview
 
 ## Source
@@ -35,4 +38,4 @@ Anyone managing a job search, planning a career move, or applying for research g
 Other resume tools (like ATS optimizers or one-shot resume generators) are one-off: paste a JD, get a resume. resume-intelligence-hub is persistent infrastructure: it creates a repo you maintain across months. The positioning lock in AGENTS.md biases every resume toward your stretch target; the verification workflow cross-checks claims before high-stakes submissions; the gap analysis identifies exactly what skills, credentials, scope, and network you need to close. Other tools can compose on top of it for specific tasks.
 
 ### How do I get started?
-Install with `npx skills add Zenine/resume-intelligence-hub -g -y`, then open your AI IDE (Claude Code, Cursor, Windsurf, etc.), navigate to where you want the hub, and say "build my career repo" or "帮我搭个简历库". The agent walks you through a 7-question interview and scaffolds your private hub in under 10 minutes.
+Install with `npx skills add Zenine/resume-intelligence-hub -g -y`, then open your AI IDE (Claude Code, Cursor, Windsurf, etc.), navigate to where you want the hub, and say "build my career repo" or "帮我搭个简历库". The agent walks you through an 8-question interview and scaffolds your private hub in under 10 minutes.

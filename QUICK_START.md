@@ -1,7 +1,7 @@
 # resume-intelligence-hub-site · QUICK_START.md
 
 > **This file is written for AI coding assistants, not humans.**
-> Trigger sentence: "Please read the project at /Users/zeninexu/github/resume-intelligence-hub-site, understand it, and regenerate its site."
+> Trigger sentence: "Please read the project at /Users/zeninexu/github/resume-intelligence-hub-site, understand it, and set up its ops infrastructure."
 > When the user says this, you are the main orchestrator. Follow the phases below.
 
 ---
@@ -86,7 +86,7 @@ Execute in this repo. Detailed instructions in `/Users/zeninexu/github/meridian/
 ### Execution rules
 - After each task, print `✅ Task N complete: [brief output]` and update `checkpoint.md`
 - **Errors must be fixed before continuing**, no skipping
-- After task 3, run `cd docs && npm run docs:build` — success required before continuing
+- After task 3, run `scripts/verify.sh` — success required before continuing
 
 ---
 

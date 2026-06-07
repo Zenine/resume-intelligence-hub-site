@@ -78,6 +78,123 @@ MIT — same as the skill itself.
 
 ---
 
+<!-- source: docs/examples.md -->
+# Examples
+
+This page shows what `resume-intelligence-hub` can produce after bootstrapping a private career hub. Every sample below is synthetic and anonymized: fictional names, fictional organizations, fictional metrics, and relative paths only.
+
+## Safety note
+
+Use these examples as format references, not as claims to copy. A real hub should keep private source materials out of public repos, separate verified facts from drafts, and run pre-submission verification before any high-stakes application.
+
+## Initialized hub tree
+
+```text
+career-hub/
+├── AGENTS.md
+├── README.md
+├── todo.md
+├── changelog.md
+├── profiles/
+│   ├── master.md
+│   ├── evidence-index.md
+│   └── positioning.md
+├── applications/
+│   └── 2026-04-15-exampleworks-platform-lead/
+│       ├── jd.md
+│       ├── resume.md
+│       ├── cover-letter.md
+│       └── verification-log.md
+├── interviews/
+│   └── star-stories.md
+├── planning/
+│   ├── quarterly-review-2026-q2.md
+│   └── smart-plan-2026-q3.md
+└── archive/
+    └── imported-resumes/
+```
+
+## profiles/master.md achievement snippet
+
+```markdown
+### Platform reliability and incident reduction
+
+- Led a five-person platform squad to redesign the alert-routing workflow for a fictional analytics product, reducing duplicate alerts from 43% to 12% over two quarters.
+- Built a weekly incident review template that separated personal ownership, team outcome, customer impact, and unresolved risk.
+- Evidence status: internally documented; public-source cross-check required before external use.
+- Attribution boundary: owned workflow design and facilitation; reliability gains were delivered by the full platform squad.
+```
+
+## JD-tailored resume snippet
+
+```markdown
+## Selected Experience
+
+**Senior Platform Engineer, Fictional Product Group**
+
+- Matched the JD requirement for "cross-functional incident leadership" by highlighting a synthetic platform reliability project: coordinated engineering, support, and product stakeholders across a two-quarter alert-routing redesign.
+- Reframed generic "built dashboards" language into JD-specific scope: created service-health views used in weekly review meetings for prioritization and escalation.
+- Removed unrelated mobile UI work because the JD emphasized backend reliability, stakeholder coordination, and operational metrics.
+
+## Positioning lock
+
+Target: Platform Lead for a mid-size B2B software team.
+Signal to reinforce: operational judgment, incident systems, and clear attribution boundaries.
+```
+
+## STAR story
+
+```markdown
+### Story: Reducing noisy escalation paths
+
+**Situation**: A fictional customer operations team received repeated incident notifications from overlapping monitoring rules.
+
+**Task**: Clarify the escalation path without hiding high-severity alerts.
+
+**Action**: Interviewed support leads, mapped alert ownership, removed duplicate routing rules, and introduced a weekly review with a shared incident taxonomy.
+
+**Result**: In this synthetic example, duplicate alerts dropped from 43% to 12%, on-call review time fell by 30%, and the team adopted the taxonomy for future service launches.
+
+**Follow-up interview angle**: Emphasize judgment under ambiguity, not just tooling.
+```
+
+## Verification log
+
+```markdown
+# Pre-submission verification log
+
+Application: 2026-04-15-exampleworks-platform-lead
+Reviewer: AI agent + human review
+Status: needs human confirmation before submission
+
+| Claim | Source type | Check | Result | Next action |
+|-------|-------------|-------|--------|-------------|
+| Reduced duplicate alerts from 43% to 12% | Internal dashboard summary | Compare source period and denominator | Draft only | Confirm export is allowed |
+| Led five-person squad | Team roster note | Confirm role and dates | Plausible | Ask former manager for wording |
+| Created weekly incident review template | Internal process doc | Check ownership boundary | Verified draft | Keep "created"; avoid claiming executive mandate |
+| Customer impact language | Support ticket themes | Avoid unsupported revenue or churn claims | Needs evidence | Remove business-impact claim |
+```
+
+## Quarterly SMART plan
+
+```markdown
+# SMART plan: 2026 Q3
+
+Positioning target: Platform Lead for a mid-size B2B software team.
+
+1. Publish two internal reliability writeups by 2026-08-15, each reviewed by one engineering manager and one support lead.
+2. Run one mock interview per month focused on incident judgment, tradeoff communication, and stakeholder alignment.
+3. Convert three strongest reliability achievements into STAR stories with verified attribution boundaries by 2026-09-10.
+4. Source 12 Platform Lead or Staff Platform Engineer JDs by 2026-09-30 and tag each by scope, team size, and required evidence.
+5. Close one credential gap by completing a systems-design review packet and recording lessons in `planning/quarterly-review-2026-q3.md`.
+```
+
+## How to use these examples
+
+The useful pattern is not the exact wording. It is the separation of source facts, generated drafts, interview stories, verification evidence, and quarterly planning. That separation lets the AI agent improve outputs over time without turning every application into a one-off rewrite.
+
+---
+
 <!-- source: docs/faq.md -->
 # FAQ
 
@@ -382,6 +499,997 @@ Currently: Chinese and English templates. Contributions welcome — see the [Git
 
 ---
 
+<!-- source: docs/release.md -->
+# Release / Version Mapping
+
+This page records how the public site layer maps to the `resume-intelligence-hub` skill repo. It is a documentation baseline, not a claim that the local checkout is clean or that the skill repo is checked out on this machine.
+
+## Repository Relationship
+
+`resume-intelligence-hub-site` is the site layer. It contains the VitePress documentation, multilingual content, CI automation, SEO/GEO assets, and publishing support for GitHub Pages.
+
+The skill itself lives in the separate [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) repo. That repo owns `SKILL.md`, `templates/`, and `workflows/`; those files define the behavior users install and run in their AI IDE.
+
+## Current Mapping
+
+| Layer | Source | Version baseline | Notes |
+| --- | --- | --- | --- |
+| Site layer | [`Zenine/resume-intelligence-hub-site`](https://github.com/Zenine/resume-intelligence-hub-site) | `1b344c2` | From local `git rev-parse --short HEAD`. The working tree has uncommitted changes, so this is the committed baseline only. |
+| Skill repo | [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) | Remote `main` / published release tags | The skill repo is not checked out locally in the current machine context. Do not infer or invent a local skill commit; use the remote repo and release tags as the source of truth. |
+
+## Regeneration Policy
+
+Regenerate or review the site whenever one of these inputs changes:
+
+- Skill repo behavior changes: `SKILL.md`, `templates/`, or `workflows/` changes in [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub).
+- Site multilingual content changes: any English, Simplified Chinese, Japanese, or Traditional Chinese docs page changes, with terminology checked against `i18n/glossary.md`.
+- SEO/GEO assets change: `llms.txt`, `llms-full.txt`, sitemap-related automation, robots metadata, Open Graph assets, or discovery links change.
+
+When regeneration is needed, update the site docs, regenerate `llms-full.txt`, and record the completed change in `CHANGELOG.md` in the same release cycle.
+
+## Verification Notes
+
+Use this page to answer one question: "Does the site documentation match the skill version I am about to install?"
+
+For a precise answer, compare the current site commit with the current remote `main` or release tag in [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub). If the skill repo has newer behavioral changes that are not reflected in the site, regenerate the site before treating the docs as current.
+
+---
+
+<!-- source: docs/skill-contract.md -->
+# Skill Contract
+
+This page documents the long-term operating contract of the `resume-intelligence-hub` skill. The hub repository is a **private career hub**: it stores factual career evidence, positioning, drafts, verification logs, and quarterly plans. This site is the **documentation layer**: it explains the method publicly, but it is not where a user's private career data lives.
+
+## Repository and site boundary
+
+- The `resume-intelligence-hub` skill scaffolds and operates a private repository for one person.
+- The hub is a single source of truth for resumes, JD-tailored applications, interview preparation, research/grant applications when enabled, credential / promotion dossiers when enabled, and pre-submission verification.
+- Generated resumes and cover letters are derivatives. The durable source is `profiles/` plus the positioning lock in `AGENTS.md`.
+- The public site explains the contract, workflows, examples, and setup guidance. It must not contain private resumes, real IDs, salary evidence, contracts, certificates, or local machine paths.
+- A hub can be synced through a private Git remote, but it should never be pushed to a public repository.
+
+## Directory structure after bootstrap
+
+The exact language of folder names depends on the bootstrap language, but the shape is stable:
+
+```text
+career-hub/
+├── profiles/
+│   ├── master.md
+│   ├── skills.md
+│   ├── stories.md
+│   └── research.md
+├── jobs/
+│   ├── templates/
+│   ├── market-watch/
+│   └── applications/
+├── verification/
+│   ├── references.md
+│   └── credentials/
+├── credential-applications/
+├── resumes-archive/
+├── research-archive/
+├── assessments/
+├── AGENTS.md
+├── readme.md
+├── todo.md
+└── changelog.md
+```
+
+Optional folders are created only when the user needs them:
+
+- `research.md` and `research-archive/` are for the research track.
+- `credential-applications/` is for professional titles, licensing, board certification, or promotion dossiers.
+- `assessments/` stores optional material such as 360 feedback or personality assessments used during interview prep.
+
+## Core file responsibilities
+
+| File or folder | Responsibility |
+|---|---|
+| `AGENTS.md` | The positioning lock: target role, seniority, field, emphasis, de-emphasis, enabled tracks, and operating rules for AI agents. |
+| `profiles/master.md` | Factual career source for recruitment: roles, scope, achievements, metrics, projects, education, and public links. |
+| `profiles/skills.md` | Capability matrix, including T-shaped / pi-shaped depth, target-seat gaps, tools, domains, and certifications. |
+| `profiles/stories.md` | STAR stories for interviews. It stays separate from factual profile data so narratives can be reused without rewriting evidence. |
+| `profiles/research.md` | Research-track source: publications, patents, funded projects, standards, research directions, service, and mentorship. |
+| `jobs/market-watch/` | Target companies, live JD shortlists, warm intro paths, and gap-plan snapshots. |
+| `jobs/applications/` | One dated folder per application, such as `company-role-2026-06-07/`, containing the JD, generated resume, cover letter, and interview prep. |
+| `verification/references.md` | Path-reference index for sensitive originals. It records where evidence lives without copying that evidence into Git. |
+| `verification/{date}-web-check.md` | Public-source cross-check logs for load-bearing claims. |
+| `credential-applications/` | Evidence matrices and writing packets for credential, licensing, board, or promotion applications. |
+| `resumes-archive/` | Old resumes and converted Markdown copies. Archive-only; do not keep editing old resumes as the source of truth. |
+| `todo.md` | Pending work only, especially this quarter's SMART actions and unresolved evidence gaps. |
+| `changelog.md` | Completed work, dated and reverse-chronological. Completed items move here instead of staying as checked items in `todo.md`. |
+
+## Workflow inputs and outputs
+
+### 1. Career planning and gap analysis
+
+| Input | Output |
+|---|---|
+| `profiles/master.md`, `profiles/skills.md`, `profiles/stories.md`, `AGENTS.md`, recent `changelog.md`, and 3-5 target-level JDs or grant calls. | Refreshed positioning block in `AGENTS.md`, a dated `jobs/market-watch/{date}-gap-plan.md`, and 2-4 SMART quarterly items in `todo.md`. |
+
+Run this first after bootstrap, then every quarter or after a major career event.
+
+### 2. JD sourcing and market research
+
+| Input | Output |
+|---|---|
+| `profiles/master.md`, `profiles/skills.md`, the positioning lock in `AGENTS.md`, region, seniority, target title, and channel constraints. | A ranked shortlist of 3-5 opportunities, a `jobs/market-watch/{date}-{theme}.md` watchlist, fit notes, and warm-intro paths when available. |
+
+This workflow finds the right seats before the hub tailors a resume to one of them.
+
+### 3. JD-tailored resume
+
+| Input | Output |
+|---|---|
+| A JD as text, URL, or PDF; `profiles/master.md`; `profiles/skills.md`; `AGENTS.md`; and relevant verification references. | `jobs/applications/{company}-{role}-{date}/jd.md`, `resume.md`, optional `cover.md`, and starter `prep.md`. |
+
+The resume is regenerated from source profile data, not rewritten from an old resume.
+
+### 4. Interview preparation
+
+| Input | Output |
+|---|---|
+| The JD or target role, generated `resume.md` when available, `profiles/stories.md`, `profiles/skills.md`, and optional `assessments/`. | `jobs/applications/{company}-{role}-{date}/prep.md` with predicted questions, STAR answer outlines, topic review list, questions for the interviewer, risk points, and optional mock interview notes. |
+
+If the story library is thin, the workflow should surface the gap instead of inventing stories.
+
+### 5. Pre-submission verification
+
+| Input | Output |
+|---|---|
+| Outgoing resume, proposal, dossier, or other high-stakes text; `verification/references.md`; public sources; and the list of load-bearing claims. | `verification/{date}-web-check.md` with confirmed claims, insufficient-public-evidence items, high-risk items, safer rewrites, and required supporting evidence. |
+
+Run this before senior-role submissions, grant applications, credential / promotion dossiers, and first-time use of any load-bearing claim.
+
+### 6. Grant / research proposal profile
+
+| Input | Output |
+|---|---|
+| Enabled research track, grant or funding type, call requirements, research direction, `profiles/research.md`, `profiles/master.md`, and verification sources. | A direction-filtered profile saved in `research-archive/{year}-{grant-type}-{direction}.md` and a stricter verification log when claims are externally checkable. |
+
+This workflow is skipped entirely when the research track is not enabled.
+
+### 7. Credential / promotion dossier
+
+| Input | Output |
+|---|---|
+| Official rulebook or eligibility document, existing credential folder, `profiles/master.md`, `profiles/research.md` when relevant, `verification/references.md`, `todo.md`, and `changelog.md`. | `credential-applications/{credential-name}/` evidence matrix, writing packet, risk log, reviewer-facing concise version, updated unresolved evidence in `todo.md`, and completed work in `changelog.md`. |
+
+The rule is evidence matrix first, polished prose second.
+
+## Sensitive file strategy
+
+Sensitive originals stay out of Git. Examples include IDs, passports, contracts, salary slips, appointment letters, certificates, diplomas, medical or licensing documents, and private recommendation letters.
+
+Use `verification/references.md` to record path references:
+
+```markdown
+| Evidence | Location | Notes |
+|---|---|---|
+| Degree certificate | secure-drive:/career-documents/education/degree-certificate.pdf | Use for education verification only. |
+| Employment letter | private-vault:/employment/company-a/appointment-letter.pdf | Confirms title and dates. |
+```
+
+The hub may contain summaries, claim wording, and verification logs. It should not contain raw sensitive originals unless the user has deliberately decided that the private repository is the right storage location.
+
+## Interruption recovery
+
+Every session should start by reading:
+
+1. `AGENTS.md`
+2. `todo.md`
+3. `changelog.md`
+4. the workflow-specific folder, such as `jobs/applications/{company}-{role}-{date}/`
+5. the latest verification log when the work involves high-stakes claims
+
+When a session stops midway:
+
+- Leave unresolved items in `todo.md` with the next action and blocker.
+- Move completed, verified work into `changelog.md`.
+- Keep generated drafts in their dated application or dossier folder.
+- Restart by asking the agent to continue from the hub state, not from memory.
+
+## Migrating old resumes
+
+Old resumes are useful input, but they should not remain the operating source.
+
+1. Put old resumes under `resumes-archive/`.
+2. Convert each PDF, DOCX, or pasted resume into a Markdown copy next to the original.
+3. Consolidate factual claims into `profiles/master.md`.
+4. Move interview-ready stories into `profiles/stories.md`.
+5. Move research outputs into `profiles/research.md` only when the research track is enabled.
+6. Record uncertain or unsupported claims in `todo.md` or `verification/references.md`.
+7. Generate new resumes from `profiles/master.md` and a specific JD.
+
+The archive preserves history. `profiles/` becomes the source of truth.
+
+## Quarterly review cadence
+
+The default strategic rhythm is quarterly:
+
+- Re-run career planning and gap analysis.
+- Re-read the previous `jobs/market-watch/{date}-gap-plan.md`.
+- Check whether the target seat, compensation band, region, or life constraints have changed.
+- Diff skill, scope, credential, network, and timing gaps.
+- Close completed actions into `changelog.md`.
+- Keep only active quarterly SMART items in `todo.md`.
+- Refresh the positioning lock in `AGENTS.md` if the target changed materially.
+
+The weekly rhythm is tactical: update applications, evidence collection, interview prep, and market-watch notes. The quarterly rhythm is strategic: decide whether the hub is still pointed at the right seat.
+
+---
+
+<!-- source: docs/zh/examples.md -->
+# 样例
+
+本页展示 `resume-intelligence-hub` 初始化私人职业 hub 后可能产出什么。下面所有样例都是合成和匿名内容：虚构姓名、虚构组织、虚构指标，并且只使用相对路径。
+
+## 安全说明
+
+这些样例只作为格式参考，不是可直接复制的真实声明。真实 hub 应把敏感原件留在公开仓库之外，把已核查事实和草稿分开，并在高风险投递前运行投递前核查。
+
+## 初始化目录树
+
+```text
+career-hub/
+├── AGENTS.md
+├── README.md
+├── todo.md
+├── changelog.md
+├── profiles/
+│   ├── master.md
+│   ├── evidence-index.md
+│   └── positioning.md
+├── applications/
+│   └── 2026-04-15-exampleworks-platform-lead/
+│       ├── jd.md
+│       ├── resume.md
+│       ├── cover-letter.md
+│       └── verification-log.md
+├── interviews/
+│   └── star-stories.md
+├── planning/
+│   ├── quarterly-review-2026-q2.md
+│   └── smart-plan-2026-q3.md
+└── archive/
+    └── imported-resumes/
+```
+
+## profiles/master.md 成就片段
+
+```markdown
+### 平台可靠性与事故降噪
+
+- 带领一个五人平台小组，为某个虚构分析产品重设计告警路由工作流，在两个季度内把重复告警从 43% 降到 12%。
+- 建立每周事故复盘模板，把个人职责、团队结果、客户影响和未解决风险分开记录。
+- 证据状态：已有内部记录；对外使用前需要做公开资料三角验证。
+- 归因边界：负责工作流设计和复盘推动；可靠性改善由整个平台小组共同交付。
+```
+
+## JD 定制简历片段
+
+```markdown
+## 重点经历
+
+**高级平台工程师，虚构产品小组**
+
+- 针对 JD 中的“跨职能事故领导力”要求，突出一个合成的平台可靠性项目：协调工程、支持和产品相关方，完成两个季度的告警路由重设计。
+- 把泛泛的“搭建 dashboard”改写成 JD 相关的范围：创建服务健康视图，用于每周复盘会议中的优先级排序和升级判断。
+- 删除不相关的移动端 UI 工作，因为该 JD 更强调后端可靠性、相关方协调和运营指标。
+
+## 定位锁
+
+目标：中型 B2B 软件团队的平台负责人。
+需要强化的信号：运营判断、事故系统、清晰的归因边界。
+```
+
+## STAR 故事
+
+```markdown
+### 故事：减少噪音型升级路径
+
+**Situation**：一个虚构客户运营团队不断收到来自重叠监控规则的重复事故通知。
+
+**Task**：在不隐藏高严重度告警的前提下，理清升级路径。
+
+**Action**：访谈支持负责人，梳理告警归属，移除重复路由规则，并用统一的事故分类法建立每周复盘。
+
+**Result**：在这个合成样例中，重复告警从 43% 降到 12%，on-call 复盘时间减少 30%，团队把这套分类法用于后续服务上线。
+
+**后续面试角度**：强调不确定场景下的判断力，而不只是工具实现。
+```
+
+## Verification log
+
+```markdown
+# 投递前核查日志
+
+投递：2026-04-15-exampleworks-platform-lead
+核查者：AI agent + 人工复核
+状态：提交前仍需人工确认
+
+| 声明 | 来源类型 | 核查动作 | 结果 | 下一步 |
+|------|----------|----------|------|--------|
+| 重复告警从 43% 降到 12% | 内部 dashboard 摘要 | 比对统计周期和分母 | 仅限草稿 | 确认是否允许导出 |
+| 带领五人小组 | 团队成员记录 | 确认角色和日期 | 基本可信 | 请前经理确认措辞 |
+| 创建每周事故复盘模板 | 内部流程文档 | 检查归因边界 | 草稿已核查 | 保留“创建”，避免声称获得高层授权 |
+| 客户影响表述 | 支持工单主题 | 避免无证据的收入或流失声明 | 证据不足 | 删除业务影响声明 |
+```
+
+## 季度 SMART 计划
+
+```markdown
+# SMART 计划：2026 Q3
+
+定位目标：中型 B2B 软件团队的平台负责人。
+
+1. 在 2026-08-15 前发布两篇内部可靠性复盘，每篇都由一位工程经理和一位支持负责人审阅。
+2. 每月进行一次模拟面试，重点练习事故判断、取舍表达和相关方对齐。
+3. 在 2026-09-10 前，把三个最强的可靠性成就改写成 STAR 故事，并补齐已核查的归因边界。
+4. 在 2026-09-30 前搜集 12 个 Platform Lead 或 Staff Platform Engineer JD，并按职责范围、团队规模和所需证据打标签。
+5. 完成一份系统设计复盘包，关闭一个资质差距，并把经验写入 `planning/quarterly-review-2026-q3.md`。
+```
+
+## 如何使用这些样例
+
+真正有用的不是具体措辞，而是把来源事实、生成草稿、面试故事、核查证据和季度计划分开。这样 AI agent 才能随时间持续改进产出，而不是把每次投递都变成一次性的重写。
+
+---
+
+<!-- source: docs/zh/faq.md -->
+# 常见问题
+
+### resume-intelligence-hub 是什么？
+
+resume-intelligence-hub 是一个 AI agent skill，帮你搭建一个个人职业发展中枢——一个私有 Git 仓库，既是简历、面试准备、课题申报、职称/资质/晋升材料、投递前核查的单一事实来源，也是你的职业指南针：命名跳一级目标、盘差距、写季度 SMART 计划。
+
+### 它具体解决什么问题？
+
+大多数人的职业管理是被动的：简历散落在各个文件夹，面试前临时抱佛脚，没有系统化地追踪向目标职位迈进的进度。resume-intelligence-hub 把这些换成结构化基础设施：`profiles/` 存放事实性职业数据，`AGENTS.md` 顶部锁定定位目标让每份生成的简历都朝它偏置，七个工作流处理从 JD 定制简历到投递前公开资料核查的一切。
+
+### 适合谁用？
+
+任何正在求职、计划往高 1-2 级跳槽、申请科研课题、或准备职称/资质/晋升申报的人——不限行业，不限职级。尤其适合：需要兼顾中英文双语市场、同时有多类申报材料、或者希望 AI 记住你的职业背景而不是每次从头开始的用户。
+
+### 和其他简历 AI 工具有什么不同？
+
+大多数简历工具是一次性的：贴 JD 出简历。resume-intelligence-hub 是可持续迭代的基础设施，跨越数月的求职过程。定位锁让所有输出偏向你的目标；核查工作流在投递前用公开资料核实每一条承重声明；差距分析精确识别你需要补的技能、资历、管理范围和人脉。一次性专项工具（ATS 优化、LinkedIn 主页生成器）可以叠在这个 hub 上处理特定场景。
+
+### 支持我用的 AI IDE 吗？
+
+支持。hub 用 `AGENTS.md` 作为指令文件——这是跨 IDE 通用标准。Claude Code、Cursor、Codex、Cline、Windsurf 和 GitHub Copilot 都能读它（某些 IDE 需要软链或复制一次）。具体配置方式见[快速开始 — 常见问题排查](./quick-start.md#常见问题)。
+
+### 科研课题那条线是必须的吗？
+
+不是，默认关闭。初始化时 AI 会问你是否申请学术课题或科研经费。回答否，课题相关文件（`profiles/research.md`、`科研/`、课题申报工作流）就完全不生成。大多数用户不需要。
+
+### 怎么开始？
+
+一条命令安装，一句话触发：
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+然后打开 AI IDE，进入你想放 hub 的目录，说：
+
+> **帮我搭个简历库**
+
+AI 问你 8 个问题，10 分钟内搭好你的私有 hub。完整流程见[快速开始](./quick-start.md)。
+
+---
+
+<!-- source: docs/zh/frameworks.md -->
+# 引用的方法论
+
+Skill 里的工作流都建在成熟方法论之上。AI 指导你时会**点出名字**——既给你一个搜索关键词往下深挖，也让这些方法看起来不是 AI 瞎编的。
+
+## 简历写作
+
+**Google XYZ 公式**
+
+来自 Laszlo Bock，前 Google 人力副总裁。写简历要点时按这个结构：
+
+> "Accomplished [X] as measured by [Y], by doing [Z]"
+>
+> 做到了 X，用 Y 来量化，靠 Z 实现的
+
+每条要点都回答三件事：做到了什么、用什么指标能证明、具体做了什么动作。这是简历质量最大的一个杠杆——换成这个写法，信息密度直接翻倍。
+
+**一要点一数字**
+
+每条简历要点必须带至少一个数字（人数、百分比、金额、时间、规模都行）。没数字的要点在复盘时直接删——不是你没做，是没量化就没说服力。
+
+**CAR / PAR / STAR**
+
+XYZ 在短要点里太啰嗦时，用这几个简化版：CAR（挑战-行动-结果）、PAR（问题-行动-结果）、STAR（情境-任务-行动-结果）。最常用的是 STAR，在 `profiles/stories.md` 里全程使用。
+
+## 面试
+
+**BEI（行为事件访谈）**
+
+David McClelland，哈佛心理学家发明的。"讲一次你……的时候"这种问法的理论基础。核心假设：**过去的行为比嘴上说的更能预测未来行为**。所以面试官不问"你会怎么办"，而是要你讲具体过往案例。
+
+准备时一定用具体事件，不要泛泛说"我一般会……"——那种答法在 BEI 里根本过不了关。
+
+**STAR**
+
+行为面试回答的主流结构：情境（Situation）→ 任务（Task）→ 行动（Action）→ 结果（Result）。`profiles/stories.md` 里每个故事都按这个写。
+
+## 课题 / 基金申报
+
+**Heilmeier 九问**
+
+George Heilmeier，前 DARPA 局长总结的——任何科研申报都该回答的九个问题。就算申报模板没直接问，答完也更有说服力：
+
+1. 你到底要做什么？（别用行话）
+2. 现在的做法是什么？瓶颈在哪？
+3. 你的新方法是什么？为什么能成？
+4. 谁会从中受益？做成了意味着什么？
+5. 风险和回报各是什么？
+6. 要花多少钱？
+7. 要花多长时间？
+8. 中期和终期怎么衡量成功？
+9. 最坏情况下怎么退出？
+
+`workflows/grant-application.md` 里"研究基础"那段就按这九问组织的。
+
+## 职业定位
+
+**T 型 / π 型 / M 型人才**
+
+McKinsey 和 IDEO 推广的说法：一个领域有深度 + 相邻领域有广度 = T 型。资深岗位常常需要 π 型（两个深度柱）甚至 M 型（多个深度柱）。自己讲"我的独特价值在哪"时用这个框架解释。
+
+**职业资本**
+
+Cal Newport 在《优秀到不能被忽视》里提出的概念——**稀有且有价值的技能**才是你的真正杠杆。做能力差距分析时，别问"我缺什么"，换个问法：**"我手上有什么筹码？往下该投资哪些能放大它？"**
+
+## 求职策略
+
+**拉伸目标启发式（1-2 级，1.2-3 倍薪，70% 匹配）**
+
+换工作时用的标准启发式：
+
+- **职级**：瞄准比当前**高 1-2 级**的岗位。同级平跳换工作成本太高，3 级以上除非创业否则不现实
+- **薪酬**：外跳总包至少 **1.2-1.5 倍**起（外部招聘自带溢价，低于这个数换工作没意义）；如果同时还发生"公司类型跨越"（大厂 → 高速成长 startup），**2-3 倍**也合理
+- **匹配门槛**：**70% 符合就投**，不等 100%。资深岗位雇主就是准备让你边做边成长的
+- **渠道**：**内推的转化率是冷投的 10 倍以上**——先把网络激活了再考虑海投
+
+**例外**：纯粹职业转型（降薪正常）、主动降速求生活、已经到行业天花板、早期职业（倍数天然更小）。这是 `workflows/jd-sourcing.md` 的底层逻辑。
+
+## 投递前尽调
+
+**三角验证**
+
+每条承重声明都要在至少 **2 个独立公开来源**得到确认才算过关。这是定性研究的标准做法，挪过来用于投递前自查——面试官和评审会 Google，你先 Google 过自己一遍。`workflows/verification.md` 的底座。
+
+## 目标设定
+
+**SMART**
+
+Specific（具体）、Measurable（可衡量）、Achievable（可达成）、Relevant（相关）、Time-bound（有期限）。`todo.md` 里含糊条目会被 AI 改写成这五个维度齐全的版本。
+
+---
+
+## 想深挖可以读
+
+- **Laszlo Bock**，*Work Rules!* — Google 招聘哲学和 XYZ 公式的原始出处
+- **David McClelland**，*"Testing for Competence Rather Than for Intelligence"*（American Psychologist, 1973）— BEI 的奠基论文
+- **Cal Newport**，*So Good They Can't Ignore You*（中译《优秀到不能被忽视》）— 职业资本和深度工作
+- **George Heilmeier**，[DARPA 官网 Heilmeier Catechism 页面](https://www.darpa.mil/about-us/heilmeier-catechism)
+- **Keith Ferrazzi**，*Never Eat Alone* — 网络激活 / warm intro 的操作手册
+
+---
+
+<!-- source: docs/zh/index.md -->
+<div class="vp-doc" style="max-width: 960px; margin: 48px auto 96px; padding: 0 24px;">
+
+## 安装
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+然后在你常用的 AI IDE 里说任意一句：
+
+```
+> 帮我搭个简历库                           # 从零开一个 hub
+> 帮我针对这个 JD 生成简历                 # 定制简历
+> 看看有什么合适的机会                     # 让 AI 主动搜岗位
+> 针对这个职位帮我准备面试                 # 模拟面试 + 准备故事
+> 投递前帮我核查一下公开资料               # 公开资料交叉验证
+> 帮我准备职称 / 资质 / 晋升材料           # 证据矩阵 + 申报叙事
+```
+
+## 它和其他简历 skill 不一样在哪
+
+市面上大多数简历类 skill 是一次性工具——贴 JD、出简历，用完就散。这个不是。它会让你把几个月的求职、面试、（如果要的话）课题申报和职称/资质/晋升材料都沉淀在同一个私人 Git 仓库里，Agent 每次对话先读这个仓库，产出会被你之前写下的定位一直约束着。完整逻辑写在 [SKILL.md](https://github.com/Zenine/resume-intelligence-hub/blob/main/SKILL.md)。
+
+## 搭配使用的专精 skill
+
+具体某一次的细活可以叠加生态里的小工具：
+
+- [`paramchoudhary/resumeskills@resume-ats-optimizer`](https://skills.sh/paramchoudhary/resumeskills/resume-ats-optimizer) — ATS 关键词深度优化
+- [`paramchoudhary/resumeskills@linkedin-profile-optimizer`](https://skills.sh/paramchoudhary/resumeskills/linkedin-profile-optimizer) — LinkedIn 档案打磨
+- [`anthropics/knowledge-work-plugins@interview-prep`](https://skills.sh/anthropics/knowledge-work-plugins/interview-prep) — Anthropic 官方面试准备
+- [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny 的职业转型框架
+
+</div>
+
+---
+
+<!-- source: docs/zh/philosophy.md -->
+# 设计哲学
+
+十一条反直觉的选择，每条背后都是踩过的坑。用这个 skill 不一定要理解每一条，但打算改它的话，先读完这里。
+
+## 1. 你的经历只有一份
+
+分散在五个简历版本里的事实，迟早会互相矛盾。`profiles/master.md` 是唯一的事实库，所有量化成果、头衔、时间线都在这里。定制简历时 AI 从这里取数据，而不是从上次生成的版本里复制粘贴。
+
+历史简历备份在 `简历/` 或 `resumes-archive/`，只读，不当数据来源用。
+
+## 2. 方向定好，不用每次重说
+
+每次对话都重新告诉 AI「我在找什么样的工作」很烦，也不可靠。把目标职级和行业写在 `AGENTS.md` 顶部，之后每次会话 AI 都自己去读。想换方向，改这一个地方就行。
+
+## 3. 求职简历和课题申报不是一回事
+
+申请企业职位和申请科研基金，需要的不是同一份材料——格式不同，语气不同，甚至哪些成果「值得说」也不同。`master.md` 管求职，`research.md` 管课题（按需启用）。合并在一起只会让两边都不对。
+
+## 4. 原件不放仓库
+
+身份证、合同、任命函、毕业证、税单——不放仓库。`verification/references.md` 只记「这份文件在哪里」，原件留在你自己的硬盘或云同步盘。这样仓库可以随时分享或示范，不用担心泄漏什么。
+
+## 5. 提交前先把关键信息查一遍
+
+高阶职位的面试、课题评审——提交之前值得做一次自查。跑 `workflows/verification.md`，把学历、雇主、头衔、项目编号、量化数字在公开来源里核一遍，至少两个独立来源能印证才算过。
+
+查到对不上的，现在改，比等面试官或评审自己搜到要好得多。
+
+## 6. 做完就归档，别堆在待办里
+
+`todo.md` 只放还没做的事。做完了告诉 AI 归档——条目会移到 `changelog.md`，带上日期。
+
+堆满 `[x]` 的 todo 看着有成就感，但找不到「现在该干什么」，那就没用了。
+
+## 7. 每次投递都有自己的文件夹
+
+`jobs/applications/{公司}-{职位}-{YYYY-MM-DD}/`——JD、简历、求职信、面试准备各放一份，全在这个文件夹里。同一家公司投第二次，再建一个新的，不要在原来那份上面改。日期必须有，以后回看能一眼看出节奏和每次投递的背景。
+
+## 8. 讲故事和记事实，要分开
+
+`profiles/stories.md` 放为面试口头表达专门打磨过的 STAR 叙述，`master.md` 放原始事实记录。故事要让人听进去，事实要准确无歧义——目的不同，放在一起会互相污染。
+
+## 9. 语言只选一种，别混用
+
+初始化时选中文或英文，之后不混用。模板、AI 指令、工作流都假设单一语言环境，夹杂两种语言容易让 AI 的产出变乱。简历本身想输出中文版还是英文版，那是另一回事，投哪家选哪种就好。
+
+## 10. 别把 hub 绑在某一个 AI IDE 上
+
+`AGENTS.md` 是跨 IDE 通用的上下文文件格式。如果你用的 IDE 要求别的位置（比如 Cursor 的 `.cursor/rules/`、Windsurf 的 `.windsurfrules`），建软链接或复制过去就行。内容本身不要写成某一家 IDE 的专属格式，换工具不该需要重写上下文。
+
+## 11. 归因也是证据的一部分
+
+高风险材料不能只追求数字好看。个人直接负责、团队成果、公司整体指标、报价、储备商机、预测、已确认营收要分清楚。Hub 要保留这些边界，让强主张既有说服力，也经得起核查。
+
+---
+
+## 背后参考的方法论
+
+这些设计选择不是凭空想的，每一条都有可追溯的来源。完整列表见 [方法论](/zh/frameworks)。
+
+---
+
+<!-- source: docs/zh/quick-start.md -->
+# 快速开始
+
+三步把你的职业 hub 跑起来。
+
+## 1. 装 skill
+
+```bash
+npx skills add Zenine/resume-intelligence-hub -g -y
+```
+
+或者直接 clone 下来：
+
+```bash
+git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/resume-intelligence-hub
+```
+
+## 2. 初始化你自己的 hub
+
+打开你用的 AI IDE（Claude Code、Cursor、Codex、Cline、Windsurf，只要能读 `AGENTS.md` 都行），`cd` 到你打算放 hub 的文件夹——**一定选私有位置**，别放在将来会公开的 repo 里。然后说：
+
+> **帮我搭个简历库**
+
+AI 会问你 8 个问题：
+
+1. **语言** — 中文或英文，选一个，别混着来
+2. **现有材料** — 手头有旧简历/CV 就先发给它，下面几个问题都会因此更准
+3. **行业** — 软件、医疗、设计、法律、学术……什么都行
+4. **目标职级** — 初级、资深 IC、一线经理、总监、VP、创始人、PI，按自己情况说
+5. **要不要科研那条线** — 只在申课题 / 基金时需要开
+6. **要不要职称 / 资质 / 晋升申报线** — 只在准备职称、执业资质、晋升材料时需要开
+7. **简历输出语言** — 中文、英文或双语都行
+8. **仓库放哪** — 硬盘上的绝对路径
+
+答完 AI 会：把目录结构搭好 → 把定位写进 `AGENTS.md` → 把你给的旧简历归档 → 在 `todo.md` 里写一份"接下来要做什么"的清单。
+
+## 3. 平时怎么用
+
+Hub 搭好之后，直接用中文和 AI 说想做什么就行：
+
+| 你说 | 触发的工作流 |
+|------|--------------|
+| 盘一下我跟目标座位的差距 | [职业规划 & 差距盘点](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/career-planning.md) — 初始化后第一个跑，之后每季度再跑一次 |
+| 帮我针对这个 JD 生成简历 | [JD 定制简历](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-tailored-resume.md) |
+| 看看有什么合适的机会 | [主动搜岗位](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/jd-sourcing.md) |
+| 针对这个职位帮我准备面试 | [面试准备](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/interview-prep.md) |
+| 投递前帮我核查公开资料 | [投递前自查](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/verification.md) |
+| 帮我生成国自然的申报简历 | [课题申报](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/grant-application.md)（只在科研线开启时） |
+| 帮我准备职称 / 资质 / 晋升申报材料 | [职称 / 资质 / 晋升申报](https://github.com/Zenine/resume-intelligence-hub/blob/main/workflows/credential-application.md) |
+
+## 常见问题
+
+**AI 没读到我的 AGENTS.md**
+
+- Claude Code 老版本只认 `CLAUDE.md`：`ln -s AGENTS.md CLAUDE.md` 建个软链接就行
+- Cursor：把 `AGENTS.md` 内容复制到 `.cursor/rules/agents.mdc`，或者软链
+- Windsurf：用 `.windsurfrules`
+- GitHub Copilot：用 `.github/copilot-instructions.md`
+- 别的 IDE：查一下它自己的上下文文件约定
+
+**我已经有一堆散的简历了，能直接用这个整起来吗？**
+
+可以。把 AI 指到那些简历所在的目录，让它"把这些整合进 resume-intelligence-hub 的结构"就行。初始化流程会帮你合并。
+
+**我想用别的语言（日文、韩文……）**
+
+目前只有中英文模板，其它语言欢迎去 [GitHub](https://github.com/Zenine/resume-intelligence-hub) 提 PR。
+
+---
+
+<!-- source: docs/zh/release.md -->
+# 发布 / 版本映射
+
+本页记录公共站点层如何对应 `resume-intelligence-hub` skill 仓库。它是文档基线，不表示当前本地工作树干净，也不表示这台机器已经检出了 skill 仓库。
+
+## 仓库关系
+
+`resume-intelligence-hub-site` 是站点层。它包含 VitePress 文档、多语言内容、CI 自动化、SEO/GEO 资产，以及 GitHub Pages 发布支持。
+
+skill 本体位于独立的 [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) 仓库。该仓库负责 `SKILL.md`、`templates/` 和 `workflows/`；这些文件定义用户在 AI IDE 中安装和运行的行为。
+
+## 当前映射
+
+| 层 | 来源 | 版本基线 | 说明 |
+| --- | --- | --- | --- |
+| 站点层 | [`Zenine/resume-intelligence-hub-site`](https://github.com/Zenine/resume-intelligence-hub-site) | `1b344c2` | 来自本地 `git rev-parse --short HEAD`。当前工作树有未提交改动，所以这里只表示已提交基线。 |
+| skill 仓库 | [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) | 远端 `main` / 已发布 tag | 当前机器上下文中没有本地检出 skill 仓库。不要推断或编造本地 skill commit；以远端仓库和发布 tag 作为单一事实来源。 |
+
+## 再生成策略
+
+以下任一输入变化时，都应重新生成或复核站点：
+
+- skill 仓库行为变化：[`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) 中的 `SKILL.md`、`templates/` 或 `workflows/` 发生变化。
+- 站点多语言内容变化：英文、简体中文、日文或繁体中文任一 docs 页面发生变化，并按 `i18n/glossary.md` 核对术语。
+- SEO/GEO 资产变化：`llms.txt`、`llms-full.txt`、sitemap 相关自动化、robots 元数据、Open Graph 资产或 discovery links 发生变化。
+
+需要再生成时，应同步更新站点文档，重新生成 `llms-full.txt`，并在同一发布周期把已完成变更记录到 `CHANGELOG.md`。
+
+## 核查说明
+
+使用本页回答一个问题：“站点文档是否匹配我准备安装的 skill 版本？”
+
+要得到精确答案，应把当前站点 commit 与 [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) 当前远端 `main` 或发布 tag 对比。如果 skill 仓库已有新的行为变化，而站点尚未反映这些变化，应先重新生成站点，再把文档视为当前版本。
+
+---
+
+<!-- source: docs/zh/skill-contract.md -->
+# Skill Contract
+
+本页说明 `resume-intelligence-hub` skill 的长期运行契约。Hub 仓库是一个**私人职业 hub**：它保存职业事实、定位、草稿、核查记录和季度计划。本站是**文档层**：它公开说明方法，但不保存用户的私人职业资料。
+
+## 仓库和站点边界
+
+- `resume-intelligence-hub` skill 会为一个人搭建并运行一个私人仓库。
+- Hub 是简历、JD 定制申请、面试准备、科研线开启时的课题申报、职称 / 资质 / 晋升材料线开启时的申报包，以及投递前核查的单一事实来源。
+- 生成出来的简历和求职信都是派生物。长期可靠的来源是 `profiles/` 和 `AGENTS.md` 里的定位锁。
+- 公开站点只说明契约、工作流、示例和设置方式。它不应包含私人简历、真实证件、薪资证据、合同、证书或本机路径。
+- Hub 可以通过私人 Git remote 同步，但绝不要推到公开仓库。
+
+## 初始化后目录结构
+
+文件夹名称会随初始化语言变化，但结构保持稳定：
+
+```text
+career-hub/
+├── profiles/
+│   ├── master.md
+│   ├── skills.md
+│   ├── stories.md
+│   └── research.md
+├── jobs/
+│   ├── templates/
+│   ├── market-watch/
+│   └── applications/
+├── verification/
+│   ├── references.md
+│   └── credentials/
+├── credential-applications/
+├── resumes-archive/
+├── research-archive/
+├── assessments/
+├── AGENTS.md
+├── readme.md
+├── todo.md
+└── changelog.md
+```
+
+可选目录只在用户需要时创建：
+
+- `research.md` 和 `research-archive/` 用于科研线。
+- `credential-applications/` 用于职称、执业资质、board certification 或晋升材料。
+- `assessments/` 保存 360 反馈、性格测评等可选材料，面试准备时可引用。
+
+## 核心文件职责
+
+| 文件或目录 | 职责 |
+|---|---|
+| `AGENTS.md` | 定位锁：目标岗位、职级、领域、强调点、弱化点、已开启轨道，以及 AI agent 的运行规则。 |
+| `profiles/master.md` | 招聘用职业事实来源：岗位、职责范围、成就、指标、项目、教育经历和公开链接。 |
+| `profiles/skills.md` | 能力矩阵，包括 T 型 / π 型深度、目标座位差距、工具、领域和证书。 |
+| `profiles/stories.md` | 面试用 STAR 故事。它和事实档案分开，方便复用叙事而不重写证据。 |
+| `profiles/research.md` | 科研线来源：论文、专利、课题、标准、研究方向、学术服务和指导经历。 |
+| `jobs/market-watch/` | 目标公司、实时 JD shortlist、内推路径和差距计划快照。 |
+| `jobs/applications/` | 每次投递一个带日期的文件夹，例如 `company-role-2026-06-07/`，保存 JD、生成简历、求职信和面试准备。 |
+| `verification/references.md` | 敏感原件的路径引用索引。它记录证据在哪里，但不把证据复制进 Git。 |
+| `verification/{date}-web-check.md` | 承重声明的公开资料交叉核查记录。 |
+| `credential-applications/` | 职称、执业资质、board 或晋升申报的证据矩阵和写作包。 |
+| `resumes-archive/` | 旧简历和转换后的 Markdown 版本。只归档，不再把旧简历当事实来源继续改。 |
+| `todo.md` | 只放未完成事项，尤其是本季度 SMART 行动和未解决的证据缺口。 |
+| `changelog.md` | 已完成事项，按日期倒序记录。完成事项应移到这里，而不是作为 `[x]` 留在 `todo.md`。 |
+
+## 工作流输入和输出
+
+### 1. 职业规划和差距分析
+
+| 输入 | 输出 |
+|---|---|
+| `profiles/master.md`、`profiles/skills.md`、`profiles/stories.md`、`AGENTS.md`、近期 `changelog.md`，以及 3-5 个目标层级 JD 或课题指南。 | `AGENTS.md` 中刷新的定位块、带日期的 `jobs/market-watch/{date}-gap-plan.md`，以及写入 `todo.md` 的 2-4 个 SMART 季度事项。 |
+
+初始化后先跑它，之后每季度或重大职业事件后重跑。
+
+### 2. JD 搜寻和市场研究
+
+| 输入 | 输出 |
+|---|---|
+| `profiles/master.md`、`profiles/skills.md`、`AGENTS.md` 中的定位锁、地区、职级、目标 title 和渠道约束。 | 3-5 个机会的排序 shortlist、`jobs/market-watch/{date}-{theme}.md` watchlist、匹配度备注，以及可见时的内推路径。 |
+
+这个工作流先找对目标座位，再让 hub 针对其中一个岗位生成简历。
+
+### 3. JD 定制简历
+
+| 输入 | 输出 |
+|---|---|
+| 文本、URL 或 PDF 格式的 JD；`profiles/master.md`；`profiles/skills.md`；`AGENTS.md`；以及相关核查引用。 | `jobs/applications/{company}-{role}-{date}/jd.md`、`resume.md`、可选的 `cover.md`，以及初版 `prep.md`。 |
+
+简历从源档案重新生成，不从旧简历改写。
+
+### 4. 面试准备
+
+| 输入 | 输出 |
+|---|---|
+| JD 或目标岗位、已有时的 `resume.md`、`profiles/stories.md`、`profiles/skills.md`，以及可选的 `assessments/`。 | `jobs/applications/{company}-{role}-{date}/prep.md`，包含预测问题、STAR 答案提纲、复习清单、反问面试官的问题、风险点和可选 mock interview 记录。 |
+
+如果故事库太薄，工作流应直接暴露缺口，而不是现场编故事。
+
+### 5. 投递前核查
+
+| 输入 | 输出 |
+|---|---|
+| 即将投递的简历、proposal、申报材料或其他高风险文本；`verification/references.md`；公开资料；以及承重声明列表。 | `verification/{date}-web-check.md`，记录已确认声明、公开证据不足事项、高风险事项、更稳妥改写和所需补充证据。 |
+
+投高级岗位、课题申报、职称 / 资质 / 晋升材料，以及第一次使用任何承重声明前，都应运行它。
+
+### 6. 课题 / 科研申报简历
+
+| 输入 | 输出 |
+|---|---|
+| 已开启的科研线、课题或基金类型、申报指南、研究方向、`profiles/research.md`、`profiles/master.md` 和核查来源。 | 按方向筛选后的申报档案，保存到 `research-archive/{year}-{grant-type}-{direction}.md`；当声明可外部核查时，生成更严格的核查记录。 |
+
+未开启科研线时，完全跳过这个工作流。
+
+### 7. 职称 / 资质 / 晋升申报
+
+| 输入 | 输出 |
+|---|---|
+| 官方规则或资格文件、已有申报文件夹、`profiles/master.md`、相关时的 `profiles/research.md`、`verification/references.md`、`todo.md` 和 `changelog.md`。 | `credential-applications/{credential-name}/` 下的证据矩阵、写作包、风险记录、面向评审的精简版，`todo.md` 中更新的未解决证据，以及 `changelog.md` 中记录的已完成事项。 |
+
+规则是先做证据矩阵，再写漂亮文案。
+
+## 敏感文件策略
+
+敏感原件不进 Git。例子包括身份证件、护照、合同、薪资单、任命书、证书、学历证明、医疗或执业资质文件、私人推荐信。
+
+用 `verification/references.md` 记录路径引用：
+
+```markdown
+| 证据 | 位置 | 备注 |
+|---|---|---|
+| 学位证书 | secure-drive:/career-documents/education/degree-certificate.pdf | 只用于教育经历核查。 |
+| 任命书 | private-vault:/employment/company-a/appointment-letter.pdf | 证明 title 和任职日期。 |
+```
+
+Hub 可以保存摘要、声明措辞和核查记录。除非用户明确决定私人仓库就是合适的存放位置，否则不要把敏感原件放进 hub。
+
+## 中断恢复
+
+每个会话开始时应先读：
+
+1. `AGENTS.md`
+2. `todo.md`
+3. `changelog.md`
+4. 工作流相关目录，例如 `jobs/applications/{company}-{role}-{date}/`
+5. 涉及高风险声明时，还要读最新核查记录
+
+如果会话中途停止：
+
+- 把未解决事项留在 `todo.md`，写清楚下一步和阻塞原因。
+- 把已完成、已验证的事项移入 `changelog.md`。
+- 生成草稿保留在带日期的投递或申报文件夹里。
+- 恢复时让 AI 从 hub 状态继续，而不是凭聊天记忆继续。
+
+## 旧简历迁移
+
+旧简历是有价值的输入，但不应继续作为运行来源。
+
+1. 把旧简历放进 `resumes-archive/`。
+2. 将每个 PDF、DOCX 或粘贴版简历转换成同目录 Markdown 副本。
+3. 把事实声明合并进 `profiles/master.md`。
+4. 把适合面试的故事移入 `profiles/stories.md`。
+5. 只有开启科研线时，才把科研产出移入 `profiles/research.md`。
+6. 把不确定或缺少支撑的声明记录到 `todo.md` 或 `verification/references.md`。
+7. 后续根据 `profiles/master.md` 和具体 JD 重新生成新简历。
+
+Archive 保存历史。`profiles/` 成为单一事实来源。
+
+## 季度复盘节奏
+
+默认战略节奏是每季度一次：
+
+- 重新运行职业规划和差距分析。
+- 重新阅读上一次 `jobs/market-watch/{date}-gap-plan.md`。
+- 检查目标座位、薪酬区间、地区或生活约束是否改变。
+- 重新盘点技能、范围、职称 / 资质、网络和时间差距。
+- 把已完成事项写进 `changelog.md`。
+- `todo.md` 只保留仍然活跃的本季度 SMART 事项。
+- 如果目标发生实质变化，刷新 `AGENTS.md` 里的定位锁。
+
+每周节奏是战术性的：更新投递、证据收集、面试准备和 market-watch 笔记。季度节奏是战略性的：判断 hub 是否仍然指向正确的目标座位。
+
+---
+
+<!-- source: docs/ja/examples.md -->
+# サンプル
+
+このページは、`resume-intelligence-hub` がプライベートなキャリアハブを初期化した後に何を生成できるかを示す。以下はすべて合成・匿名化されたサンプルであり、架空の名前、架空の組織、架空の指標、相対パスのみを使用している。
+
+## 安全上の注意
+
+これらのサンプルは形式の参考であり、そのままコピーする主張ではない。実際のハブでは、機密原本を公開リポジトリの外に置き、検証済みの事実と下書きを分離し、高ステークス応募前に応募前検証を実行する。
+
+## 初期化後のディレクトリツリー
+
+```text
+career-hub/
+├── AGENTS.md
+├── README.md
+├── todo.md
+├── changelog.md
+├── profiles/
+│   ├── master.md
+│   ├── evidence-index.md
+│   └── positioning.md
+├── applications/
+│   └── 2026-04-15-exampleworks-platform-lead/
+│       ├── jd.md
+│       ├── resume.md
+│       ├── cover-letter.md
+│       └── verification-log.md
+├── interviews/
+│   └── star-stories.md
+├── planning/
+│   ├── quarterly-review-2026-q2.md
+│   └── smart-plan-2026-q3.md
+└── archive/
+    └── imported-resumes/
+```
+
+## profiles/master.md の実績スニペット
+
+```markdown
+### プラットフォーム信頼性とインシデントノイズ削減
+
+- 架空の分析プロダクトで 5 人のプラットフォームチームを率い、アラートルーティングのワークフローを再設計し、2 四半期で重複アラートを 43% から 12% に削減。
+- 個人のオーナーシップ、チーム成果、顧客影響、未解決リスクを分けて記録する週次インシデントレビュー用テンプレートを構築。
+- エビデンス状態：内部記録あり。外部利用前には公開情報源によるクロスチェックが必要。
+- 帰属境界：ワークフロー設計とファシリテーションを担当。信頼性改善はプラットフォームチーム全体で達成。
+```
+
+## JD カスタム履歴書スニペット
+
+```markdown
+## Selected Experience
+
+**Senior Platform Engineer, Fictional Product Group**
+
+- JD の「クロスファンクショナルなインシデントリーダーシップ」要件に合わせ、合成されたプラットフォーム信頼性プロジェクトを強調：エンジニアリング、サポート、プロダクトの関係者を調整し、2 四半期にわたるアラートルーティング再設計を推進。
+- 汎用的な「ダッシュボードを構築」という表現を JD に沿ったスコープへ変更：週次レビュー会議で優先順位付けとエスカレーション判断に使うサービスヘルスビューを作成。
+- JD がバックエンド信頼性、関係者調整、運用指標を重視していたため、関連性の低いモバイル UI 業務を削除。
+
+## ポジショニングロック
+
+ターゲット：中規模 B2B ソフトウェアチームの Platform Lead。
+強化するシグナル：運用判断、インシデントシステム、明確な帰属境界。
+```
+
+## STAR ストーリー
+
+```markdown
+### ストーリー：ノイズの多いエスカレーション経路を減らす
+
+**Situation**：架空のカスタマーオペレーションチームが、重複する監視ルールから繰り返しインシデント通知を受けていた。
+
+**Task**：高重大度アラートを隠さずに、エスカレーション経路を明確化する。
+
+**Action**：サポートリードにヒアリングし、アラートのオーナーシップを整理し、重複ルーティングルールを削除し、共通のインシデント分類に基づく週次レビューを導入。
+
+**Result**：この合成サンプルでは、重複アラートが 43% から 12% に低下し、オンコールレビュー時間が 30% 減少し、チームは今後のサービス立ち上げにも分類体系を採用。
+
+**面接での深掘り角度**：ツールだけでなく、曖昧な状況での判断を強調する。
+```
+
+## Verification log
+
+```markdown
+# 応募前検証ログ
+
+応募：2026-04-15-exampleworks-platform-lead
+レビュアー：AI エージェント + 人によるレビュー
+状態：提出前に人の確認が必要
+
+| 主張 | ソース種別 | 検証 | 結果 | 次のアクション |
+|------|------------|------|------|----------------|
+| 重複アラートを 43% から 12% に削減 | 内部ダッシュボード要約 | 対象期間と分母を比較 | 下書きのみ | エクスポート可能か確認 |
+| 5 人チームを率いた | チームロスターのメモ | 役割と日付を確認 | 妥当 | 元マネージャーに表現を確認 |
+| 週次インシデントレビュー用テンプレートを作成 | 内部プロセス文書 | 帰属境界を確認 | 下書き検証済み | 「作成」は維持し、経営判断を主張しない |
+| 顧客影響の表現 | サポートチケットのテーマ | 根拠のない売上・解約主張を避ける | エビデンス不足 | ビジネス影響の主張を削除 |
+```
+
+## 四半期 SMART プラン
+
+```markdown
+# SMART プラン：2026 Q3
+
+ポジショニングターゲット：中規模 B2B ソフトウェアチームの Platform Lead。
+
+1. 2026-08-15 までに、エンジニアリングマネージャー 1 名とサポートリード 1 名のレビューを受けた信頼性関連の内部記事を 2 本公開する。
+2. インシデント判断、トレードオフ説明、関係者調整に焦点を当てた模擬面接を毎月 1 回実施する。
+3. 2026-09-10 までに、最も強い信頼性実績 3 件を STAR ストーリーに変換し、検証済みの帰属境界を補う。
+4. 2026-09-30 までに、Platform Lead または Staff Platform Engineer の JD を 12 件収集し、スコープ、チーム規模、必要エビデンスでタグ付けする。
+5. システム設計レビュー用パケットを完成させて資格ギャップを 1 つ閉じ、学びを `planning/quarterly-review-2026-q3.md` に記録する。
+```
+
+## これらのサンプルの使い方
+
+重要なのは具体的な表現ではなく、ソースとなる事実、生成された下書き、面接ストーリー、検証エビデンス、四半期計画を分離すること。この分離により、AI エージェントは毎回の応募を一度きりの書き直しにせず、時間をかけて出力を改善できる。
+
+---
+
 <!-- source: docs/ja/faq.md -->
 # よくある質問
 
@@ -400,6 +1508,10 @@ resume-intelligence-hub は、個人のキャリアインテリジェンスハ�
 ### 他の履歴書 AI ツールと何が違いますか？
 
 多くの履歴書ツールは一度きりです：JD を貼り付けて履歴書を生成する。resume-intelligence-hub は数ヶ月にわたる就職活動を通じて反復改善できる持続可能なインフラです。ポジショニングロックで全出力を目標に向け、検証ワークフローで提出前に主要な主張を公開情報源でクロスチェックし、ギャップ分析で必要なスキル・資格・マネジメント経験・人脈を特定します。
+
+### 自分の AI IDE で使えますか？
+
+はい。ハブは命令ファイルとして `AGENTS.md` を使います。これは AI IDE をまたいで使える標準です。Claude Code、Cursor、Codex、Cline、Windsurf、GitHub Copilot はいずれもこれを読み取れます（一部はシンボリックリンクまたはコピー経由）。IDE ごとの配線方法は [クイックスタート — トラブルシューティング](./quick-start.md#troubleshooting) を参照してください。
 
 ### 科学研究費申請トラックは必須ですか？
 
@@ -678,6 +1790,344 @@ git clone https://github.com/Zenine/resume-intelligence-hub ~/.claude/skills/res
 
 ---
 
+<!-- source: docs/ja/release.md -->
+# リリース / バージョン対応
+
+このページは、公開サイトレイヤーが `resume-intelligence-hub` skill リポジトリとどう対応しているかを記録する。これはドキュメント上の基準であり、ローカルの作業ツリーがクリーンであることや、このマシンに skill リポジトリがチェックアウトされていることを意味しない。
+
+## リポジトリの関係
+
+`resume-intelligence-hub-site` はサイトレイヤーである。VitePress ドキュメント、多言語コンテンツ、CI 自動化、SEO/GEO アセット、GitHub Pages 公開サポートを含む。
+
+skill 本体は別リポジトリの [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) にある。そのリポジトリが `SKILL.md`、`templates/`、`workflows/` を所有し、ユーザーが AI IDE でインストールして実行する動作を定義する。
+
+## 現在の対応
+
+| レイヤー | ソース | バージョン基準 | 注記 |
+| --- | --- | --- | --- |
+| サイトレイヤー | [`Zenine/resume-intelligence-hub-site`](https://github.com/Zenine/resume-intelligence-hub-site) | `1b344c2` | ローカルの `git rev-parse --short HEAD` による値。現在の作業ツリーには未コミット変更があるため、これはコミット済み基準のみを示す。 |
+| skill リポジトリ | [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) | リモート `main` / 公開済み tag | 現在のマシンコンテキストでは skill リポジトリはローカルにチェックアウトされていない。ローカル skill commit を推測または捏造せず、リモートリポジトリとリリース tag を単一の信頼できる情報源とする。 |
+
+## 再生成ポリシー
+
+次のいずれかの入力が変わった場合、サイトを再生成またはレビューする。
+
+- skill リポジトリの動作変更：[`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) の `SKILL.md`、`templates/`、または `workflows/` が変わった場合。
+- サイトの多言語コンテンツ変更：英語、簡体字中国語、日本語、繁体字中国語のいずれかの docs ページが変わった場合。用語は `i18n/glossary.md` に照らして確認する。
+- SEO/GEO アセット変更：`llms.txt`、`llms-full.txt`、sitemap 関連自動化、robots メタデータ、Open Graph アセット、または discovery links が変わった場合。
+
+再生成が必要な場合は、サイトドキュメントを同期更新し、`llms-full.txt` を再生成し、同じリリースサイクルで完了した変更を `CHANGELOG.md` に記録する。
+
+## 検証メモ
+
+このページは「サイトドキュメントは、これからインストールする skill バージョンと一致しているか？」という問いに答えるために使う。
+
+正確に判断するには、現在のサイト commit と [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) の現在のリモート `main` またはリリース tag を比較する。skill リポジトリに新しい動作変更があり、それがサイトにまだ反映されていない場合は、ドキュメントを現行版として扱う前にサイトを再生成する。
+
+---
+
+<!-- source: docs/ja/skill-contract.md -->
+# Skill Contract
+
+このページは `resume-intelligence-hub` skill の長期的な運用契約を説明する。ハブのリポジトリは**プライベートなキャリア hub**であり、キャリア上の事実、ポジショニング、下書き、検証ログ、四半期計画を保存する。このサイトは**ドキュメント層**であり、方法論を公開して説明するが、ユーザーのプライベートなキャリア資料を置く場所ではない。
+
+## リポジトリとサイトの境界
+
+- `resume-intelligence-hub` skill は、1 人のためのプライベートリポジトリをスキャフォールドし運用する。
+- ハブは、履歴書、JD カスタム応募、面接準備、リサーチトラックが有効な場合の研究課題申請、資格 / 昇進書類トラックが有効な場合の書類、応募前検証の単一の信頼できる情報源である。
+- 生成された履歴書やカバーレターは派生物である。長期的なソースは `profiles/` と `AGENTS.md` のポジショニングロックである。
+- 公開サイトは契約、ワークフロー、例、セットアップガイドを説明する。プライベートな履歴書、実在する ID、給与証明、契約書、証明書、ローカルマシンのパスを含めてはならない。
+- ハブはプライベート Git remote で同期できるが、公開リポジトリへ push してはならない。
+
+## 初期化後のディレクトリ構造
+
+フォルダ名の言語は初期化時の言語によって変わるが、構造は安定している：
+
+```text
+career-hub/
+├── profiles/
+│   ├── master.md
+│   ├── skills.md
+│   ├── stories.md
+│   └── research.md
+├── jobs/
+│   ├── templates/
+│   ├── market-watch/
+│   └── applications/
+├── verification/
+│   ├── references.md
+│   └── credentials/
+├── credential-applications/
+├── resumes-archive/
+├── research-archive/
+├── assessments/
+├── AGENTS.md
+├── readme.md
+├── todo.md
+└── changelog.md
+```
+
+任意フォルダはユーザーが必要とする場合だけ作成される：
+
+- `research.md` と `research-archive/` はリサーチトラック用。
+- `credential-applications/` は専門職称、ライセンス、board certification、昇進書類用。
+- `assessments/` は 360 フィードバックや性格検査など、面接準備で参照できる任意資料を保存する。
+
+## コアファイルの責務
+
+| ファイルまたはフォルダ | 責務 |
+|---|---|
+| `AGENTS.md` | ポジショニングロック：目標ロール、シニアリティ、分野、強調点、弱める点、有効なトラック、AI エージェントの運用ルール。 |
+| `profiles/master.md` | 採用向けのキャリア事実ソース：職歴、スコープ、成果、指標、プロジェクト、学歴、公開リンク。 |
+| `profiles/skills.md` | 能力マトリクス。T 型 / π 型の深さ、目標ポジションとの差分、ツール、ドメイン、資格を含む。 |
+| `profiles/stories.md` | 面接用 STAR ストーリー。事実データとは分離し、証拠を書き換えずにナラティブを再利用できるようにする。 |
+| `profiles/research.md` | リサーチトラックのソース：論文、特許、資金獲得プロジェクト、標準、研究方向、学術サービス、メンタリング。 |
+| `jobs/market-watch/` | 目標企業、ライブ JD ショートリスト、リファラル経路、ギャップ計画スナップショット。 |
+| `jobs/applications/` | 応募ごとに日付付きフォルダを 1 つ置く。例：`company-role-2026-06-07/`。JD、生成履歴書、カバーレター、面接準備を保存する。 |
+| `verification/references.md` | 機密原本のパス参照インデックス。証拠の場所を記録するが、証拠自体を Git にコピーしない。 |
+| `verification/{date}-web-check.md` | 重要な主張の公開情報源クロスチェックログ。 |
+| `credential-applications/` | 資格、ライセンス、board、昇進応募のエビデンスマトリクスとライティングパケット。 |
+| `resumes-archive/` | 古い履歴書と変換済み Markdown コピー。アーカイブ専用であり、古い履歴書を事実ソースとして編集し続けない。 |
+| `todo.md` | 未完了の作業だけを置く。特に今四半期の SMART アクションと未解決の証拠ギャップ。 |
+| `changelog.md` | 完了した作業を日付付き・逆時系列で記録する。完了項目は `[x]` として `todo.md` に残さず、ここへ移す。 |
+
+## ワークフローの入力と出力
+
+### 1. キャリアプランニングとギャップ分析
+
+| 入力 | 出力 |
+|---|---|
+| `profiles/master.md`、`profiles/skills.md`、`profiles/stories.md`、`AGENTS.md`、最近の `changelog.md`、3-5 件の目標レベル JD または研究課題公募。 | `AGENTS.md` の更新済みポジショニングブロック、日付付き `jobs/market-watch/{date}-gap-plan.md`、`todo.md` に入る 2-4 件の SMART 四半期項目。 |
+
+初期化直後に最初に実行し、その後は四半期ごと、または大きなキャリアイベント後に再実行する。
+
+### 2. JD ソーシングと市場調査
+
+| 入力 | 出力 |
+|---|---|
+| `profiles/master.md`、`profiles/skills.md`、`AGENTS.md` のポジショニングロック、地域、シニアリティ、目標 title、チャネル制約。 | 3-5 件の機会を順位付けしたショートリスト、`jobs/market-watch/{date}-{theme}.md` の watchlist、フィットメモ、見える場合はリファラル経路。 |
+
+このワークフローは、履歴書を特定の JD に合わせる前に、正しいポジションを探す。
+
+### 3. JD カスタム履歴書
+
+| 入力 | 出力 |
+|---|---|
+| テキスト、URL、PDF の JD；`profiles/master.md`；`profiles/skills.md`；`AGENTS.md`；関連する検証参照。 | `jobs/applications/{company}-{role}-{date}/jd.md`、`resume.md`、任意の `cover.md`、初期版 `prep.md`。 |
+
+履歴書はソースプロフィールデータから再生成し、古い履歴書を書き換えて作らない。
+
+### 4. 面接準備
+
+| 入力 | 出力 |
+|---|---|
+| JD または目標ロール、利用可能なら生成済み `resume.md`、`profiles/stories.md`、`profiles/skills.md`、任意の `assessments/`。 | `jobs/applications/{company}-{role}-{date}/prep.md`。予想質問、STAR 回答アウトライン、トピック復習リスト、面接官への質問、リスクポイント、任意の模擬面接メモを含む。 |
+
+ストーリーライブラリが薄い場合、ワークフローはそのギャップを示すべきであり、場当たりでストーリーを作ってはならない。
+
+### 5. 応募前検証
+
+| 入力 | 出力 |
+|---|---|
+| 提出予定の履歴書、提案書、書類、その他高ステークス文書；`verification/references.md`；公開情報源；重要な主張のリスト。 | `verification/{date}-web-check.md`。確認済み主張、公開証拠が不足する項目、高リスク項目、より安全な言い換え、必要な補足証拠を記録する。 |
+
+シニアロール応募、研究課題申請、資格 / 昇進書類、重要な主張の初回使用前に実行する。
+
+### 6. 研究課題申請プロフィール
+
+| 入力 | 出力 |
+|---|---|
+| 有効化済みリサーチトラック、助成金または資金タイプ、公募要件、研究方向、`profiles/research.md`、`profiles/master.md`、検証ソース。 | 方向で絞り込んだプロフィールを `research-archive/{year}-{grant-type}-{direction}.md` に保存し、外部検証可能な主張にはより厳格な検証ログを作る。 |
+
+リサーチトラックが有効でない場合、このワークフローは完全にスキップする。
+
+### 7. 資格 / 昇進書類
+
+| 入力 | 出力 |
+|---|---|
+| 公式ルールブックまたは eligibility 文書、既存の資格フォルダ、`profiles/master.md`、関連する場合の `profiles/research.md`、`verification/references.md`、`todo.md`、`changelog.md`。 | `credential-applications/{credential-name}/` のエビデンスマトリクス、ライティングパケット、リスクログ、審査者向け簡潔版、`todo.md` の未解決証拠、`changelog.md` の完了作業。 |
+
+ルールは、エビデンスマトリクスを先に作り、洗練された文章は後で書くこと。
+
+## 機密ファイル戦略
+
+機密原本は Git に入れない。例：ID、パスポート、契約書、給与明細、任命書、証明書、卒業証明、医療またはライセンス文書、非公開推薦状。
+
+`verification/references.md` にパス参照を記録する：
+
+```markdown
+| 証拠 | 場所 | メモ |
+|---|---|---|
+| 学位証明書 | secure-drive:/career-documents/education/degree-certificate.pdf | 学歴検証のみに使用。 |
+| 雇用レター | private-vault:/employment/company-a/appointment-letter.pdf | title と在籍期間を確認する。 |
+```
+
+ハブは要約、主張の文言、検証ログを保存できる。ユーザーがプライベートリポジトリを適切な保管場所だと明示的に判断した場合を除き、機密原本をハブに置かない。
+
+## 中断からの復旧
+
+各セッションはまず次を読む：
+
+1. `AGENTS.md`
+2. `todo.md`
+3. `changelog.md`
+4. `jobs/applications/{company}-{role}-{date}/` など、ワークフロー固有のフォルダ
+5. 高ステークスな主張を扱う場合は最新の検証ログ
+
+セッションが途中で止まった場合：
+
+- 未解決項目は `todo.md` に残し、次のアクションとブロッカーを書く。
+- 完了し検証済みの作業は `changelog.md` に移す。
+- 生成下書きは日付付きの応募フォルダまたは書類フォルダに保存する。
+- 再開時はチャット履歴ではなく、ハブの状態から続けるようエージェントに依頼する。
+
+## 古い履歴書の移行
+
+古い履歴書は有用な入力だが、運用ソースとして残すべきではない。
+
+1. 古い履歴書を `resumes-archive/` に置く。
+2. PDF、DOCX、貼り付け履歴書を、それぞれ同じ場所の Markdown コピーへ変換する。
+3. 事実として使える主張を `profiles/master.md` に統合する。
+4. 面接向きのストーリーを `profiles/stories.md` に移す。
+5. リサーチトラックが有効な場合だけ、研究成果を `profiles/research.md` に移す。
+6. 不確実または裏付け不足の主張を `todo.md` または `verification/references.md` に記録する。
+7. 新しい履歴書は `profiles/master.md` と具体的な JD から生成する。
+
+アーカイブは履歴を保存する。`profiles/` が単一の信頼できる情報源になる。
+
+## 四半期レビューのリズム
+
+デフォルトの戦略リズムは四半期ごと：
+
+- キャリアプランニングとギャップ分析を再実行する。
+- 前回の `jobs/market-watch/{date}-gap-plan.md` を読み直す。
+- 目標ポジション、報酬レンジ、地域、生活上の制約が変わったか確認する。
+- スキル、スコープ、資格、ネットワーク、タイミングのギャップを再確認する。
+- 完了したアクションを `changelog.md` に移す。
+- `todo.md` には有効な四半期 SMART 項目だけを残す。
+- 目標が実質的に変わった場合、`AGENTS.md` のポジショニングロックを更新する。
+
+週次リズムは戦術的で、応募、証拠収集、面接準備、market-watch メモを更新する。四半期リズムは戦略的で、ハブがまだ正しいポジションを向いているか判断する。
+
+---
+
+<!-- source: docs/zh-TW/examples.md -->
+# 樣例
+
+本頁展示 `resume-intelligence-hub` 初始化私人職涯 hub 後可能產出什麼。下面所有樣例都是合成和匿名內容：虛構姓名、虛構組織、虛構指標，並且只使用相對路徑。
+
+## 安全說明
+
+這些樣例只作為格式參考，不是可直接複製的真實聲明。真實 hub 應把敏感原件留在公開儲存庫之外，把已查核事實和草稿分開，並在高風險投遞前執行投遞前查核。
+
+## 初始化目錄樹
+
+```text
+career-hub/
+├── AGENTS.md
+├── README.md
+├── todo.md
+├── changelog.md
+├── profiles/
+│   ├── master.md
+│   ├── evidence-index.md
+│   └── positioning.md
+├── applications/
+│   └── 2026-04-15-exampleworks-platform-lead/
+│       ├── jd.md
+│       ├── resume.md
+│       ├── cover-letter.md
+│       └── verification-log.md
+├── interviews/
+│   └── star-stories.md
+├── planning/
+│   ├── quarterly-review-2026-q2.md
+│   └── smart-plan-2026-q3.md
+└── archive/
+    └── imported-resumes/
+```
+
+## profiles/master.md 成就片段
+
+```markdown
+### 平台可靠性與事故降噪
+
+- 帶領一個五人平台小組，為某個虛構分析產品重設計告警路由工作流程，在兩個季度內把重複告警從 43% 降到 12%。
+- 建立每週事故複盤範本，把個人職責、團隊結果、客戶影響和未解決風險分開記錄。
+- 證據狀態：已有內部記錄；對外使用前需要做公開資料三角驗證。
+- 歸因邊界：負責工作流程設計和複盤推動；可靠性改善由整個平台小組共同交付。
+```
+
+## JD 客製履歷片段
+
+```markdown
+## 重點經歷
+
+**資深平台工程師，虛構產品小組**
+
+- 針對 JD 中的「跨職能事故領導力」要求，突出一個合成的平台可靠性專案：協調工程、支援和產品相關方，完成兩個季度的告警路由重設計。
+- 把泛泛的「搭建 dashboard」改寫成 JD 相關的範圍：建立服務健康視圖，用於每週複盤會議中的優先順序排序和升級判斷。
+- 刪除不相關的行動端 UI 工作，因為該 JD 更強調後端可靠性、相關方協調和營運指標。
+
+## 定位鎖
+
+目標：中型 B2B 軟體團隊的平台負責人。
+需要強化的訊號：營運判斷、事故系統、清晰的歸因邊界。
+```
+
+## STAR 故事
+
+```markdown
+### 故事：減少噪音型升級路徑
+
+**Situation**：一個虛構客戶營運團隊不斷收到來自重疊監控規則的重複事故通知。
+
+**Task**：在不隱藏高嚴重度告警的前提下，釐清升級路徑。
+
+**Action**：訪談支援負責人，梳理告警歸屬，移除重複路由規則，並用統一的事故分類法建立每週複盤。
+
+**Result**：在這個合成樣例中，重複告警從 43% 降到 12%，on-call 複盤時間減少 30%，團隊把這套分類法用於後續服務上線。
+
+**後續面試角度**：強調不確定場景下的判斷力，而不只是工具實作。
+```
+
+## Verification log
+
+```markdown
+# 投遞前查核日誌
+
+投遞：2026-04-15-exampleworks-platform-lead
+查核者：AI agent + 人工複核
+狀態：提交前仍需人工確認
+
+| 聲明 | 來源類型 | 查核動作 | 結果 | 下一步 |
+|------|----------|----------|------|--------|
+| 重複告警從 43% 降到 12% | 內部 dashboard 摘要 | 比對統計週期和分母 | 僅限草稿 | 確認是否允許匯出 |
+| 帶領五人小組 | 團隊成員記錄 | 確認角色和日期 | 基本可信 | 請前經理確認措辭 |
+| 建立每週事故複盤範本 | 內部流程文件 | 檢查歸因邊界 | 草稿已查核 | 保留「建立」，避免聲稱獲得高層授權 |
+| 客戶影響表述 | 支援工單主題 | 避免無證據的收入或流失聲明 | 證據不足 | 刪除業務影響聲明 |
+```
+
+## 季度 SMART 計畫
+
+```markdown
+# SMART 計畫：2026 Q3
+
+定位目標：中型 B2B 軟體團隊的平台負責人。
+
+1. 在 2026-08-15 前發布兩篇內部可靠性複盤，每篇都由一位工程經理和一位支援負責人審閱。
+2. 每月進行一次模擬面試，重點練習事故判斷、取捨表達和相關方對齊。
+3. 在 2026-09-10 前，把三個最強的可靠性成就改寫成 STAR 故事，並補齊已查核的歸因邊界。
+4. 在 2026-09-30 前蒐集 12 個 Platform Lead 或 Staff Platform Engineer JD，並按職責範圍、團隊規模和所需證據打標籤。
+5. 完成一份系統設計複盤包，關閉一個資質差距，並把經驗寫入 `planning/quarterly-review-2026-q3.md`。
+```
+
+## 如何使用這些樣例
+
+真正有用的不是具體措辭，而是把來源事實、生成草稿、面試故事、查核證據和季度計畫分開。這樣 AI agent 才能隨時間持續改進產出，而不是把每次投遞都變成一次性的重寫。
+
+---
+
 <!-- source: docs/zh-TW/faq.md -->
 # 常見問題
 
@@ -726,7 +2176,7 @@ Skill 裡的工作流程都建在成熟方法論之上。AI 指導你時會**點
 
 ## 履歷撰寫
 
-### Google XYZ 公式
+**Google XYZ 公式**
 
 來自 Laszlo Bock，前 Google 人資副總裁。寫履歷要點時按這個結構：
 
@@ -736,29 +2186,29 @@ Skill 裡的工作流程都建在成熟方法論之上。AI 指導你時會**點
 
 每條要點都回答三件事：做到了什麼、用什麼指標能證明、具體做了什麼動作。這是履歷品質最大的一個槓桿——換成這個寫法，資訊密度直接翻倍。
 
-### 一要點一數字
+**一要點一數字**
 
 每條履歷要點必須帶至少一個數字（人數、百分比、金額、時間、規模都行）。沒數字的要點在復盤時直接刪——不是你沒做，是沒量化就沒說服力。
 
-### CAR / PAR / STAR
+**CAR / PAR / STAR**
 
 XYZ 在短要點裡太囉嗦時，用這幾個簡化版：CAR（挑戰-行動-結果）、PAR（問題-行動-結果）、STAR（情境-任務-行動-結果）。最常用的是 STAR，在 `profiles/stories.md` 裡全程使用。
 
 ## 面試
 
-### BEI（行為事件訪談）
+**BEI（行為事件訪談）**
 
 David McClelland，哈佛心理學家發明的。「講一次你……的時候」這種問法的理論基礎。核心假設：**過去的行為比嘴上說的更能預測未來行為**。所以面試官不問「你會怎麼辦」，而是要你講具體過往案例。
 
 準備時一定用具體事件，不要泛泛說「我一般會……」——那種答法在 BEI 裡根本過不了關。
 
-### STAR
+**STAR**
 
 行為面試回答的主流結構：情境（Situation）→ 任務（Task）→ 行動（Action）→ 結果（Result）。`profiles/stories.md` 裡每個故事都按這個寫。
 
 ## 研究計畫申報
 
-### Heilmeier 九問
+**Heilmeier 九問**
 
 George Heilmeier，前 DARPA 局長總結的——任何研究申報都該回答的九個問題。就算申報範本沒直接問，答完也更有說服力：
 
@@ -776,17 +2226,17 @@ George Heilmeier，前 DARPA 局長總結的——任何研究申報都該回答
 
 ## 職涯定位
 
-### T 型 / π 型 / M 型人才
+**T 型 / π 型 / M 型人才**
 
 McKinsey 和 IDEO 推廣的說法：一個領域有深度 + 相鄰領域有廣度 = T 型。資深職位常常需要 π 型（兩個深度柱）甚至 M 型（多個深度柱）。自己講「我的獨特價值在哪」時用這個框架解釋。
 
-### 職涯資本
+**職涯資本**
 
 Cal Newport 在《優秀到不能被忽視》裡提出的概念——**稀有且有價值的技能**才是你的真正槓桿。做能力差距分析時，別問「我缺什麼」，換個問法：**「我手上有什麼籌碼？往下該投資哪些能放大它？」**
 
 ## 求職策略
 
-### 延伸目標啟發式（1-2 級，1.2-3 倍薪，70% 匹配）
+**延伸目標啟發式（1-2 級，1.2-3 倍薪，70% 匹配）**
 
 換工作時用的標準啟發式：
 
@@ -799,13 +2249,13 @@ Cal Newport 在《優秀到不能被忽視》裡提出的概念——**稀有且
 
 ## 投遞前盡調
 
-### 三角驗證
+**三角驗證**
 
 每條承重聲明都要在至少 **2 個獨立公開來源**得到確認才算過關。這是定性研究的標準做法，挪過來用於投遞前自查——面試官和評審會 Google，你先 Google 過自己一遍。`workflows/verification.md` 的基礎。
 
 ## 目標設定
 
-### SMART
+**SMART**
 
 Specific（具體）、Measurable（可衡量）、Achievable（可達成）、Relevant（相關）、Time-bound（有期限）。`todo.md` 裡含糊條目會被 AI 改寫成這五個維度齊全的版本。
 
@@ -986,5 +2436,226 @@ Hub 搭好之後，直接用中文和 AI 說想做什麼就行：
 **我想用別的語言（日文、韓文……）**
 
 目前只有中英文範本，其它語言歡迎去 [GitHub](https://github.com/Zenine/resume-intelligence-hub) 提 PR。
+
+---
+
+<!-- source: docs/zh-TW/release.md -->
+# 發布 / 版本映射
+
+本頁記錄公共站點層如何對應 `resume-intelligence-hub` skill 儲存庫。它是文件基線，不表示目前本機工作樹乾淨，也不表示這台機器已經檢出了 skill 儲存庫。
+
+## 儲存庫關係
+
+`resume-intelligence-hub-site` 是站點層。它包含 VitePress 文件、多語言內容、CI 自動化、SEO/GEO 資產，以及 GitHub Pages 發布支援。
+
+skill 本體位於獨立的 [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) 儲存庫。該儲存庫負責 `SKILL.md`、`templates/` 和 `workflows/`；這些檔案定義使用者在 AI IDE 中安裝和執行的行為。
+
+## 目前映射
+
+| 層 | 來源 | 版本基線 | 說明 |
+| --- | --- | --- | --- |
+| 站點層 | [`Zenine/resume-intelligence-hub-site`](https://github.com/Zenine/resume-intelligence-hub-site) | `1b344c2` | 來自本機 `git rev-parse --short HEAD`。目前工作樹有未提交改動，所以這裡只表示已提交基線。 |
+| skill 儲存庫 | [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) | 遠端 `main` / 已發布 tag | 目前機器上下文中沒有本機檢出 skill 儲存庫。不要推斷或編造本機 skill commit；以遠端儲存庫和發布 tag 作為單一事實來源。 |
+
+## 再生成策略
+
+以下任一輸入變化時，都應重新生成或複核站點：
+
+- skill 儲存庫行為變化：[`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) 中的 `SKILL.md`、`templates/` 或 `workflows/` 發生變化。
+- 站點多語言內容變化：英文、簡體中文、日文或繁體中文任一 docs 頁面發生變化，並按 `i18n/glossary.md` 核對術語。
+- SEO/GEO 資產變化：`llms.txt`、`llms-full.txt`、sitemap 相關自動化、robots metadata、Open Graph 資產或 discovery links 發生變化。
+
+需要再生成時，應同步更新站點文件，重新生成 `llms-full.txt`，並在同一發布週期把已完成變更記錄到 `CHANGELOG.md`。
+
+## 核查說明
+
+使用本頁回答一個問題：「站點文件是否匹配我準備安裝的 skill 版本？」
+
+要得到精確答案，應把目前站點 commit 與 [`Zenine/resume-intelligence-hub`](https://github.com/Zenine/resume-intelligence-hub) 目前遠端 `main` 或發布 tag 對比。如果 skill 儲存庫已有新的行為變化，而站點尚未反映這些變化，應先重新生成站點，再把文件視為目前版本。
+
+---
+
+<!-- source: docs/zh-TW/skill-contract.md -->
+# Skill Contract
+
+本頁說明 `resume-intelligence-hub` skill 的長期運行契約。Hub 儲存庫是**私人職涯 hub**：它保存職涯事實、定位、草稿、查核紀錄和季度計畫。本站是**文件層**：它公開說明方法，但不保存使用者的私人職涯資料。
+
+## 儲存庫和站點邊界
+
+- `resume-intelligence-hub` skill 會為一個人搭建並運行一個私人儲存庫。
+- Hub 是履歷、JD 客製申請、面試準備、研究軌開啟時的研究計畫申報、職稱 / 資質 / 晉升材料線開啟時的申報包，以及投遞前查核的單一事實來源。
+- 生成出來的履歷和求職信都是衍生物。長期可靠的來源是 `profiles/` 和 `AGENTS.md` 裡的定位鎖。
+- 公開站點只說明契約、工作流程、範例和設定方式。它不應包含私人履歷、真實證件、薪資證據、合約、證書或本機路徑。
+- Hub 可以透過私人 Git remote 同步，但絕不要推到公開儲存庫。
+
+## 初始化後目錄結構
+
+資料夾名稱會隨初始化語言變化，但結構保持穩定：
+
+```text
+career-hub/
+├── profiles/
+│   ├── master.md
+│   ├── skills.md
+│   ├── stories.md
+│   └── research.md
+├── jobs/
+│   ├── templates/
+│   ├── market-watch/
+│   └── applications/
+├── verification/
+│   ├── references.md
+│   └── credentials/
+├── credential-applications/
+├── resumes-archive/
+├── research-archive/
+├── assessments/
+├── AGENTS.md
+├── readme.md
+├── todo.md
+└── changelog.md
+```
+
+可選目錄只在使用者需要時建立：
+
+- `research.md` 和 `research-archive/` 用於研究軌。
+- `credential-applications/` 用於職稱、執業資質、board certification 或晉升材料。
+- `assessments/` 保存 360 回饋、性格測評等可選資料，面試準備時可引用。
+
+## 核心檔案職責
+
+| 檔案或目錄 | 職責 |
+|---|---|
+| `AGENTS.md` | 定位鎖：目標職位、職級、領域、強調點、弱化點、已開啟軌道，以及 AI agent 的運行規則。 |
+| `profiles/master.md` | 招聘用職涯事實來源：職位、職責範圍、成就、指標、專案、教育經歷和公開連結。 |
+| `profiles/skills.md` | 能力矩陣，包括 T 型 / π 型深度、目標位子差距、工具、領域和證書。 |
+| `profiles/stories.md` | 面試用 STAR 故事。它和事實檔案分開，方便重複使用敘事而不重寫證據。 |
+| `profiles/research.md` | 研究軌來源：論文、專利、研究計畫、標準、研究方向、學術服務和指導經歷。 |
+| `jobs/market-watch/` | 目標公司、即時 JD shortlist、內推路徑和差距計畫快照。 |
+| `jobs/applications/` | 每次投遞一個帶日期的資料夾，例如 `company-role-2026-06-07/`，保存 JD、生成履歷、求職信和面試準備。 |
+| `verification/references.md` | 敏感原件的路徑引用索引。它記錄證據在哪裡，但不把證據複製進 Git。 |
+| `verification/{date}-web-check.md` | 承重聲明的公開資料交叉查核紀錄。 |
+| `credential-applications/` | 職稱、執業資質、board 或晉升申報的證據矩陣和寫作包。 |
+| `resumes-archive/` | 舊履歷和轉換後的 Markdown 版本。只封存，不再把舊履歷當事實來源繼續改。 |
+| `todo.md` | 只放未完成事項，尤其是本季度 SMART 行動和未解決的證據缺口。 |
+| `changelog.md` | 已完成事項，按日期倒序紀錄。完成事項應移到這裡，而不是作為 `[x]` 留在 `todo.md`。 |
+
+## 工作流程輸入和輸出
+
+### 1. 職涯規劃和差距分析
+
+| 輸入 | 輸出 |
+|---|---|
+| `profiles/master.md`、`profiles/skills.md`、`profiles/stories.md`、`AGENTS.md`、近期 `changelog.md`，以及 3-5 個目標層級 JD 或研究計畫指南。 | `AGENTS.md` 中刷新的定位區塊、帶日期的 `jobs/market-watch/{date}-gap-plan.md`，以及寫入 `todo.md` 的 2-4 個 SMART 季度事項。 |
+
+初始化後先跑它，之後每季度或重大職涯事件後重跑。
+
+### 2. JD 搜尋和市場研究
+
+| 輸入 | 輸出 |
+|---|---|
+| `profiles/master.md`、`profiles/skills.md`、`AGENTS.md` 中的定位鎖、地區、職級、目標 title 和渠道約束。 | 3-5 個機會的排序 shortlist、`jobs/market-watch/{date}-{theme}.md` watchlist、匹配度備註，以及可見時的內推路徑。 |
+
+這個工作流程先找對目標位子，再讓 hub 針對其中一個職位生成履歷。
+
+### 3. JD 客製履歷
+
+| 輸入 | 輸出 |
+|---|---|
+| 文字、URL 或 PDF 格式的 JD；`profiles/master.md`；`profiles/skills.md`；`AGENTS.md`；以及相關查核引用。 | `jobs/applications/{company}-{role}-{date}/jd.md`、`resume.md`、可選的 `cover.md`，以及初版 `prep.md`。 |
+
+履歷從源檔案重新生成，不從舊履歷改寫。
+
+### 4. 面試準備
+
+| 輸入 | 輸出 |
+|---|---|
+| JD 或目標職位、已有時的 `resume.md`、`profiles/stories.md`、`profiles/skills.md`，以及可選的 `assessments/`。 | `jobs/applications/{company}-{role}-{date}/prep.md`，包含預測問題、STAR 答案提綱、複習清單、反問面試官的問題、風險點和可選 mock interview 紀錄。 |
+
+如果故事庫太薄，工作流程應直接暴露缺口，而不是現場編故事。
+
+### 5. 投遞前查核
+
+| 輸入 | 輸出 |
+|---|---|
+| 即將投遞的履歷、proposal、申報材料或其他高風險文字；`verification/references.md`；公開資料；以及承重聲明列表。 | `verification/{date}-web-check.md`，紀錄已確認聲明、公開證據不足事項、高風險事項、更穩妥改寫和所需補充證據。 |
+
+投高階職位、研究計畫申報、職稱 / 資質 / 晉升材料，以及第一次使用任何承重聲明前，都應運行它。
+
+### 6. 研究計畫申報履歷
+
+| 輸入 | 輸出 |
+|---|---|
+| 已開啟的研究軌、研究補助或資金類型、申報指南、研究方向、`profiles/research.md`、`profiles/master.md` 和查核來源。 | 按方向篩選後的申報檔案，保存到 `research-archive/{year}-{grant-type}-{direction}.md`；當聲明可外部查核時，生成更嚴格的查核紀錄。 |
+
+未開啟研究軌時，完全跳過這個工作流程。
+
+### 7. 職稱 / 資質 / 晉升申報
+
+| 輸入 | 輸出 |
+|---|---|
+| 官方規則或資格文件、已有申報資料夾、`profiles/master.md`、相關時的 `profiles/research.md`、`verification/references.md`、`todo.md` 和 `changelog.md`。 | `credential-applications/{credential-name}/` 下的證據矩陣、寫作包、風險紀錄、面向評審的精簡版，`todo.md` 中更新的未解決證據，以及 `changelog.md` 中紀錄的已完成事項。 |
+
+規則是先做證據矩陣，再寫漂亮文案。
+
+## 敏感檔案策略
+
+敏感原件不進 Git。例子包括身分證件、護照、合約、薪資單、任命書、證書、學歷證明、醫療或執業資質文件、私人推薦信。
+
+用 `verification/references.md` 紀錄路徑引用：
+
+```markdown
+| 證據 | 位置 | 備註 |
+|---|---|---|
+| 學位證書 | secure-drive:/career-documents/education/degree-certificate.pdf | 只用於教育經歷查核。 |
+| 任命書 | private-vault:/employment/company-a/appointment-letter.pdf | 證明 title 和任職日期。 |
+```
+
+Hub 可以保存摘要、聲明措辭和查核紀錄。除非使用者明確決定私人儲存庫就是合適的存放位置，否則不要把敏感原件放進 hub。
+
+## 中斷恢復
+
+每個會話開始時應先讀：
+
+1. `AGENTS.md`
+2. `todo.md`
+3. `changelog.md`
+4. 工作流程相關目錄，例如 `jobs/applications/{company}-{role}-{date}/`
+5. 涉及高風險聲明時，還要讀最新查核紀錄
+
+如果會話中途停止：
+
+- 把未解決事項留在 `todo.md`，寫清楚下一步和阻塞原因。
+- 把已完成、已驗證的事項移入 `changelog.md`。
+- 生成草稿保留在帶日期的投遞或申報資料夾裡。
+- 恢復時讓 AI 從 hub 狀態繼續，而不是憑聊天記憶繼續。
+
+## 舊履歷遷移
+
+舊履歷是有價值的輸入，但不應繼續作為運行來源。
+
+1. 把舊履歷放進 `resumes-archive/`。
+2. 將每個 PDF、DOCX 或貼上版履歷轉換成同目錄 Markdown 副本。
+3. 把事實聲明合併進 `profiles/master.md`。
+4. 把適合面試的故事移入 `profiles/stories.md`。
+5. 只有開啟研究軌時，才把研究產出移入 `profiles/research.md`。
+6. 把不確定或缺少支撐的聲明紀錄到 `todo.md` 或 `verification/references.md`。
+7. 後續根據 `profiles/master.md` 和具體 JD 重新生成新履歷。
+
+Archive 保存歷史。`profiles/` 成為單一事實來源。
+
+## 季度複盤節奏
+
+預設戰略節奏是每季度一次：
+
+- 重新運行職涯規劃和差距分析。
+- 重新閱讀上一次 `jobs/market-watch/{date}-gap-plan.md`。
+- 檢查目標位子、薪酬區間、地區或生活約束是否改變。
+- 重新盤點技能、範圍、職稱 / 資質、網路和時間差距。
+- 把已完成事項寫進 `changelog.md`。
+- `todo.md` 只保留仍然活躍的本季度 SMART 事項。
+- 如果目標發生實質變化，刷新 `AGENTS.md` 裡的定位鎖。
+
+每週節奏是戰術性的：更新投遞、證據收集、面試準備和 market-watch 筆記。季度節奏是戰略性的：判斷 hub 是否仍然指向正確的目標位子。
 
 ---

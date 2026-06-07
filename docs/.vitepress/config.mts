@@ -1,5 +1,175 @@
 import { defineConfig } from 'vitepress'
 
+const siteOrigin = 'https://zenine.github.io/resume-intelligence-hub-site/'
+
+const locales = [
+  { key: 'root', prefix: '', hreflang: 'en-US', ogLocale: 'en_US' },
+  { key: 'zh', prefix: 'zh/', hreflang: 'zh-CN', ogLocale: 'zh_CN' },
+  { key: 'ja', prefix: 'ja/', hreflang: 'ja', ogLocale: 'ja_JP' },
+  { key: 'zh-TW', prefix: 'zh-TW/', hreflang: 'zh-TW', ogLocale: 'zh_TW' },
+] as const
+
+type LocaleKey = typeof locales[number]['key']
+
+const faqSummaries: Record<LocaleKey, { question: string; answer: string }[]> = {
+  root: [
+    {
+      question: 'What is resume-intelligence-hub?',
+      answer: 'resume-intelligence-hub is an AI agent skill that bootstraps a private career intelligence hub for resumes, interview preparation, grant applications, credential dossiers, pre-submission verification, stretch targets, gap analysis, and quarterly SMART planning.',
+    },
+    {
+      question: 'What specific problem does it solve?',
+      answer: 'It replaces scattered resumes, ad-hoc interview prep, and reactive career tracking with structured infrastructure: factual career data in profiles, a positioning lock in AGENTS.md, and workflows from JD-tailored resume generation to public-source fact-checking.',
+    },
+    {
+      question: 'Who is this for?',
+      answer: 'It is for people managing a job search, planning a move 1-2 levels up, applying for research grants, or preparing credential or promotion dossiers, especially across bilingual markets or multiple application types.',
+    },
+    {
+      question: 'How does it compare to other resume AI tools?',
+      answer: 'Most resume tools are one-shot generators. resume-intelligence-hub is persistent career infrastructure that keeps context across months, biases outputs toward a stretch target, verifies claims, and composes with specialized resume or LinkedIn tools.',
+    },
+    {
+      question: 'Does it work with my AI IDE?',
+      answer: 'Yes. The hub uses AGENTS.md as its cross-IDE instruction file for tools such as Claude Code, Cursor, Codex, Cline, Windsurf, and GitHub Copilot, with IDE-specific wiring covered in the Quick Start troubleshooting section.',
+    },
+    {
+      question: 'Is the research/grant track required?',
+      answer: 'No. The research track is optional and off by default. If you do not apply for academic grants or research funding, research-related files and workflows are omitted.',
+    },
+    {
+      question: 'How do I get started?',
+      answer: 'Install the skill with npx skills add Zenine/resume-intelligence-hub -g -y, open your AI IDE in the directory where the hub should live, and ask it to build your career repo.',
+    },
+  ],
+  zh: [
+    {
+      question: 'resume-intelligence-hub 是什么？',
+      answer: 'resume-intelligence-hub 是一个 AI agent skill，用来搭建私有个人职业发展中枢，统一管理简历、面试准备、课题申报、职称/资质/晋升材料、投递前核查，并支持挑战目标、差距分析和季度 SMART 计划。',
+    },
+    {
+      question: '它具体解决什么问题？',
+      answer: '它把散落的简历、临时面试准备和被动职业管理替换为结构化基础设施：profiles/ 存放事实职业数据，AGENTS.md 锁定定位目标，七个工作流覆盖 JD 定制简历到投递前公开资料核查。',
+    },
+    {
+      question: '适合谁用？',
+      answer: '适合正在求职、计划往高 1-2 级跳槽、申请科研课题，或准备职称/资质/晋升申报的人，尤其适合双语市场、多类申报材料和需要 AI 跨会话记住职业背景的用户。',
+    },
+    {
+      question: '和其他简历 AI 工具有什么不同？',
+      answer: '多数简历工具是一次性生成器。resume-intelligence-hub 是可持续迭代的职业基础设施，会围绕定位目标生成内容、核查承重声明、识别能力差距，并能叠加 ATS 或 LinkedIn 等专项工具。',
+    },
+    {
+      question: '支持我用的 AI IDE 吗？',
+      answer: '支持。hub 使用 AGENTS.md 作为跨 IDE 指令文件，Claude Code、Cursor、Codex、Cline、Windsurf 和 GitHub Copilot 都可以读取，具体接线方式见快速开始的排查部分。',
+    },
+    {
+      question: '科研课题那条线是必须的吗？',
+      answer: '不是。科研课题线默认关闭；如果初始化时回答不申请学术课题或科研经费，相关文件和工作流不会生成。',
+    },
+    {
+      question: '怎么开始？',
+      answer: '运行 npx skills add Zenine/resume-intelligence-hub -g -y 安装 skill，然后在 AI IDE 中进入目标目录，说“帮我搭个简历库”。',
+    },
+  ],
+  ja: [
+    {
+      question: 'resume-intelligence-hub とは何ですか？',
+      answer: 'resume-intelligence-hub は、履歴書、面接準備、研究費申請、資格/昇進書類、提出前検証を一元管理するプライベートなキャリアインテリジェンスハブを構築する AI エージェントスキルです。',
+    },
+    {
+      question: '具体的にどんな問題を解決しますか？',
+      answer: '散らばった履歴書、場当たり的な面接準備、目標ポジションへの進捗管理不足を、profiles/ の事実データ、AGENTS.md のターゲットロック、7 つのワークフローによる構造化インフラに置き換えます。',
+    },
+    {
+      question: '誰に向いていますか？',
+      answer: '求職中、1〜2 レベル上へのキャリアアップ、研究費申請、資格/昇進書類の準備をしている方に向いています。複数市場や複数種類の申請を扱う場合にも有用です。',
+    },
+    {
+      question: '他の履歴書 AI ツールと何が違いますか？',
+      answer: '多くの履歴書ツールは一度きりの生成器です。resume-intelligence-hub は数ヶ月にわたって改善できる持続的なキャリア基盤で、目標に沿った出力、主張の検証、ギャップ分析を支援します。',
+    },
+    {
+      question: '自分の AI IDE で使えますか？',
+      answer: 'はい。ハブは AGENTS.md をクロス IDE の指示ファイルとして使います。Claude Code、Cursor、Codex、Cline、Windsurf、GitHub Copilot などで利用できます。',
+    },
+    {
+      question: '科学研究費申請トラックは必須ですか？',
+      answer: 'いいえ。研究トラックはデフォルトで無効です。学術研究費や研究助成金の申請をしない場合、関連ファイルとワークフローは省略されます。',
+    },
+    {
+      question: 'どうやって始めますか？',
+      answer: 'npx skills add Zenine/resume-intelligence-hub -g -y でインストールし、AI IDE でハブを置きたいディレクトリを開いて、キャリアリポジトリを作るよう依頼します。',
+    },
+  ],
+  'zh-TW': [
+    {
+      question: 'resume-intelligence-hub 是什麼？',
+      answer: 'resume-intelligence-hub 是一個 AI agent skill，用來搭建私有個人職涯發展中樞，統一管理履歷、面試準備、課題申報、職稱/資質/晉升材料、投遞前查核，並支援挑戰目標、差距分析和季度 SMART 計畫。',
+    },
+    {
+      question: '它具體解決什麼問題？',
+      answer: '它把散落的履歷、臨時面試準備和被動職涯管理換成結構化基礎設施：profiles/ 存放事實性職業資料，AGENTS.md 鎖定定位目標，七個工作流程涵蓋 JD 客製履歷到投遞前公開資料查核。',
+    },
+    {
+      question: '適合誰使用？',
+      answer: '適合正在求職、計畫往高 1-2 級跳槽、申請研究計畫，或準備職稱/資質/晉升申報的人，尤其適合雙語市場、多類申報材料和需要 AI 跨會話記住職涯背景的使用者。',
+    },
+    {
+      question: '和其他履歷 AI 工具有什麼不同？',
+      answer: '多數履歷工具是一次性生成器。resume-intelligence-hub 是可持續迭代的職涯基礎設施，會圍繞定位目標生成內容、查核承重聲明、識別能力差距，並能疊加 ATS 或 LinkedIn 等專項工具。',
+    },
+    {
+      question: '支援我使用的 AI IDE 嗎？',
+      answer: '支援。hub 使用 AGENTS.md 作為跨 IDE 指令檔，Claude Code、Cursor、Codex、Cline、Windsurf 和 GitHub Copilot 都可以讀取。',
+    },
+    {
+      question: '科研課題那條線是必須的嗎？',
+      answer: '不是。科研課題線預設關閉；如果初始化時回答不申請學術課題或研究計畫，相關檔案和工作流程不會生成。',
+    },
+    {
+      question: '怎麼開始？',
+      answer: '執行 npx skills add Zenine/resume-intelligence-hub -g -y 安裝 skill，然後在 AI IDE 中進入目標資料夾，說“幫我建職涯庫”。',
+    },
+  ],
+}
+
+function getLocaleFromRelativePath(relativePath: string): LocaleKey {
+  const locale = locales.find((candidate) => candidate.prefix && relativePath.startsWith(candidate.prefix))
+  return locale?.key ?? 'root'
+}
+
+function getLocalizedRelativePath(relativePath: string, localeKey: LocaleKey): string {
+  const sourceLocale = locales.find((candidate) => candidate.key === getLocaleFromRelativePath(relativePath))!
+  const targetLocale = locales.find((candidate) => candidate.key === localeKey)!
+  const pagePath = sourceLocale.prefix
+    ? relativePath.slice(sourceLocale.prefix.length)
+    : relativePath
+  return `${targetLocale.prefix}${pagePath}`
+}
+
+function getPageUrl(relativePath: string): string {
+  const relPath = relativePath
+    .replace(/index\.md$/, '')
+    .replace(/\.md$/, '.html')
+  return `${siteOrigin}${relPath}`
+}
+
+function getFaqJsonLd(localeKey: LocaleKey) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqSummaries[localeKey].map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  }
+}
+
 export default defineConfig({
   base: '/resume-intelligence-hub-site/',
   title: 'Resume Intelligence Hub',
@@ -11,7 +181,7 @@ export default defineConfig({
 
   head: [
     ['link', { rel: 'icon', href: '/resume-intelligence-hub-site/hero.svg', type: 'image/svg+xml' }],
-    ['meta', { name: 'theme-color', content: '#6366f1' }],
+    ['meta', { name: 'theme-color', content: '#7c3aed' }],
     ['meta', { name: 'google-site-verification', content: 'JDAD7_0Djk8ErI3P93dZ2nq5ZKrVGxEi6c7eM7xt-IM' }],
     // Open Graph / Twitter — site-wide static
     ['meta', { property: 'og:site_name', content: 'Resume Intelligence Hub' }],
@@ -74,18 +244,43 @@ export default defineConfig({
     const title = pageData.title && pageData.title !== siteData.title
       ? `${pageData.title} | ${siteData.title}`
       : siteData.title
-    // `index.md` → '' (site root), `zh/index.md` → 'zh/' (locale root)
-    const relPath = pageData.relativePath
-      .replace(/index\.md$/, '')
-      .replace(/\.md$/, '.html')
-    const url = `https://zenine.github.io/resume-intelligence-hub-site/${relPath}`
+    const url = getPageUrl(pageData.relativePath)
+    const localeKey = getLocaleFromRelativePath(pageData.relativePath)
+    const locale = locales.find((candidate) => candidate.key === localeKey)!
+    const localeAlternates = locales.map((targetLocale) => [
+      'link',
+      {
+        rel: 'alternate',
+        hreflang: targetLocale.hreflang,
+        href: getPageUrl(getLocalizedRelativePath(pageData.relativePath, targetLocale.key)),
+      },
+    ] as const)
+    const ogLocaleAlternates = locales
+      .filter((targetLocale) => targetLocale.key !== localeKey)
+      .map((targetLocale) => [
+        'meta',
+        { property: 'og:locale:alternate', content: targetLocale.ogLocale },
+      ] as const)
+    const faqJsonLd = faqSummaries[localeKey] && pageData.relativePath === getLocalizedRelativePath('faq.md', localeKey)
+      ? [[
+          'script',
+          { type: 'application/ld+json' },
+          JSON.stringify(getFaqJsonLd(localeKey)),
+        ] as const]
+      : []
+
     return [
       ['meta', { property: 'og:title', content: title }],
       ['meta', { property: 'og:description', content: description }],
       ['meta', { property: 'og:url', content: url }],
+      ['meta', { property: 'og:locale', content: locale.ogLocale }],
+      ...ogLocaleAlternates,
       ['meta', { name: 'twitter:title', content: title }],
       ['meta', { name: 'twitter:description', content: description }],
       ['link', { rel: 'canonical', href: url }],
+      ...localeAlternates,
+      ['link', { rel: 'alternate', hreflang: 'x-default', href: getPageUrl(getLocalizedRelativePath(pageData.relativePath, 'root')) }],
+      ...faqJsonLd,
     ]
   },
 
@@ -123,6 +318,8 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: 'Quick Start', link: '/quick-start' },
+          { text: 'Contract', link: '/skill-contract' },
+          { text: 'Examples', link: '/examples' },
           { text: 'Frameworks', link: '/frameworks' },
           { text: 'Philosophy', link: '/philosophy' },
           { text: 'FAQ', link: '/faq' },
@@ -133,6 +330,8 @@ export default defineConfig({
             text: 'Getting Started',
             items: [
               { text: 'Quick Start', link: '/quick-start' },
+              { text: 'Skill Contract', link: '/skill-contract' },
+              { text: 'Examples', link: '/examples' },
               { text: 'Philosophy', link: '/philosophy' },
             ],
           },
@@ -141,6 +340,7 @@ export default defineConfig({
             items: [
               { text: 'Frameworks', link: '/frameworks' },
               { text: 'FAQ', link: '/faq' },
+              { text: 'Release / Version Mapping', link: '/release' },
             ],
           },
         ],
@@ -154,6 +354,8 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: '快速开始', link: '/zh/quick-start' },
+          { text: '使用契约', link: '/zh/skill-contract' },
+          { text: '样例', link: '/zh/examples' },
           { text: '方法论', link: '/zh/frameworks' },
           { text: '设计哲学', link: '/zh/philosophy' },
           { text: '常见问题', link: '/zh/faq' },
@@ -165,6 +367,8 @@ export default defineConfig({
               text: '入门',
               items: [
                 { text: '快速开始', link: '/zh/quick-start' },
+                { text: '使用契约', link: '/zh/skill-contract' },
+                { text: '样例', link: '/zh/examples' },
                 { text: '设计哲学', link: '/zh/philosophy' },
               ],
             },
@@ -173,6 +377,7 @@ export default defineConfig({
               items: [
                 { text: '方法论', link: '/zh/frameworks' },
                 { text: '常见问题', link: '/zh/faq' },
+                { text: '发布 / 版本映射', link: '/zh/release' },
               ],
             },
           ],
@@ -196,6 +401,8 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: 'クイックスタート', link: '/ja/quick-start' },
+          { text: '利用契約', link: '/ja/skill-contract' },
+          { text: 'サンプル', link: '/ja/examples' },
           { text: 'フレームワーク', link: '/ja/frameworks' },
           { text: 'デザイン哲学', link: '/ja/philosophy' },
           { text: 'よくある質問', link: '/ja/faq' },
@@ -207,6 +414,8 @@ export default defineConfig({
               text: 'はじめに',
               items: [
                 { text: 'クイックスタート', link: '/ja/quick-start' },
+                { text: '利用契約', link: '/ja/skill-contract' },
+                { text: 'サンプル', link: '/ja/examples' },
                 { text: 'デザイン哲学', link: '/ja/philosophy' },
               ],
             },
@@ -215,6 +424,7 @@ export default defineConfig({
               items: [
                 { text: 'フレームワーク', link: '/ja/frameworks' },
                 { text: 'よくある質問', link: '/ja/faq' },
+                { text: 'リリース / バージョン対応', link: '/ja/release' },
               ],
             },
           ],
@@ -238,6 +448,8 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: '快速開始', link: '/zh-TW/quick-start' },
+          { text: '使用契約', link: '/zh-TW/skill-contract' },
+          { text: '樣例', link: '/zh-TW/examples' },
           { text: '方法論', link: '/zh-TW/frameworks' },
           { text: '設計哲學', link: '/zh-TW/philosophy' },
           { text: '常見問題', link: '/zh-TW/faq' },
@@ -249,6 +461,8 @@ export default defineConfig({
               text: '入門',
               items: [
                 { text: '快速開始', link: '/zh-TW/quick-start' },
+                { text: '使用契約', link: '/zh-TW/skill-contract' },
+                { text: '樣例', link: '/zh-TW/examples' },
                 { text: '設計哲學', link: '/zh-TW/philosophy' },
               ],
             },
@@ -257,6 +471,7 @@ export default defineConfig({
               items: [
                 { text: '方法論', link: '/zh-TW/frameworks' },
                 { text: '常見問題', link: '/zh-TW/faq' },
+                { text: '發布 / 版本映射', link: '/zh-TW/release' },
               ],
             },
           ],

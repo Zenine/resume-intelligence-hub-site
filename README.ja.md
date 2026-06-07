@@ -52,7 +52,7 @@ AI が 8 つの質問に答えてもらい、プライベートなキャリア�
 
 ## 他の履歴書スキルとの違い
 
-ほとんどの履歴書スキルは一度きりのジェネレーターです。このスキルは**持続的なプライベートリポジトリ**を構築し、数ヶ月にわたる就職活動・面接・研究費申請・資格/昇進書類を通じて反復改善できます。
+ほとんどの履歴書スキルは一度きりのジェネレーターです。JD を貼り付けて履歴書を得るだけです。このスキルは**持続的なプライベートリポジトリ**を構築し、数ヶ月にわたる就職活動・面接・研究費申請・資格/昇進書類を通じて反復改善できます。AI は各セッションでリポジトリを読み込み、ポジショニングロックに基づいて出力を偏らせます。
 
 ## ディレクトリ構造
 
@@ -63,7 +63,11 @@ i18n/       glossary.md — 翻訳ドリフト参照
 .github/    デプロイ workflow + GSC サイトマップ通知 + セットアップガイド
 ```
 
+一度だけ行う Google Search Console 自動化設定は [`.github/SETUP_GSC_AUTOMATION.md`](.github/SETUP_GSC_AUTOMATION.md) を参照してください。
+
 ## 補完スキル
+
+このハブの上に、特定の一度きりの用途向けスキルを組み合わせられます。
 
 - [`paramchoudhary/resumeskills@resume-ats-optimizer`](https://skills.sh/paramchoudhary/resumeskills/resume-ats-optimizer) — ATS 最適化
 - [`paramchoudhary/resumeskills@linkedin-profile-optimizer`](https://skills.sh/paramchoudhary/resumeskills/linkedin-profile-optimizer) — LinkedIn プロフィール
@@ -72,7 +76,7 @@ i18n/       glossary.md — 翻訳ドリフト参照
 
 ## ライセンス
 
-MIT
+MIT — スキル本体と同じです。
 
 ---
 

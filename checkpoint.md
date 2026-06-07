@@ -72,24 +72,25 @@ Style: glow (violet #7c3aed + cyan #67e8f9)
   - scripts/generate-llms-full.py (installed)
   - docs/faq.md + zh/ja/zh-TW versions (4 languages)
   - config.mts: og.png, llms.txt links, canonical, FAQ in sidebar/nav, Meridian footer
-  - Build verified (3.95s): og:image ✅ twitter:card ✅ application/ld+json ✅ canonical ✅ llms.txt ✅
-- Search Console verification: [ ] Google / [ ] Bing — pending user action
+    - Build verified (3.95s): og:image ✅ twitter:card ✅ application/ld+json ✅ canonical ✅ llms.txt ✅
+- Search Console verification:
+  - Google: ✅ verification meta 已配置到 `docs/.vitepress/config.mts`；GSC 控制台真实验证状态待外部确认，未在本仓库内声称已验证。
+  - Bing: [ ] 未确认，仍待后续处理。
 - Status: ✅
 
 ---
 
-## Search Console (Step 8 — user action required)
+## Search Console（Step 8 — 待外部确认）
 
 ✅ Site deployed at https://zenine.github.io/resume-intelligence-hub-site/
 
-To get indexing stats and submit sitemap manually:
+Google verification meta 已经配置在 `docs/.vitepress/config.mts`。由于本 checkpoint 不能读取 Google Search Console 控制台，剩余动作是到控制台外部确认属性验证状态，并按需提交 sitemap。
 
 **Google Search Console:**
-1. Open https://search.google.com/search-console
-2. Add Property → URL prefix → `https://zenine.github.io/resume-intelligence-hub-site/`
-3. Verify via HTML tag → copy the `content="..."` string → send to me
-4. I'll inject it into `docs/.vitepress/config.mts`, push, and tell you when to click Verify
-5. After verify: Sitemaps → submit `sitemap.xml` → URL Inspection → request indexing for homepage
+1. 打开 https://search.google.com/search-console
+2. 选择或添加 URL prefix 属性：`https://zenine.github.io/resume-intelligence-hub-site/`
+3. 如果已配置的 HTML tag 被接受，再把 Google verification 标记为外部已确认
+4. Sitemaps → 提交 `sitemap.xml` → URL Inspection → 请求首页编入索引
 
 **Bing Webmaster (optional):**
-Same flow, or use "Import from Google Search Console" after Google is verified.
+Bing 状态仍未知。可走同样流程，或等 Google 外部确认后使用 "Import from Google Search Console"。

@@ -52,7 +52,7 @@ AI 會問你 8 個問題，然後搭好你的私有職涯 hub。你只需要：�
 
 ## 和其他履歷 skill 的不同
 
-大多數履歷 skill 是一次性生成器——貼 JD 出履歷。這個 skill 搭建的是一個**持久化的私有儲存庫**，讓你在數個月的求職、面試、課題申報、職稱/資質/晉升申報過程中持續迭代。
+大多數履歷 skill 是一次性生成器——貼 JD 出履歷。這個 skill 搭建的是一個**持久化的私有儲存庫**，讓你在數個月的求職、面試、課題申報、職稱/資質/晉升申報過程中持續迭代。AI 每次對話都會讀取儲存庫，並根據你的定位鎖偏置輸出。
 
 ## 目錄結構
 
@@ -63,7 +63,11 @@ i18n/       glossary.md — 翻譯漂移參考
 .github/    部署 workflow + GSC 站點地圖通知 + 設定指南
 ```
 
+一次性 Google Search Console 自動化設定見 [`.github/SETUP_GSC_AUTOMATION.md`](.github/SETUP_GSC_AUTOMATION.md)。
+
 ## 配套 Skill
+
+在這個 hub 之上疊加特定場景的專精 skill：
 
 - [`paramchoudhary/resumeskills@resume-ats-optimizer`](https://skills.sh/paramchoudhary/resumeskills/resume-ats-optimizer) — ATS 深度優化
 - [`paramchoudhary/resumeskills@linkedin-profile-optimizer`](https://skills.sh/paramchoudhary/resumeskills/linkedin-profile-optimizer) — LinkedIn 主頁優化
