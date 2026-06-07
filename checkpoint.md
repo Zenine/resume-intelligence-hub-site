@@ -127,3 +127,9 @@ Bing 状态仍未知。可走同样流程，或等 Google 外部确认后使用 
 - 新增 Lighthouse workflow 和 `lighthouserc.cjs` 阈值配置。
 - 新增四语言 `ops-decisions`，记录运行时 SVG 内联保留、未来 skill 抽象边界和运维自动化策略。
 - 新增 `security.txt` 和 `humans.txt`。
+
+## 2026-06-07 文档索引同步
+
+- README 四语言的目录结构说明已同步到当前 ops 自动化状态：verify、内部链接检查、GSC / IndexNow / Lighthouse、per-locale `llms.txt` 和 `ops-decisions`。
+- `AGENTS.md` / `CLAUDE.md` 的架构、关键文件和验证规则已改为项目级 `scripts/verify.sh`。
+- `QUICK_START.md` 的任务输出和文件树已包含 `ops-decisions`、`security.txt`、`humans.txt`、IndexNow、Lighthouse 和新增验证脚本。

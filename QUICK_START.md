@@ -81,7 +81,7 @@ Execute in this repo. Detailed instructions in `/Users/zeninexu/github/meridian/
 | 9 | README ops | All language READMEs with badges + switcher + footer |
 | 10 | Final checks | `.gitignore` + build verification |
 | 11 | Emoji → SVG | `docs/public/icons/` + inline-svg.ts + all .md files |
-| 12 | Discoverability | `robots.txt` + `og.png` + `llms.txt` + `llms-full.txt` + FAQ |
+| 12 | Discoverability | `robots.txt` + `og.png` + per-locale `llms.txt` + `llms-full.txt` + FAQ |
 
 ### Execution rules
 - After each task, print `✅ Task N complete: [brief output]` and update `checkpoint.md`
@@ -133,17 +133,20 @@ resume-intelligence-hub-site/
 ├── checkpoint.md
 ├── .gitignore
 ├── i18n/glossary.md
-├── scripts/generate-llms-full.py
+├── scripts/generate-llms-full.py / check-i18n-drift.py / check-links.py / verify.sh
+├── scripts/submit-sitemap.mjs / submit-indexnow.mjs
 ├── docs/
 │   ├── .vitepress/config.mts
 │   ├── .vitepress/theme/index.ts + style.css (glow theme)
 │   ├── .vitepress/theme/inline-svg.ts
-│   ├── public/hero.svg + icons/*.svg + og.png + robots.txt
-│   ├── public/llms.txt + llms-full.txt
+│   ├── public/hero.svg + icons/*.svg + og.png + robots.txt + humans.txt
+│   ├── public/.well-known/security.txt
+│   ├── public/llms.txt + zh/llms.txt + ja/llms.txt + zh-TW/llms.txt + llms-full.txt
 │   ├── index.md + quick-start.md + frameworks.md + philosophy.md + faq.md
-│   └── en/ zh/ ja/ zh-TW/ (each with index.md, quick-start.md, etc.)
+│   ├── skill-contract.md + examples.md + release.md + ops-decisions.md
+│   └── zh/ ja/ zh-TW/ (localized page set)
 ├── .github/assets/hero.svg
-├── .github/workflows/docs.yml
+├── .github/workflows/docs.yml + gsc-sitemap-notify.yml + indexnow.yml + lighthouse.yml
 └── .cursor/rules/project.mdc
 ```
 

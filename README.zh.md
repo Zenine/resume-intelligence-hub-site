@@ -58,12 +58,13 @@ AI 会问你 8 个问题，然后搭好你的私有职业 hub。你只需要：�
 
 ```
 docs/       VitePress 站点源码（四语言：en / zh / ja / zh-TW）
-scripts/    CI 自动化 — 站点地图通知 + llms-full.txt 生成器
+scripts/    CI 自动化 — verify、链接检查、站点地图 / IndexNow 通知、llms-full.txt 生成器
 i18n/       glossary.md — 翻译漂移参考
-.github/    部署 workflow + GSC 站点地图通知 + 配置指南
+.github/    部署 workflow + GSC / IndexNow / Lighthouse 自动化 + 配置指南
 ```
 
 一次性 Google Search Console 自动化配置见 [`.github/SETUP_GSC_AUTOMATION.md`](.github/SETUP_GSC_AUTOMATION.md)。
+LLM 发现性、IndexNow、链接检查、Lighthouse、SVG 内联和未来 skill 抽象的运维决策见 [`docs/zh/ops-decisions.md`](docs/zh/ops-decisions.md)。
 
 ## 配套 Skill
 

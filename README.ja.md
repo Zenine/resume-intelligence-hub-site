@@ -58,12 +58,13 @@ AI が 8 つの質問に答えてもらい、プライベートなキャリア�
 
 ```
 docs/       VitePress ソース（4 言語：en / zh / ja / zh-TW）
-scripts/    CI 自動化 — サイトマップ通知 + llms-full.txt ジェネレーター
+scripts/    CI 自動化 — verify、リンクチェック、サイトマップ / IndexNow 通知、llms-full.txt ジェネレーター
 i18n/       glossary.md — 翻訳ドリフト参照
-.github/    デプロイ workflow + GSC サイトマップ通知 + セットアップガイド
+.github/    デプロイ workflow + GSC / IndexNow / Lighthouse 自動化 + セットアップガイド
 ```
 
 一度だけ行う Google Search Console 自動化設定は [`.github/SETUP_GSC_AUTOMATION.md`](.github/SETUP_GSC_AUTOMATION.md) を参照してください。
+LLM discovery、IndexNow、リンクチェック、Lighthouse、SVG インライン化、将来の skill 抽象化に関する運用決定は [`docs/ja/ops-decisions.md`](docs/ja/ops-decisions.md) を参照してください。
 
 ## 補完スキル
 

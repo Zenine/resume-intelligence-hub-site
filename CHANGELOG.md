@@ -55,3 +55,4 @@
 - P4-4 `security.txt` / `humans.txt`：已添加公开站点资产，安全披露入口使用 GitHub Security Advisories。
 - P5-1 / P5-2 未来可复用 skill 抽象：已在四语言 `ops-decisions` 中记录站点外抽象边界和参数化范围。
 - P5-3 机器可读 checkpoint：已为 `checkpoint.md` 增加 YAML frontmatter，并保留人类可读进度记录。
+- 补充 README 四语言、`AGENTS.md`、`CLAUDE.md` 和 `QUICK_START.md`，让项目结构说明反映 per-locale `llms.txt`、IndexNow、Lighthouse、内部链接检查、`security.txt` / `humans.txt` 和 `ops-decisions`。

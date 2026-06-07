@@ -25,9 +25,9 @@ Resume after interruption:
 This repo is the **site layer** — it contains VitePress docs, CI, and ops assets. The skill itself (SKILL.md + templates/ + workflows/) lives in the separate skill repo.
 
 - `docs/` — VitePress source (4 locales: en / zh / ja / zh-TW)
-- `scripts/` — CI automation (sitemap notify, llms-full.txt generator)
+- `scripts/` — CI automation (verify, link check, sitemap / IndexNow notify, llms-full.txt generator)
 - `i18n/` — translation glossary (single source of truth for all translations)
-- `.github/` — GitHub Actions (docs deploy + GSC sitemap notify)
+- `.github/` — GitHub Actions (docs deploy + GSC / IndexNow / Lighthouse automation)
 
 Regeneration uses [Meridian](https://github.com/lordmos/meridian). To regenerate:
 > Please read the project at /Users/zeninexu/github/resume-intelligence-hub-site, understand it, and set up its ops infrastructure.
@@ -43,8 +43,10 @@ Regeneration uses [Meridian](https://github.com/lordmos/meridian). To regenerate
 | `docs/.vitepress/config.mts` | VitePress multi-locale config |
 | `docs/.vitepress/theme/style.css` | Glow theme CSS variables |
 | `docs/.vitepress/theme/inline-svg.ts` | Runtime SVG injection for themed icons |
+| `docs/ops-decisions.md` | Site-layer ops decisions for LLM discovery, IndexNow, link checking, Lighthouse, SVG inlining, and future skill extraction |
 | `i18n/glossary.md` | Translation authority — check before translating |
 | `scripts/generate-llms-full.py` | Generates llms-full.txt for GEO |
+| `scripts/verify.sh` | Project verification entrypoint |
 
 ---
 
@@ -53,5 +55,5 @@ Regeneration uses [Meridian](https://github.com/lordmos/meridian). To regenerate
 1. Update `checkpoint.md` after each completed task.
 2. All 4 locales (en / zh / ja / zh-TW) must stay in sync — don't update one without updating the others.
 3. Never commit `docs/.vitepress/dist/` — it's a build artifact.
-4. After any docs change, run `cd docs && npm run docs:build` to verify no build errors.
+4. After any docs change, run `scripts/verify.sh` to verify llms freshness, i18n drift, internal links, and VitePress build.
 5. Translation: check `i18n/glossary.md` before translating any term.

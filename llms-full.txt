@@ -52,12 +52,13 @@ Most resume skills are one-shot generators — paste a JD, get a resume. This on
 
 ```
 docs/       VitePress site sources (4 locales: en / zh / ja / zh-TW)
-scripts/    CI automation — sitemap notify + llms-full.txt generator
+scripts/    CI automation — verify, link check, sitemap / IndexNow notify, llms-full.txt generator
 i18n/       glossary.md — translation drift reference
-.github/    Deploy workflow + GSC sitemap notify + setup guide
+.github/    Deploy workflow + GSC / IndexNow / Lighthouse automation + setup guide
 ```
 
 See [`.github/SETUP_GSC_AUTOMATION.md`](.github/SETUP_GSC_AUTOMATION.md) for one-time Google Search Console automation setup.
+See [`docs/ops-decisions.md`](docs/ops-decisions.md) for operational decisions around LLM discovery, IndexNow, link checking, Lighthouse, SVG inlining, and future skill extraction.
 
 ## Complementary Skills
 
