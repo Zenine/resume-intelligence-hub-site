@@ -1,0 +1,4 @@
+Contact: https://github.com/Zenine/resume-intelligence-hub-site/security/advisories/new
+Policy: https://github.com/Zenine/resume-intelligence-hub-site/security/policy
+Preferred-Languages: en, zh-CN
+Canonical: https://zenine.github.io/resume-intelligence-hub-site/.well-known/security.txt

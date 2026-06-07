@@ -14,6 +14,7 @@ resume-intelligence-hub is an opinionated methodology and scaffolding for a pers
 - [Frameworks](https://zenine.github.io/resume-intelligence-hub-site/frameworks.html): Career frameworks used (Google XYZ, STAR, BEI, Heilmeier, etc.)
 - [FAQ](https://zenine.github.io/resume-intelligence-hub-site/faq.html): Frequently asked questions
 - [Release Mapping](https://zenine.github.io/resume-intelligence-hub-site/release.html): Site-to-skill version mapping and regeneration policy
+- [Ops Decisions](https://zenine.github.io/resume-intelligence-hub-site/ops-decisions.html): Operational decisions for LLM discovery, IndexNow, link checking, Lighthouse, SVG inlining, and future skill extraction
 - [README](https://github.com/Zenine/resume-intelligence-hub-site#readme): Source-of-truth overview
 
 ## Source

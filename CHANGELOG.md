@@ -37,3 +37,21 @@
 - 新增四语言 `examples` 页面，提供合成的初始化目录、成就片段、JD 定制简历、STAR 故事、verification log 和季度 SMART 计划样例。
 - 新增四语言 `release` 页面，记录站点层与 skill repo 的版本映射和再生成策略。
 - 将 `skill-contract`、`examples` 和 `release` 接入四语言 VitePress nav 或 sidebar，并同步更新 `llms.txt` / `llms-full.txt` 发现性文本。
+- 新增 per-locale `llms.txt`，覆盖 `/llms.txt`、`/zh/llms.txt`、`/ja/llms.txt`、`/zh-TW/llms.txt`，并让页面 head 按当前语言输出 discovery link。
+- 新增可选 IndexNow 自动化：deploy workflow 在存在 `INDEXNOW_KEY` secret 时把 key file 写入 Pages artifact，`indexnow.yml` 在部署成功、手动触发或每周定时运行时提交站点 URL；无 key 时安全跳过。
+- 新增 `scripts/check-links.py` 并接入 `scripts/verify.sh`，默认确定性检查内部链接，不在主验证路径检查易抖动外链。
+- 新增 Lighthouse workflow 和 `lighthouserc.cjs`，对 performance、accessibility、best practices、SEO 设置保守阈值。
+- 新增四语言 `ops-decisions` 页面，记录 LLM/GEO discovery、IndexNow、链接检查、Lighthouse、运行时 SVG 内联和未来 skill 抽象决策。
+- 新增 `security.txt` 和 `humans.txt` 公开站点资产，安全披露入口使用 GitHub Security Advisories。
+- 将 `checkpoint.md` 升级为带机器可读 frontmatter 的进度文件，并将本轮 TODO 全部收口。
+
+### TODO 收口映射
+
+- P2-4 per-locale `llms.txt`：已实现四语言 `llms.txt`，并由页面 head 按当前语言输出 discovery link。
+- P2-5 Bing / IndexNow 通知：已实现可选 IndexNow workflow 和提交脚本；未配置 `INDEXNOW_KEY` 时安全跳过，不暴露 key。
+- P3-6 `ignoreDeadLinks` / 链接检查：已新增确定性的内部链接检查脚本，并接入 `scripts/verify.sh`。
+- P3-8 Lighthouse / 可访问性检查：已新增 Lighthouse workflow 和保守阈值配置。
+- P3-9 构建期 SVG 内联评估：已在四语言 `ops-decisions` 中记录保留运行时 SVG 内联的决策、理由和重新评估条件。
+- P4-4 `security.txt` / `humans.txt`：已添加公开站点资产，安全披露入口使用 GitHub Security Advisories。
+- P5-1 / P5-2 未来可复用 skill 抽象：已在四语言 `ops-decisions` 中记录站点外抽象边界和参数化范围。
+- P5-3 机器可读 checkpoint：已为 `checkpoint.md` 增加 YAML frontmatter，并保留人类可读进度记录。

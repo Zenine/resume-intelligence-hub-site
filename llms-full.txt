@@ -368,6 +368,69 @@ Compose on top of this hub for specific one-shot needs:
 
 ---
 
+<!-- source: docs/ops-decisions.md -->
+# Ops Decisions
+
+This page records site-layer operational decisions that should survive future regeneration.
+
+## LLM / GEO Discovery
+
+The site serves one concise `llms.txt` per locale:
+
+- `/llms.txt`
+- `/zh/llms.txt`
+- `/ja/llms.txt`
+- `/zh-TW/llms.txt`
+
+Every page emits a language-aware `llms.txt` discovery link in `transformHead`. The site also serves one multilingual `llms-full.txt`, generated from all four locale doc sets, for agents that prefer a single expanded source.
+
+## IndexNow
+
+IndexNow is enabled as optional automation. The workflow submits URLs only when the repository secret `INDEXNOW_KEY` exists.
+
+The deploy workflow writes the key file into the GitHub Pages artifact at `/{base}/{key}.txt`. The notification workflow then sends only URLs under `/resume-intelligence-hub-site/`, with `keyLocation` pointing to that deployed key file.
+
+No IndexNow key is committed to the repository.
+
+## Link Checking
+
+`scripts/verify.sh` runs `scripts/check-links.py`, which checks internal Markdown and public text links deterministically without external HTTP requests. External links are intentionally left out of the default verification path to avoid flaky CI.
+
+## Lighthouse
+
+Lighthouse audits run in a separate scheduled and pull-request workflow. Thresholds are intentionally conservative:
+
+- Performance: warning at 0.5
+- Accessibility: error below 0.9
+- Best practices: error below 0.9
+- SEO: error below 0.9
+
+This keeps hard failures focused on accessibility, best practices, and SEO while still surfacing performance regressions.
+
+## Runtime SVG Inlining
+
+The current runtime SVG inlining strategy is retained. It provides themed icon styling with an `<img>` fallback if fetch or parsing fails. Moving all icons to build-time inline SVG would require changing how VitePress feature icons and Markdown icon images are emitted, with limited benefit for this static site.
+
+The decision can be revisited if Lighthouse or visual testing shows measurable layout shift, icon flash, or fetch overhead.
+
+## Future Skill Extraction
+
+The reusable `meridian-vitepress-ops` skill should be designed outside this site repo. The extracted skill should parameterize:
+
+- repository owner/name
+- site URL and base path
+- brand name and project type
+- accent color and logo assets
+- locales
+- GSC and IndexNow enablement
+- `llms.txt` / `llms-full.txt` generation policy
+- i18n glossary and drift-check rules
+- checkpoint structure
+
+This repo remains the reference implementation, not the extracted skill package.
+
+---
+
 <!-- source: docs/philosophy.md -->
 # Design Philosophy
 
@@ -1019,6 +1082,69 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 ---
 
+<!-- source: docs/zh/ops-decisions.md -->
+# 运维决策
+
+本页记录站点层运维决策，避免未来再生成时丢失上下文。
+
+## LLM / GEO 发现性
+
+站点为每个语言提供一份简短 `llms.txt`：
+
+- `/llms.txt`
+- `/zh/llms.txt`
+- `/ja/llms.txt`
+- `/zh-TW/llms.txt`
+
+每个页面都会在 `transformHead` 中输出按当前语言匹配的 `llms.txt` discovery link。站点也保留一份多语言 `llms-full.txt`，从四套语言文档生成，供偏好单一扩展文本源的 agent 使用。
+
+## IndexNow
+
+IndexNow 作为可选自动化启用。只有仓库 secret `INDEXNOW_KEY` 存在时，workflow 才会提交 URL。
+
+部署 workflow 会把 key 文件临时写入 GitHub Pages artifact 的 `/{base}/{key}.txt`。通知 workflow 只提交 `/resume-intelligence-hub-site/` 下的 URL，并把 `keyLocation` 指向已部署的 key 文件。
+
+IndexNow key 不提交进仓库。
+
+## 链接检查
+
+`scripts/verify.sh` 会运行 `scripts/check-links.py`，以确定性方式检查 Markdown 和 public text asset 里的内部链接。默认验证路径不检查外链，避免 CI 因外部网站短暂不可用而抖动。
+
+## Lighthouse
+
+Lighthouse 审计放在单独的 pull request 和定时 workflow 中。阈值刻意保持保守：
+
+- Performance：低于 0.5 时警告
+- Accessibility：低于 0.9 时报错
+- Best practices：低于 0.9 时报错
+- SEO：低于 0.9 时报错
+
+这样硬失败集中在可访问性、最佳实践和 SEO，同时仍能暴露性能回归。
+
+## 运行时 SVG 内联
+
+当前保留运行时 SVG 内联策略。它能支持主题化图标样式，并在 fetch 或解析失败时保留 `<img>` fallback。改成全部构建期内联需要改变 VitePress feature icon 和 Markdown 图标图片的输出方式，对当前静态站点收益有限。
+
+如果 Lighthouse 或视觉测试显示明显布局偏移、图标闪烁或 fetch 开销，再重新评估。
+
+## 未来 Skill 抽象
+
+可复用的 `meridian-vitepress-ops` skill 应在站点仓库外设计。抽象后的 skill 应参数化：
+
+- 仓库 owner/name
+- site URL 和 base path
+- brand name 和 project type
+- accent color 和 logo assets
+- locales
+- GSC 和 IndexNow enablement
+- `llms.txt` / `llms-full.txt` 生成策略
+- i18n glossary 和 drift-check 规则
+- checkpoint 结构
+
+本仓库保留为参考实现，而不是抽象 skill package 本身。
+
+---
+
 <!-- source: docs/zh/philosophy.md -->
 # 设计哲学
 
@@ -1656,6 +1782,69 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 - [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny のキャリア転換
 
 </div>
+
+---
+
+<!-- source: docs/ja/ops-decisions.md -->
+# 運用決定
+
+このページは、将来の再生成で失われてはいけないサイト層の運用決定を記録します。
+
+## LLM / GEO Discovery
+
+サイトはロケールごとに短い `llms.txt` を提供します。
+
+- `/llms.txt`
+- `/zh/llms.txt`
+- `/ja/llms.txt`
+- `/zh-TW/llms.txt`
+
+各ページは `transformHead` で現在の言語に対応する `llms.txt` discovery link を出力します。4 つのロケールドキュメントから生成した多言語 `llms-full.txt` も保持し、単一の展開済みテキストソースを好む agent 向けに提供します。
+
+## IndexNow
+
+IndexNow は任意の自動化として有効化されています。リポジトリ secret `INDEXNOW_KEY` が存在する場合だけ、workflow が URL を送信します。
+
+デプロイ workflow は key ファイルを GitHub Pages artifact の `/{base}/{key}.txt` に一時的に書き込みます。通知 workflow は `/resume-intelligence-hub-site/` 配下の URL だけを送信し、`keyLocation` はデプロイ済み key ファイルを指します。
+
+IndexNow key はリポジトリにコミットしません。
+
+## リンクチェック
+
+`scripts/verify.sh` は `scripts/check-links.py` を実行し、Markdown と public text asset 内の内部リンクを決定的にチェックします。外部リンクはデフォルト検証から外し、外部サイトの一時的な障害で CI が不安定になることを避けます。
+
+## Lighthouse
+
+Lighthouse 監査は別の pull request / 定期 workflow で実行します。しきい値は保守的に設定しています。
+
+- Performance: 0.5 未満で warning
+- Accessibility: 0.9 未満で error
+- Best practices: 0.9 未満で error
+- SEO: 0.9 未満で error
+
+これにより、hard failure はアクセシビリティ、ベストプラクティス、SEO に集中し、性能低下は warning として可視化します。
+
+## ランタイム SVG インライン化
+
+現在のランタイム SVG インライン化戦略を維持します。テーマ化されたアイコンスタイルを実現し、fetch や解析に失敗した場合は `<img>` fallback を残せます。すべてをビルド時インライン SVG に変えるには、VitePress の feature icon と Markdown アイコン画像の出力を変える必要があり、この静的サイトでは利益が限定的です。
+
+Lighthouse や視覚テストで明確な layout shift、アイコン flash、fetch overhead が見えた場合に再評価します。
+
+## 将来の Skill 抽象化
+
+再利用可能な `meridian-vitepress-ops` skill は、このサイトリポジトリの外で設計します。抽象化された skill は次をパラメータ化するべきです。
+
+- repository owner/name
+- site URL と base path
+- brand name と project type
+- accent color と logo assets
+- locales
+- GSC と IndexNow enablement
+- `llms.txt` / `llms-full.txt` generation policy
+- i18n glossary と drift-check rules
+- checkpoint structure
+
+このリポジトリは参照実装として残し、抽象 skill package そのものにはしません。
 
 ---
 
@@ -2305,6 +2494,69 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 - [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny 的職涯轉型框架
 
 </div>
+
+---
+
+<!-- source: docs/zh-TW/ops-decisions.md -->
+# 運維決策
+
+本頁記錄站點層運維決策，避免未來再生成時遺失上下文。
+
+## LLM / GEO 發現性
+
+站點為每個語言提供一份簡短 `llms.txt`：
+
+- `/llms.txt`
+- `/zh/llms.txt`
+- `/ja/llms.txt`
+- `/zh-TW/llms.txt`
+
+每個頁面都會在 `transformHead` 中輸出按目前語言匹配的 `llms.txt` discovery link。站點也保留一份多語言 `llms-full.txt`，從四套語言文件生成，供偏好單一擴展文本來源的 agent 使用。
+
+## IndexNow
+
+IndexNow 作為可選自動化啟用。只有倉庫 secret `INDEXNOW_KEY` 存在時，workflow 才會提交 URL。
+
+部署 workflow 會把 key 檔案臨時寫入 GitHub Pages artifact 的 `/{base}/{key}.txt`。通知 workflow 只提交 `/resume-intelligence-hub-site/` 下的 URL，並把 `keyLocation` 指向已部署的 key 檔案。
+
+IndexNow key 不提交進倉庫。
+
+## 連結檢查
+
+`scripts/verify.sh` 會執行 `scripts/check-links.py`，以確定性方式檢查 Markdown 和 public text asset 裡的內部連結。預設驗證路徑不檢查外部連結，避免 CI 因外部網站短暫不可用而抖動。
+
+## Lighthouse
+
+Lighthouse 審計放在單獨的 pull request 和定時 workflow 中。閾值刻意保持保守：
+
+- Performance：低於 0.5 時警告
+- Accessibility：低於 0.9 時報錯
+- Best practices：低於 0.9 時報錯
+- SEO：低於 0.9 時報錯
+
+這樣 hard failure 集中在可訪問性、最佳實踐和 SEO，同時仍能暴露效能回歸。
+
+## 執行時 SVG 內聯
+
+目前保留執行時 SVG 內聯策略。它能支援主題化圖示樣式，並在 fetch 或解析失敗時保留 `<img>` fallback。改成全部建置期內聯需要改變 VitePress feature icon 和 Markdown 圖示圖片的輸出方式，對目前靜態站點收益有限。
+
+如果 Lighthouse 或視覺測試顯示明顯 layout shift、圖示閃爍或 fetch 開銷，再重新評估。
+
+## 未來 Skill 抽象
+
+可重用的 `meridian-vitepress-ops` skill 應在站點倉庫外設計。抽象後的 skill 應參數化：
+
+- repository owner/name
+- site URL 和 base path
+- brand name 和 project type
+- accent color 和 logo assets
+- locales
+- GSC 和 IndexNow enablement
+- `llms.txt` / `llms-full.txt` generation policy
+- i18n glossary 和 drift-check rules
+- checkpoint structure
+
+本倉庫保留為參考實作，而不是抽象 skill package 本身。
 
 ---
 

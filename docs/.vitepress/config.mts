@@ -155,6 +155,11 @@ function getPageUrl(relativePath: string): string {
   return `${siteOrigin}${relPath}`
 }
 
+function getLlmsTxtUrl(localeKey: LocaleKey): string {
+  const locale = locales.find((candidate) => candidate.key === localeKey)!
+  return `${siteOrigin}${locale.prefix}llms.txt`
+}
+
 function getFaqJsonLd(localeKey: LocaleKey) {
   return {
     '@context': 'https://schema.org',
@@ -191,9 +196,6 @@ export default defineConfig({
     ['meta', { property: 'og:image:height', content: '630' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:image', content: 'https://zenine.github.io/resume-intelligence-hub-site/og.png' }],
-    // GEO hints: llms.txt discovery
-    ['link', { rel: 'alternate', type: 'text/plain', title: 'llms.txt', href: 'https://zenine.github.io/resume-intelligence-hub-site/llms.txt' }],
-    ['link', { rel: 'alternate', type: 'text/plain', title: 'llms-full.txt', href: 'https://zenine.github.io/resume-intelligence-hub-site/llms-full.txt' }],
     // JSON-LD structured data (GEO) — helps AI search engines (Perplexity,
     // SearchGPT, Google AI Overview) identify this as a software / skill.
     [
@@ -280,6 +282,8 @@ export default defineConfig({
       ['link', { rel: 'canonical', href: url }],
       ...localeAlternates,
       ['link', { rel: 'alternate', hreflang: 'x-default', href: getPageUrl(getLocalizedRelativePath(pageData.relativePath, 'root')) }],
+      ['link', { rel: 'alternate', type: 'text/plain', title: 'llms.txt', href: getLlmsTxtUrl(localeKey) }],
+      ['link', { rel: 'alternate', type: 'text/plain', title: 'llms-full.txt', href: 'https://zenine.github.io/resume-intelligence-hub-site/llms-full.txt' }],
       ...faqJsonLd,
     ]
   },
@@ -341,6 +345,7 @@ export default defineConfig({
               { text: 'Frameworks', link: '/frameworks' },
               { text: 'FAQ', link: '/faq' },
               { text: 'Release / Version Mapping', link: '/release' },
+              { text: 'Ops Decisions', link: '/ops-decisions' },
             ],
           },
         ],
@@ -375,11 +380,12 @@ export default defineConfig({
             {
               text: '参考',
               items: [
-                { text: '方法论', link: '/zh/frameworks' },
-                { text: '常见问题', link: '/zh/faq' },
-                { text: '发布 / 版本映射', link: '/zh/release' },
-              ],
-            },
+                  { text: '方法论', link: '/zh/frameworks' },
+                  { text: '常见问题', link: '/zh/faq' },
+                  { text: '发布 / 版本映射', link: '/zh/release' },
+                  { text: '运维决策', link: '/zh/ops-decisions' },
+                ],
+              },
           ],
         },
         outline: { label: '页面导航' },
@@ -422,11 +428,12 @@ export default defineConfig({
             {
               text: 'リファレンス',
               items: [
-                { text: 'フレームワーク', link: '/ja/frameworks' },
-                { text: 'よくある質問', link: '/ja/faq' },
-                { text: 'リリース / バージョン対応', link: '/ja/release' },
-              ],
-            },
+                  { text: 'フレームワーク', link: '/ja/frameworks' },
+                  { text: 'よくある質問', link: '/ja/faq' },
+                  { text: 'リリース / バージョン対応', link: '/ja/release' },
+                  { text: '運用決定', link: '/ja/ops-decisions' },
+                ],
+              },
           ],
         },
         outline: { label: 'ページナビ' },
@@ -469,11 +476,12 @@ export default defineConfig({
             {
               text: '參考',
               items: [
-                { text: '方法論', link: '/zh-TW/frameworks' },
-                { text: '常見問題', link: '/zh-TW/faq' },
-                { text: '發布 / 版本映射', link: '/zh-TW/release' },
-              ],
-            },
+                  { text: '方法論', link: '/zh-TW/frameworks' },
+                  { text: '常見問題', link: '/zh-TW/faq' },
+                  { text: '發布 / 版本映射', link: '/zh-TW/release' },
+                  { text: '運維決策', link: '/zh-TW/ops-decisions' },
+                ],
+              },
           ],
         },
         outline: { label: '頁面導覽' },

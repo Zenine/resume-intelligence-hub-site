@@ -27,9 +27,24 @@ cmp -s "$ROOT/llms-full.txt" "$ROOT/docs/public/llms-full.txt" || {
   echo "llms-full.txt and docs/public/llms-full.txt differ" >&2
   exit 1
 }
+cmp -s "$ROOT/llms.txt" "$ROOT/docs/public/llms.txt" || {
+  echo "llms.txt and docs/public/llms.txt differ" >&2
+  exit 1
+}
+
+echo "==> Checking per-locale llms.txt files"
+for locale in zh ja zh-TW; do
+  test -f "$ROOT/docs/public/$locale/llms.txt" || {
+    echo "docs/public/$locale/llms.txt is missing" >&2
+    exit 1
+  }
+done
 
 echo "==> Checking i18n page and heading drift"
 python3 scripts/check-i18n-drift.py
+
+echo "==> Checking internal links"
+python3 scripts/check-links.py
 
 echo "==> Building VitePress docs"
 (cd "$ROOT/docs" && npm run docs:build)

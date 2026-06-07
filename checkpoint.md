@@ -1,3 +1,24 @@
+---
+project: resume-intelligence-hub-site
+meridian_version: v3.3
+regenerated: 2026-04-21
+last_updated: 2026-06-07
+status: complete
+completed_tasks:
+  - meridian-regeneration
+  - seo-geo-discovery
+  - i18n-drift-verification
+  - docs-governance
+  - optional-indexnow
+  - lighthouse-audit
+  - internal-link-check
+external_status:
+  google_search_console: verification_meta_configured_external_console_unconfirmed
+  indexnow: workflow_ready_requires_INDEXNOW_KEY_secret
+verification:
+  entrypoint: scripts/verify.sh
+---
+
 # Meridian Regeneration Checkpoint
 
 Project: resume-intelligence-hub-site
@@ -94,3 +115,15 @@ Google verification meta 已经配置在 `docs/.vitepress/config.mts`。由于�
 
 **Bing Webmaster (optional):**
 Bing 状态仍未知。可走同样流程，或等 Google 外部确认后使用 "Import from Google Search Console"。
+
+---
+
+## 2026-06-07 Ops / TODO 收口
+
+- `TODO.md` 中 P2 / P3 / P4 / P5 全部收口；仓库内当前无开放 TODO。
+- 新增 per-locale `llms.txt`，并在 VitePress head 中按语言输出 discovery link。
+- `scripts/verify.sh` 覆盖 `llms-full.txt` freshness、root/public `llms.txt` 一致性、per-locale `llms.txt` 存在性、i18n heading drift、内部链接检查和 VitePress build。
+- 新增可选 IndexNow workflow；启用前需要 GitHub Actions secret `INDEXNOW_KEY`。
+- 新增 Lighthouse workflow 和 `lighthouserc.cjs` 阈值配置。
+- 新增四语言 `ops-decisions`，记录运行时 SVG 内联保留、未来 skill 抽象边界和运维自动化策略。
+- 新增 `security.txt` 和 `humans.txt`。

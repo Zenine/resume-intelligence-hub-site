@@ -1,0 +1,24 @@
+# resume-intelligence-hub
+
+> AI エージェントスキルとして、履歴書、面接準備、研究費申請、提出前検証、ストレッチ目標、能力ギャップ、四半期計画を 1 つのプライベート Git リポジトリにまとめるキャリアインテリジェンスハブを構築します。
+
+resume-intelligence-hub は一度きりの履歴書生成器ではありません。`profiles/` を事実の単一ソースにし、`AGENTS.md` でポジショニングを固定し、JD、面接、申請、資格・昇進書類向けの出力をワークフローで生成する長期運用の基盤です。
+
+## ドキュメント
+
+- [ホーム](https://zenine.github.io/resume-intelligence-hub-site/ja/): インストール手順と機能概要
+- [クイックスタート](https://zenine.github.io/resume-intelligence-hub-site/ja/quick-start.html): 3 ステップのセットアップ
+- [利用契約](https://zenine.github.io/resume-intelligence-hub-site/ja/skill-contract.html): 生成される hub の構造、workflow 入出力、機密ファイル境界、復旧、移行、四半期レビュー
+- [サンプル](https://zenine.github.io/resume-intelligence-hub-site/ja/examples.html): 合成された hub ファイル、履歴書断片、STAR ストーリー、verification log、四半期 SMART 計画
+- [デザイン哲学](https://zenine.github.io/resume-intelligence-hub-site/ja/philosophy.html): hub を支える 11 の設計判断
+- [フレームワーク](https://zenine.github.io/resume-intelligence-hub-site/ja/frameworks.html): Google XYZ、STAR、BEI、Heilmeier などの方法論
+- [よくある質問](https://zenine.github.io/resume-intelligence-hub-site/ja/faq.html): よくある質問
+- [リリース / バージョン対応](https://zenine.github.io/resume-intelligence-hub-site/ja/release.html): サイト層と skill repo のバージョン対応と再生成方針
+- [運用決定](https://zenine.github.io/resume-intelligence-hub-site/ja/ops-decisions.html): LLM discovery、IndexNow、リンクチェック、Lighthouse、SVG インライン化、将来の skill 抽象化に関する運用決定
+
+## ソース
+
+- Skill GitHub: https://github.com/Zenine/resume-intelligence-hub
+- Site repo: https://github.com/Zenine/resume-intelligence-hub-site
+- License: MIT
+- llms-full.txt: https://zenine.github.io/resume-intelligence-hub-site/llms-full.txt

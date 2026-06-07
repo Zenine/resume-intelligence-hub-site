@@ -1,0 +1,13 @@
+/* TEAM */
+
+Owner: Zenine Xu
+Site: https://github.com/Zenine/resume-intelligence-hub-site
+Skill: https://github.com/Zenine/resume-intelligence-hub
+
+/* SITE */
+
+Name: Resume Intelligence Hub
+URL: https://zenine.github.io/resume-intelligence-hub-site/
+Stack: VitePress, GitHub Pages, Meridian
+Languages: English, 简体中文, 日本語, 繁體中文
+License: MIT

@@ -1,0 +1,24 @@
+# resume-intelligence-hub
+
+> 一个 AI agent skill，用来搭建个人职业发展中枢：在一个私有 Git 仓库中统一管理简历、面试准备、课题申报、投递前核查、挑战目标、能力差距和季度计划。
+
+resume-intelligence-hub 不是一次性简历生成器，而是一套可长期迭代的职业基础设施。它让 `profiles/` 成为事实来源，让 `AGENTS.md` 锁定职业定位，并通过工作流生成面向 JD、面试、申报和资质材料的输出。
+
+## 文档
+
+- [首页](https://zenine.github.io/resume-intelligence-hub-site/zh/): 安装说明和功能概览
+- [快速开始](https://zenine.github.io/resume-intelligence-hub-site/zh/quick-start.html): 三步搭建指南
+- [使用契约](https://zenine.github.io/resume-intelligence-hub-site/zh/skill-contract.html): 生成 hub 的目录结构、workflow 输入输出、敏感文件边界、恢复、迁移和季度复盘
+- [样例](https://zenine.github.io/resume-intelligence-hub-site/zh/examples.html): 合成的 hub 文件、简历片段、STAR 故事、verification log 和季度 SMART 计划样例
+- [设计哲学](https://zenine.github.io/resume-intelligence-hub-site/zh/philosophy.html): hub 背后的 11 个非显然设计选择
+- [方法论](https://zenine.github.io/resume-intelligence-hub-site/zh/frameworks.html): Google XYZ、STAR、BEI、Heilmeier 等职业方法论
+- [常见问题](https://zenine.github.io/resume-intelligence-hub-site/zh/faq.html): 常见问题
+- [发布 / 版本映射](https://zenine.github.io/resume-intelligence-hub-site/zh/release.html): 站点层与 skill repo 的版本映射和再生成策略
+- [运维决策](https://zenine.github.io/resume-intelligence-hub-site/zh/ops-decisions.html): LLM 发现性、IndexNow、链接检查、Lighthouse、SVG 内联和未来 skill 抽象的运维决策
+
+## 来源
+
+- Skill GitHub: https://github.com/Zenine/resume-intelligence-hub
+- Site repo: https://github.com/Zenine/resume-intelligence-hub-site
+- License: MIT
+- llms-full.txt: https://zenine.github.io/resume-intelligence-hub-site/llms-full.txt

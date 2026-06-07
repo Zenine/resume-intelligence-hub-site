@@ -27,6 +27,13 @@ jobs:
         with: { enablement: true }
       - run: npm ci
         working-directory: docs
+      - name: Add IndexNow key file
+        env:
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: |
+          if [ -n "$INDEXNOW_KEY" ]; then
+            printf '%s' "$INDEXNOW_KEY" > "docs/public/${INDEXNOW_KEY}.txt"
+          fi
       - run: scripts/verify.sh
       - uses: actions/upload-pages-artifact@v3
         with: { path: docs/.vitepress/dist }
