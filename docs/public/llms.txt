@@ -12,6 +12,7 @@ resume-intelligence-hub is an opinionated methodology and scaffolding for a pers
 - [Examples](https://zenine.github.io/resume-intelligence-hub-site/examples.html): Synthetic examples of initialized hub files, resume snippets, STAR stories, verification logs, and quarterly SMART plans
 - [Philosophy](https://zenine.github.io/resume-intelligence-hub-site/philosophy.html): The 11 non-obvious design choices behind the hub
 - [Frameworks](https://zenine.github.io/resume-intelligence-hub-site/frameworks.html): Career frameworks used (Google XYZ, STAR, BEI, Heilmeier, etc.)
+- [Odyssey Planning](https://zenine.github.io/resume-intelligence-hub-site/odyssey-plan.html): Three-path career strategy, non-negotiable constraints, gap-prioritized learning, and learn-by-doing projects
 - [FAQ](https://zenine.github.io/resume-intelligence-hub-site/faq.html): Frequently asked questions
 - [Release Mapping](https://zenine.github.io/resume-intelligence-hub-site/release.html): Site-to-skill version mapping and regeneration policy
 - [Ops Decisions](https://zenine.github.io/resume-intelligence-hub-site/ops-decisions.html): Operational decisions for LLM discovery, IndexNow, link checking, Lighthouse, SVG inlining, and future skill extraction

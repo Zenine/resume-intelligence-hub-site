@@ -2,6 +2,17 @@
 
 本文件记录 `resume-intelligence-hub-site` 站点层的长期变更。`checkpoint.md` 仍用于 Meridian 再生成流程的会话进度，不替代这里的发布记录。
 
+## 2026-06-11
+
+### 奥德赛计划与能力补强方法论
+
+- 新增四语言 `odyssey-plan` 页面，抽象记录三路径职业推演：底盘路径、进攻路径、期权路径。
+- 将“先问不可牺牲项”写入通用职业规划方法，用于在现金流、家庭时间、地点、健康、自主度和上限之间排序。
+- 新增 JD gap 的学习取舍框架：必须学、需要了解、暂不主攻，避免被单个 JD 带偏。
+- 新增做中学项目设计原则，强调 README、demo、评估记录、失败案例、技能映射和简历使用边界。
+- 将新页面接入四语言 VitePress nav / sidebar、README 和 per-locale `llms.txt` 发现入口。
+- 验证：`scripts/verify.sh` 通过，包含 `llms-full.txt` freshness、root/public 一致性、per-locale `llms.txt`、i18n heading drift、内部链接检查和 VitePress build。
+
 ## 2026-06-07
 
 ### 已知历史起点

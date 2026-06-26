@@ -325,6 +325,7 @@ export default defineConfig({
           { text: 'Contract', link: '/skill-contract' },
           { text: 'Examples', link: '/examples' },
           { text: 'Frameworks', link: '/frameworks' },
+          { text: 'Odyssey Plan', link: '/odyssey-plan' },
           { text: 'Philosophy', link: '/philosophy' },
           { text: 'FAQ', link: '/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
@@ -343,6 +344,7 @@ export default defineConfig({
             text: 'Reference',
             items: [
               { text: 'Frameworks', link: '/frameworks' },
+              { text: 'Odyssey Planning', link: '/odyssey-plan' },
               { text: 'FAQ', link: '/faq' },
               { text: 'Release / Version Mapping', link: '/release' },
               { text: 'Ops Decisions', link: '/ops-decisions' },
@@ -362,6 +364,7 @@ export default defineConfig({
           { text: '使用契约', link: '/zh/skill-contract' },
           { text: '样例', link: '/zh/examples' },
           { text: '方法论', link: '/zh/frameworks' },
+          { text: '奥德赛计划', link: '/zh/odyssey-plan' },
           { text: '设计哲学', link: '/zh/philosophy' },
           { text: '常见问题', link: '/zh/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
@@ -381,6 +384,7 @@ export default defineConfig({
               text: '参考',
               items: [
                   { text: '方法论', link: '/zh/frameworks' },
+                  { text: '奥德赛计划', link: '/zh/odyssey-plan' },
                   { text: '常见问题', link: '/zh/faq' },
                   { text: '发布 / 版本映射', link: '/zh/release' },
                   { text: '运维决策', link: '/zh/ops-decisions' },
@@ -410,6 +414,7 @@ export default defineConfig({
           { text: '利用契約', link: '/ja/skill-contract' },
           { text: 'サンプル', link: '/ja/examples' },
           { text: 'フレームワーク', link: '/ja/frameworks' },
+          { text: 'オデッセイ計画', link: '/ja/odyssey-plan' },
           { text: 'デザイン哲学', link: '/ja/philosophy' },
           { text: 'よくある質問', link: '/ja/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
@@ -429,6 +434,7 @@ export default defineConfig({
               text: 'リファレンス',
               items: [
                   { text: 'フレームワーク', link: '/ja/frameworks' },
+                  { text: 'オデッセイ計画', link: '/ja/odyssey-plan' },
                   { text: 'よくある質問', link: '/ja/faq' },
                   { text: 'リリース / バージョン対応', link: '/ja/release' },
                   { text: '運用決定', link: '/ja/ops-decisions' },
@@ -458,6 +464,7 @@ export default defineConfig({
           { text: '使用契約', link: '/zh-TW/skill-contract' },
           { text: '樣例', link: '/zh-TW/examples' },
           { text: '方法論', link: '/zh-TW/frameworks' },
+          { text: '奧德賽計畫', link: '/zh-TW/odyssey-plan' },
           { text: '設計哲學', link: '/zh-TW/philosophy' },
           { text: '常見問題', link: '/zh-TW/faq' },
           { text: 'GitHub', link: 'https://github.com/Zenine/resume-intelligence-hub' },
@@ -477,6 +484,7 @@ export default defineConfig({
               text: '參考',
               items: [
                   { text: '方法論', link: '/zh-TW/frameworks' },
+                  { text: '奧德賽計畫', link: '/zh-TW/odyssey-plan' },
                   { text: '常見問題', link: '/zh-TW/faq' },
                   { text: '發布 / 版本映射', link: '/zh-TW/release' },
                   { text: '運維決策', link: '/zh-TW/ops-decisions' },

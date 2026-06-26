@@ -40,6 +40,7 @@ The agent walks you through an 8-question interview and scaffolds your private c
 - **Multi-track support** — job applications, research/grant proposals, and credential or promotion dossiers stay separated by design
 - **Pre-submission verification** — public-source cross-check on every load-bearing claim before high-stakes submissions
 - **Attribution boundaries** — separates personal ownership, team outcomes, company metrics, quotes, pipeline, forecasts, and realized revenue
+- **Odyssey planning** — compares base, stretch, and option paths against non-negotiable life constraints, then turns JD gaps into prioritized learn-by-doing projects
 - **Cross-IDE via AGENTS.md** — works with Claude Code, Cursor, Codex, Cline, Windsurf, GitHub Copilot
 - **Backed by proven frameworks** — Google XYZ, STAR, BEI, Heilmeier Catechism, stretch-target heuristic, triangulation
 

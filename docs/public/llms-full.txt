@@ -41,6 +41,7 @@ The agent walks you through an 8-question interview and scaffolds your private c
 - **Multi-track support** — job applications, research/grant proposals, and credential or promotion dossiers stay separated by design
 - **Pre-submission verification** — public-source cross-check on every load-bearing claim before high-stakes submissions
 - **Attribution boundaries** — separates personal ownership, team outcomes, company metrics, quotes, pipeline, forecasts, and realized revenue
+- **Odyssey planning** — compares base, stretch, and option paths against non-negotiable life constraints, then turns JD gaps into prioritized learn-by-doing projects
 - **Cross-IDE via AGENTS.md** — works with Claude Code, Cursor, Codex, Cline, Windsurf, GitHub Copilot
 - **Backed by proven frameworks** — Google XYZ, STAR, BEI, Heilmeier Catechism, stretch-target heuristic, triangulation
 
@@ -366,6 +367,93 @@ Compose on top of this hub for specific one-shot needs:
 - [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny's career transitions
 
 </div>
+
+---
+
+<!-- source: docs/odyssey-plan.md -->
+# Odyssey Planning
+
+Odyssey planning turns one career question into three deliberately different futures. The point is not to predict the future. The point is to make trade-offs visible before a single job description, course, or side project pulls you off course.
+
+Use it when a user asks "what should I do next?", considers a major role change, or faces a tempting JD that would require real learning investment.
+
+## The three-path map
+
+Build three paths, not one:
+
+1. **Base path**: the stable compounding route. It preserves the user's most important life constraint while deepening career capital.
+2. **Stretch path**: the selective advancement route. It pursues a bigger role, platform, or scope only when the upside is worth the added load.
+3. **Option path**: the high-upside route. It is explored through low-cost experiments until evidence justifies more risk.
+
+The names can change by user, but the logic should stay distinct. Do not make three versions of the same plan.
+
+## Start with the non-negotiable
+
+Ask what the user least wants to sacrifice before designing paths. Common anchors:
+
+- cash-flow stability
+- family or caregiving time
+- location stability
+- health and energy
+- autonomy
+- upside and ambition
+
+Then rank paths against that anchor. A glamorous option that violates the user's non-negotiable is not the primary path. It can remain an option path with trigger conditions.
+
+## Forecast three to five years
+
+For each path, write a short forecast:
+
+- **Year 1**: what the user would actually do next, not a vague aspiration.
+- **Year 3**: what credible traction looks like.
+- **Year 5**: what identity, market position, and lifestyle the path could produce.
+- **Risks**: what can quietly break the plan.
+- **Signals**: what evidence would make the path stronger or weaker.
+
+Keep the forecast honest. The hub should not turn every path into a motivational story.
+
+## Convert gaps into learning investments
+
+When a JD exposes gaps, do not turn the JD into a study syllabus. Sort the gaps by career return:
+
+- **Must learn**: missing gatekeeper skills that block credible entry into the target role.
+- **Useful to understand**: topics the user must evaluate, manage, or discuss, but does not need to own as an expert.
+- **Not now**: adjacent topics that would pull the user away from stronger career capital.
+
+This prevents single-job-description drift. The goal is to invest in skills that compound across many plausible futures.
+
+## Design a learn-by-doing project
+
+Replace generic learning lists with a bounded project. A strong project has:
+
+- one real workflow
+- a small but complete dataset or scenario
+- visible artifacts: README, demo, evaluation notes, failure cases
+- a clear skill map: what it proves, what it does not prove
+- a resume boundary: what can be claimed now, what must wait for real deployment
+
+Prefer four-to-eight-week projects. Long enough to produce evidence, short enough to avoid becoming a second job.
+
+## Keep resume boundaries honest
+
+The hub separates learning, experiments, and proven experience:
+
+- **Already evidenced**: can be used in resumes and interviews.
+- **Project in progress**: can be tracked in `todo.md` or a portfolio, but should not be overclaimed.
+- **Not yet claimable**: should stay out of formal resumes until there is evidence.
+
+This is especially important for senior roles. Overclaiming expert-level ability in a new stack damages credibility faster than admitting a focused learning plan.
+
+## Suggested hub outputs
+
+When an Odyssey plan is completed, save the outputs in the private career hub:
+
+- `career/odyssey/YYYY-MM-DD-plan.md` for the three-path forecast.
+- `jobs/market-watch/YYYY-MM-DD-<role>-gap.md` for JD-specific gap analysis.
+- `todo.md` for selected experiments and evidence-gathering tasks.
+- `changelog.md` when a plan, experiment, or portfolio artifact is completed.
+
+Avoid writing private family, compensation, medical, or employer-sensitive details into public docs. If the generated hub stores them, mark the file as sensitive.
 
 ---
 
@@ -1083,6 +1171,93 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 
 ---
 
+<!-- source: docs/zh/odyssey-plan.md -->
+# 奥德赛计划
+
+奥德赛计划把一个职业问题拆成三条刻意不同的未来路径。它不是用来预测未来，而是让取舍在投简历、报课程或开副业项目之前先浮出水面。
+
+当用户问“下一步做什么”、考虑重大职业变化，或遇到一个很诱人但需要投入学习成本的 JD 时，就可以用它。
+
+## 三路径地图
+
+一次设计三条路，不要只给一条：
+
+1. **底盘路径**：稳定复利路线。保住用户最重要的人生约束，同时增厚职业资本。
+2. **进攻路径**：选择性跃迁路线。只有当更大职位、平台或职责范围的收益值得承受额外负荷时，才推进。
+3. **期权路径**：高上限路线。先用低成本实验探索，等证据足够再提高风险暴露。
+
+具体命名可以因人而异，但三条路的逻辑必须真的不同。不要写成同一个计划的三个版本。
+
+## 先问不可牺牲项
+
+设计路径前，先问用户最不愿意牺牲什么。常见锚点包括：
+
+- 现金流稳定
+- 家庭或照护时间
+- 地点稳定
+- 健康和精力
+- 自主度
+- 上限和野心
+
+然后用这个锚点给路径排序。一个看起来很光鲜、但违反不可牺牲项的机会，不应该成为主路径。它可以保留为期权路径，并写清触发条件。
+
+## 推演三到五年
+
+每条路都写一段简短推演：
+
+- **第 1 年**：用户下一步真实会做什么，而不是空泛愿望。
+- **第 3 年**：什么样的进展算有可信牵引。
+- **第 5 年**：这条路可能形成什么身份、市场位置和生活方式。
+- **风险**：什么事情会悄悄破坏计划。
+- **信号**：哪些证据会让这条路更强或更弱。
+
+推演要诚实。Hub 不应该把每条路都写成励志故事。
+
+## 把缺口转成学习投资
+
+当 JD 暴露能力缺口时，不要把整份 JD 变成学习大纲。按职业回报给缺口分级：
+
+- **必须学**：缺了就无法可信进入目标岗位的门槛技能。
+- **需要了解**：用户需要评审、管理或讨论，但不必亲自成为专家的主题。
+- **暂不主攻**：会把用户从更强职业资本上拉偏的相邻主题。
+
+这样可以避免被单个 JD 带偏。目标是投资那些能在多种未来里复利的技能。
+
+## 设计做中学项目
+
+用有边界的项目替代泛泛学习清单。好的项目应该包含：
+
+- 一个真实工作流
+- 一个小而完整的数据集或场景
+- 可见产物：README、demo、评估记录、失败案例
+- 清晰技能映射：它证明什么，不证明什么
+- 简历边界：现在能写什么，必须等真实落地后才能写什么
+
+优先设计四到八周项目。时间够产出证据，又不至于变成第二份工作。
+
+## 保持简历边界诚实
+
+Hub 要区分学习、实验和已证明经验：
+
+- **已有佐证**：可以用于简历和面试。
+- **项目进行中**：可以放进 `todo.md` 或作品集，但不能过度包装。
+- **尚不可写**：没有证据前，不进入正式简历。
+
+这对资深岗位尤其重要。把新技术栈硬写成专家级，比承认自己有清晰学习计划更伤可信度。
+
+## 建议的 hub 输出
+
+完成奥德赛计划后，在私有职业 hub 里保存这些产物：
+
+- `career/odyssey/YYYY-MM-DD-plan.md`：三路径推演。
+- `jobs/market-watch/YYYY-MM-DD-<role>-gap.md`：针对某个 JD 的 gap 分析。
+- `todo.md`：选定的实验和证据收集任务。
+- `changelog.md`：计划、实验或作品集产物完成后的归档记录。
+
+不要把私人家庭、薪酬、医疗或雇主敏感细节写进公开文档。如果生成的 hub 需要保存这些信息，要把文件标为敏感。
+
+---
+
 <!-- source: docs/zh/ops-decisions.md -->
 # 运维决策
 
@@ -1783,6 +1958,93 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 - [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny のキャリア転換
 
 </div>
+
+---
+
+<!-- source: docs/ja/odyssey-plan.md -->
+# オデッセイプランニング
+
+オデッセイプランニングは、1 つのキャリア上の問いを、意図的に異なる 3 つの未来に分けて考える方法です。未来を予測するためではありません。求人、学習コース、副業プロジェクトに引っ張られる前に、トレードオフを見えるようにするためです。
+
+ユーザーが「次に何をすべきか」と聞いたとき、大きな転職を考えているとき、または本格的な学習投資が必要な魅力的な JD に出会ったときに使います。
+
+## 3 つの道筋
+
+1 つではなく 3 つの道を作ります。
+
+1. **基盤ルート**：安定して複利を積むルート。ユーザーにとって最も重要な制約を守りながらキャリア資本を厚くします。
+2. **ストレッチルート**：選択的に上を狙うルート。より大きな役割、プラットフォーム、スコープの価値が負荷に見合う場合だけ進めます。
+3. **オプションルート**：高い上限を持つルート。証拠がそろうまでは低コストの実験として扱います。
+
+名前はユーザーに合わせて変えてかまいませんが、3 つのロジックは明確に分けます。同じ計画の言い換えを 3 つ作らないでください。
+
+## まず譲れないものを決める
+
+道筋を設計する前に、ユーザーが最も犠牲にしたくないものを確認します。よくある軸は次の通りです。
+
+- キャッシュフローの安定
+- 家族やケアの時間
+- 場所の安定
+- 健康とエネルギー
+- 自律性
+- 上限と野心
+
+その軸で道筋を並べ替えます。魅力的に見えても譲れない条件を壊す選択肢は、主ルートではありません。トリガー条件付きのオプションルートとして残します。
+
+## 3 年から 5 年を見通す
+
+各ルートについて短く予測します。
+
+- **1 年目**：ユーザーが次に実際に行うこと。抽象的な願望ではありません。
+- **3 年目**：信頼できる進捗がどのように見えるか。
+- **5 年目**：その道が生む可能性のあるアイデンティティ、市場での位置、生活スタイル。
+- **リスク**：計画を静かに壊すもの。
+- **シグナル**：その道を強める、または弱める証拠。
+
+予測は正直に書きます。すべてのルートを励ましの物語にしないでください。
+
+## ギャップを学習投資に変える
+
+JD がスキルギャップを見せたとき、JD 全体を学習シラバスにしないでください。キャリア上のリターンで分類します。
+
+- **必ず学ぶ**：その役割に入る信頼性を左右する門番スキル。
+- **理解しておく**：評価、管理、議論は必要だが、本人が専門家になる必要はないテーマ。
+- **今はやらない**：より強いキャリア資本からユーザーを逸らす隣接テーマ。
+
+これにより、1 つの JD に進路を振り回されにくくなります。複数の未来で複利になるスキルに投資することが目的です。
+
+## 実践プロジェクトを設計する
+
+一般的な学習リストではなく、範囲を切ったプロジェクトにします。良いプロジェクトには次があります。
+
+- 1 つの実際のワークフロー
+- 小さいが完結したデータセットまたはシナリオ
+- 見える成果物：README、demo、評価メモ、失敗事例
+- 明確なスキルマップ：何を証明し、何を証明しないか
+- 履歴書上の境界：今言えること、実運用後まで待つべきこと
+
+期間は 4〜8 週間を推奨します。証拠を出すには十分で、第二の仕事になるほど長くはありません。
+
+## 履歴書上の境界を守る
+
+Hub は学習、実験、証明済み経験を分けます。
+
+- **証拠あり**：履歴書や面接で使えます。
+- **進行中のプロジェクト**：`todo.md` やポートフォリオで追跡できますが、過大に主張しません。
+- **まだ主張できない**：証拠ができるまで正式な履歴書には入れません。
+
+シニア職では特に重要です。新しいスタックを専門家レベルだと誇張するより、焦点の合った学習計画を示す方が信頼されます。
+
+## 推奨される hub 出力
+
+オデッセイプランが完了したら、プライベートなキャリア hub に次を保存します。
+
+- `career/odyssey/YYYY-MM-DD-plan.md`：3 ルートの予測。
+- `jobs/market-watch/YYYY-MM-DD-<role>-gap.md`：特定 JD のギャップ分析。
+- `todo.md`：選んだ実験と証拠収集タスク。
+- `changelog.md`：計画、実験、ポートフォリオ成果物が完了したときの記録。
+
+家族、報酬、医療、雇用主に関わる機密情報を公開ドキュメントに書かないでください。生成された hub に保存する場合は、そのファイルを機密として扱います。
 
 ---
 
@@ -2495,6 +2757,93 @@ npx skills add Zenine/resume-intelligence-hub -g -y
 - [`refoundai/lenny-skills@career-transitions`](https://skills.sh/refoundai/lenny-skills/career-transitions) — Lenny 的職涯轉型框架
 
 </div>
+
+---
+
+<!-- source: docs/zh-TW/odyssey-plan.md -->
+# 奧德賽計畫
+
+奧德賽計畫把一個職涯問題拆成三條刻意不同的未來路徑。它不是用來預測未來，而是在投履歷、報課程或啟動副業專案之前，先讓取捨浮出水面。
+
+當使用者問「下一步做什麼」、考慮重大職涯變化，或遇到一個很誘人但需要投入學習成本的 JD 時，就可以使用它。
+
+## 三路徑地圖
+
+一次設計三條路，不要只給一條：
+
+1. **底盤路徑**：穩定複利路線。保住使用者最重要的人生約束，同時增厚職涯資本。
+2. **進攻路徑**：選擇性躍遷路線。只有當更大職位、平台或職責範圍的收益值得承受額外負荷時，才推進。
+3. **期權路徑**：高上限路線。先用低成本實驗探索，等證據足夠再提高風險暴露。
+
+具體命名可以因人而異，但三條路的邏輯必須真的不同。不要寫成同一個計畫的三個版本。
+
+## 先問不可犧牲項
+
+設計路徑前，先問使用者最不願意犧牲什麼。常見錨點包括：
+
+- 現金流穩定
+- 家庭或照護時間
+- 地點穩定
+- 健康和精力
+- 自主度
+- 上限和野心
+
+然後用這個錨點給路徑排序。一個看起來很光鮮、但違反不可犧牲項的機會，不應該成為主路徑。它可以保留為期權路徑，並寫清觸發條件。
+
+## 推演三到五年
+
+每條路都寫一段簡短推演：
+
+- **第 1 年**：使用者下一步真實會做什麼，而不是空泛願望。
+- **第 3 年**：什麼樣的進展算有可信牽引。
+- **第 5 年**：這條路可能形成什麼身份、市場位置和生活方式。
+- **風險**：什麼事情會悄悄破壞計畫。
+- **訊號**：哪些證據會讓這條路更強或更弱。
+
+推演要誠實。Hub 不應該把每條路都寫成勵志故事。
+
+## 把缺口轉成學習投資
+
+當 JD 暴露能力缺口時，不要把整份 JD 變成學習大綱。按職涯回報給缺口分級：
+
+- **必須學**：缺了就無法可信進入目標職位的門檻技能。
+- **需要了解**：使用者需要評審、管理或討論，但不必親自成為專家的主題。
+- **暫不主攻**：會把使用者從更強職涯資本上拉偏的相鄰主題。
+
+這樣可以避免被單個 JD 帶偏。目標是投資那些能在多種未來裡複利的技能。
+
+## 設計做中學專案
+
+用有邊界的專案替代泛泛學習清單。好的專案應該包含：
+
+- 一個真實工作流程
+- 一個小而完整的資料集或場景
+- 可見產物：README、demo、評估記錄、失敗案例
+- 清晰技能映射：它證明什麼，不證明什麼
+- 履歷邊界：現在能寫什麼，必須等真實落地後才能寫什麼
+
+優先設計四到八週專案。時間夠產出證據，又不至於變成第二份工作。
+
+## 保持履歷邊界誠實
+
+Hub 要區分學習、實驗和已證明經驗：
+
+- **已有佐證**：可以用於履歷和面試。
+- **專案進行中**：可以放進 `todo.md` 或作品集，但不能過度包裝。
+- **尚不可寫**：沒有證據前，不進入正式履歷。
+
+這對資深職位尤其重要。把新技術棧硬寫成專家級，比承認自己有清晰學習計畫更傷可信度。
+
+## 建議的 hub 輸出
+
+完成奧德賽計畫後，在私有職涯 hub 裡保存這些產物：
+
+- `career/odyssey/YYYY-MM-DD-plan.md`：三路徑推演。
+- `jobs/market-watch/YYYY-MM-DD-<role>-gap.md`：針對某個 JD 的 gap 分析。
+- `todo.md`：選定的實驗和證據收集任務。
+- `changelog.md`：計畫、實驗或作品集產物完成後的歸檔記錄。
+
+不要把私人家庭、薪酬、醫療或雇主敏感細節寫進公開文件。如果生成的 hub 需要保存這些資訊，要把檔案標為敏感。
 
 ---
 

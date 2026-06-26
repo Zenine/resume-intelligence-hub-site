@@ -12,6 +12,7 @@ resume-intelligence-hub 不是一次性简历生成器，而是一套可长期�
 - [样例](https://zenine.github.io/resume-intelligence-hub-site/zh/examples.html): 合成的 hub 文件、简历片段、STAR 故事、verification log 和季度 SMART 计划样例
 - [设计哲学](https://zenine.github.io/resume-intelligence-hub-site/zh/philosophy.html): hub 背后的 11 个非显然设计选择
 - [方法论](https://zenine.github.io/resume-intelligence-hub-site/zh/frameworks.html): Google XYZ、STAR、BEI、Heilmeier 等职业方法论
+- [奥德赛计划](https://zenine.github.io/resume-intelligence-hub-site/zh/odyssey-plan.html): 三路径职业策略、不可牺牲项、按收益排序的能力补强和做中学项目
 - [常见问题](https://zenine.github.io/resume-intelligence-hub-site/zh/faq.html): 常见问题
 - [发布 / 版本映射](https://zenine.github.io/resume-intelligence-hub-site/zh/release.html): 站点层与 skill repo 的版本映射和再生成策略
 - [运维决策](https://zenine.github.io/resume-intelligence-hub-site/zh/ops-decisions.html): LLM 发现性、IndexNow、链接检查、Lighthouse、SVG 内联和未来 skill 抽象的运维决策

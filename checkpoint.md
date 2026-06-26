@@ -2,7 +2,7 @@
 project: resume-intelligence-hub-site
 meridian_version: v3.3
 regenerated: 2026-04-21
-last_updated: 2026-06-07
+last_updated: 2026-06-11
 status: complete
 completed_tasks:
   - meridian-regeneration
@@ -12,6 +12,7 @@ completed_tasks:
   - optional-indexnow
   - lighthouse-audit
   - internal-link-check
+  - odyssey-planning-methodology
 external_status:
   google_search_console: verification_meta_configured_external_console_unconfirmed
   indexnow: workflow_ready_requires_INDEXNOW_KEY_secret
@@ -133,3 +134,9 @@ Bing 状态仍未知。可走同样流程，或等 Google 外部确认后使用 
 - README 四语言的目录结构说明已同步到当前 ops 自动化状态：verify、内部链接检查、GSC / IndexNow / Lighthouse、per-locale `llms.txt` 和 `ops-decisions`。
 - `AGENTS.md` / `CLAUDE.md` 的架构、关键文件和验证规则已改为项目级 `scripts/verify.sh`。
 - `QUICK_START.md` 的任务输出和文件树已包含 `ops-decisions`、`security.txt`、`humans.txt`、IndexNow、Lighthouse 和新增验证脚本。
+
+## 2026-06-11 奥德赛计划方法论更新
+
+- 新增四语言 `odyssey-plan` 文档页，把三路径职业推演、不可牺牲项、JD gap 学习取舍和做中学项目抽象为公开方法论。
+- 新页面已接入四语言 nav / sidebar、README 和 per-locale `llms.txt`。
+- 内容只保留通用框架，不包含个人职业偏好、具体 JD、薪酬、内部项目或私有职业资料。

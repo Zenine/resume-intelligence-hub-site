@@ -12,6 +12,7 @@ resume-intelligence-hub は一度きりの履歴書生成器ではありませ�
 - [サンプル](https://zenine.github.io/resume-intelligence-hub-site/ja/examples.html): 合成された hub ファイル、履歴書断片、STAR ストーリー、verification log、四半期 SMART 計画
 - [デザイン哲学](https://zenine.github.io/resume-intelligence-hub-site/ja/philosophy.html): hub を支える 11 の設計判断
 - [フレームワーク](https://zenine.github.io/resume-intelligence-hub-site/ja/frameworks.html): Google XYZ、STAR、BEI、Heilmeier などの方法論
+- [オデッセイプランニング](https://zenine.github.io/resume-intelligence-hub-site/ja/odyssey-plan.html): 3 つのキャリア戦略、譲れない制約、優先順位付きギャップ学習、実践プロジェクト
 - [よくある質問](https://zenine.github.io/resume-intelligence-hub-site/ja/faq.html): よくある質問
 - [リリース / バージョン対応](https://zenine.github.io/resume-intelligence-hub-site/ja/release.html): サイト層と skill repo のバージョン対応と再生成方針
 - [運用決定](https://zenine.github.io/resume-intelligence-hub-site/ja/ops-decisions.html): LLM discovery、IndexNow、リンクチェック、Lighthouse、SVG インライン化、将来の skill 抽象化に関する運用決定
